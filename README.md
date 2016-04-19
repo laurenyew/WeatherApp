@@ -36,8 +36,11 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 
 ## Weather Services APIs used
 - [ ] Weather Underground: http://www.wunderground.com/weather/api/
-- [ ] Dark Sky: https://developer.forecast.io/docs
-- [ ] Open Weather Map: http://openweathermap.org/api
+	- Had the best documentation
+	- Most widely used
+	- Includes icons for showing weather
+	- DarkSky had limited information
+	- Github examples for OpenWeatherApp no longer available
 
 ## General Screens
 - [ ] List View with Zipcode list items
