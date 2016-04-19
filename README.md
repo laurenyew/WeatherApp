@@ -7,17 +7,11 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - Focus effort on the weather services API interface.
 
 ## Requirements:
-
-­ [ ] Create a list­based application where the list should be pre­populated with at least 3 entries, where each entry represents a different US zip code.
-
-­ [ ] 'Add' button that allows the user to add additional zip codes into the list which fetches weather information from a weather service API.
-
-­ [ ] When adding a zip code, the user should be presented with a 'Details’ page containing weather information for the zip code.
-
-­ [ ] Tapping on a zip code list item will make an API call to a weather service of your choice and display the weather data in a detail activity. Ideally, the weather results are cached.
-
-­ [ ] The user should be able to navigate back to the zip code list and select another zip and display the 'Details' page for it.
-
+­ Create a list­based application where the list should be pre­populated with at least 3 entries, where each entry represents a different US zip code.
+­ 'Add' button that allows the user to add additional zip codes into the list which fetches weather information from a weather service API.
+­ When adding a zip code, the user should be presented with a 'Details’ page containing weather information for the zip code.
+­ Tapping on a zip code list item will make an API call to a weather service of your choice and display the weather data in a detail activity. Ideally, the weather results are cached.
+­ The user should be able to navigate back to the zip code list and select another zip and display the 'Details' page for it.
 
 ## Evaluation Points
 - [ ] Code/project organization
