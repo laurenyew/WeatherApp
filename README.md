@@ -7,12 +7,15 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - Focus effort on the weather services API interface.
 
 ## Requirements:
-- [ ] Create a list pre­populated with at least 3 entries, where each entry represents a different US zip code.
+- [ ] Create a list with at least 3 entries prepopulated
+- [ ] where each entry represents a different US zip code.
 - [ ] 'Add' button to add additional zip codes into the list
-- [ ] When adding a zip code, the user should be presented with a 'Details’ page containing weather information for the zip code.
-- [ ] Tapping on a zip code list item will make an API call to a weather service 
-- [ ] List detail will display the weather data in a detail activity. Ideally, the weather results are cached.
-- [ ] The user should be able to navigate back to the zip code list and select another zip and display the 'Details' page for it.
+- [ ] When adding a zip code, the user should be presented with 'Details’ page 
+- [ ] Details page should contain weather information for the zip code.
+- [ ] Tapping on a zip code list item will make an API call to a weather service
+- [ ] List detail will display the weather data in a detail activity. 
+- [ ] The weather results are cached.
+- [ ] The user should be able to navigate back to the zip code list
 
 ## Evaluation Points
 - [ ] Code/project organization
@@ -32,7 +35,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 ## Third-Party Libraries Used
 - [x] Volley
 - [x] GSON
-- [ ] Picasso
+- [x] Picasso
 
 ## Weather Services APIs used
 - [x] Weather Underground: http://www.wunderground.com/weather/api/
@@ -43,12 +46,12 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 	- Github examples for OpenWeatherApp no longer available
 
 ## General Screens
-- [ ] List View with Zipcode list items
-- [ ] Floating Action button to add a new list item (zipcode)
+- [x] List View with Zipcode list items
+- [x] Floating Action button to add a new list item (zipcode)
 - [ ] Add New ZipCode Screen/dialog
 - [ ] Error dialog when add bad zipcode, returns to Add New Zipcode screen/dialog
-- [ ] Detail Zipcode weather screen (added zipcode)
-- [ ] Can navigate back to list 
+- [x] Detail Zipcode weather screen (added zipcode)
+- [x] Can navigate back to list 
 
 NOTE: When Zipcode Weather Info is pulled down, they should be cached.
 
