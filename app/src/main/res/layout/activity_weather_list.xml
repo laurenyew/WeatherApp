@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="laurenyew.weatherapp.WeatherListActivity">
+    tools:context=".list.WeatherListActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/top_toolbar_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -21,7 +22,12 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_weather_list" />
+    <FrameLayout android:id="@+id/weather_list_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
