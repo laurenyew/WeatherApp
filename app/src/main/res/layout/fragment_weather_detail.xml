@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    tools:context=".detail.WeatherDetailActivity">
+
+    <!--Basic Info: Weather Icon, Zipcode, Temperature-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/detail_zipcode_icon_card"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        card_view:contentPaddingTop="10dp"
+        card_view:contentPaddingBottom="10dp"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/weather_icon_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:minWidth="150dp"
+                android:layout_centerVertical="true">
+
+                <ProgressBar
+                    android:id="@+id/weather_icon_loading_progress_bar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"/>
+
+                <ImageView
+                    android:id="@+id/weather_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:minWidth="100dp"
+                    android:minHeight="50dp"
+                    android:visibility="visible"/>
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/weather_zipcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_toRightOf="@id/weather_icon_container"
+                android:layout_centerVertical="true"
+                android:gravity="fill_horizontal"
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:text="@string/unknown" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!--Phone Number card (auto linked to go to phone or open phone dialog)-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/weather_info_detail_card"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_below="@id/detail_zipcode_icon_card"
+        card_view:contentPaddingTop="7dp"
+        card_view:contentPaddingBottom="7dp"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardCornerRadius="4dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/detail_info_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:text="@string/weather_info_card_title" />
+
+            <View
+                android:id="@+id/detail_separator1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/detail_info_title"
+                android:background="#CFD8DC" />
+
+            <TextView
+                android:id="@+id/detail_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@id/detail_separator1"
+                android:textSize="16dp"
+                android:text="@string/unknown" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
