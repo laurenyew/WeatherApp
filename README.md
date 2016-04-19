@@ -30,7 +30,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 ­ [ ] Detail improvements you would make if you had additional time.
 
 ## Third-Party Libraries Used
-- [ ] Retrofit
+- [x] Retrofit
 - [ ] Jackson JSON Processor
 - [ ] GSON
 - [ ] Picasso
