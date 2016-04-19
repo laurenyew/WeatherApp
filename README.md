@@ -30,9 +30,8 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 ­ [ ] Detail improvements you would make if you had additional time.
 
 ## Third-Party Libraries Used
-- [x] Retrofit
-- [ ] Jackson JSON Processor
-- [ ] GSON
+- [x] Volley
+- [x] GSON
 - [ ] Picasso
 
 ## Weather Services APIs used
@@ -53,6 +52,7 @@ NOTE: When Zipcode Weather Info is pulled down, they should be cached.
 ## QUESTIONS
 - [ ] Since weather info details are cached, should we still expect an API call to happen when we exit and re-enter the same zipcode detail?
 - [ ] The requirement "When adding a zip code, the user should be presented with a 'Details’ page" --> does this mean after the zipcode is added, or while its being added?
+- [ ] Requirements mention 'sharing intents'. Not sure where this will be used. When would I need to share content?
 
 ## Acknowledgements
 Original requirements for this project provided by Phunware, Inc.
