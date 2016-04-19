@@ -14,7 +14,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 ­ [ ] The user should be able to navigate back to the zip code list and select another zip and display the 'Details' page for it.
 
 ## Evaluation Points
-- [ ]Code/project organization
+- [ ] Code/project organization
 - [ ] Android fundamentals
 - [ ] Android API design/best practices
 - [ ] Error handling (connection, weather service down, etc.)
