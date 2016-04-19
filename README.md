@@ -53,3 +53,6 @@ NOTE: When Zipcode Weather Info is pulled down, they should be cached.
 ## QUESTIONS
 - [ ] Since weather info details are cached, should we still expect an API call to happen when we exit and re-enter the same zipcode detail?
 - [ ] The requirement "When adding a zip code, the user should be presented with a 'Details’ page" --> does this mean after the zipcode is added, or while its being added?
+
+## Acknowledgements
+Original requirements for this project provided by Phunware, Inc.
