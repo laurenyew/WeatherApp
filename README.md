@@ -29,9 +29,9 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 
 ## Presentation Requirements:
 - [ ] Summary detailing project requirements
-­ [ ] Detail challenges experienced
-­ [ ] Walk through code implementation
-­ [ ] Detail improvements you would make if you had additional time.
+- [ ] Detail challenges experienced
+- [ ] Walk through code implementation
+- [ ] Detail improvements you would make if you had additional time.
 
 ## Third-Party Libraries Used
 - [x] Volley
