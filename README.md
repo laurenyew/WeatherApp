@@ -35,7 +35,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [ ] Picasso
 
 ## Weather Services APIs used
-- [ ] Weather Underground: http://www.wunderground.com/weather/api/
+- [x] Weather Underground: http://www.wunderground.com/weather/api/
 	- Had the best documentation
 	- Most widely used
 	- Includes icons for showing weather
