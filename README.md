@@ -16,13 +16,14 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [ ] List detail will display the weather data in a detail activity. 
 - [ ] The weather results are cached.
 - [ ] The user should be able to navigate back to the zip code list
+- [ ] NOTE TO SELF: The list should be stored in the phone's database
 
 ## Evaluation Points
 - [ ] Code/project organization
 - [ ] Android fundamentals
 - [ ] Android API design/best practices
 - [ ] Error handling (connection, weather service down, etc.)
-- [ ] Error validation (user input)
+- [ ] Error validation (user input: bad zipcode, duplicate zipcode)
 - [ ] API Error handling (API gives errors)
 - [ ] Presentation
 
