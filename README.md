@@ -45,6 +45,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 	- Includes icons for showing weather
 	- DarkSky had limited information
 	- Github examples for OpenWeatherApp no longer available
+	- Tried OpenWeatherApp but couldn't get APIKey to work.
 
 ## General Screens
 - [x] List View with Zipcode list items
