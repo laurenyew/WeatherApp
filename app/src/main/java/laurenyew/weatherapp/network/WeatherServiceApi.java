@@ -9,7 +9,7 @@ public interface WeatherServiceApi {
 
     /**
      * Get the current weather conditions for the given zipcode of a US city
-     *
+     * <p/>
      * This method should query the weather API,
      *
      * @param context

@@ -2,45 +2,45 @@ package laurenyew.weatherapp.network.listeners;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.google.gson.Gson;
 
 import org.json.JSONObject;
+
+import laurenyew.weatherapp.network.ResponseError;
 
 /**
  * Created by laurenyew on 4/19/16.
  */
 public abstract class JsonResponseListener<T> implements Response.Listener<JSONObject>, Response.ErrorListener {
 
-    private T clazz;
-
-    public JsonResponseListener(T clazz) {
-        this.clazz = clazz;
-    }
-
     @Override
     public void onResponse(JSONObject response) {
         System.out.println("Response: " + response.toString());
-        deserialize(response, clazz.getClass());
+        try {
+            if (response != null) {
+                T responseModel = deserialize(response);
+                onSuccess(responseModel);
+            } else {
+                onError(ResponseError.NULL_RESPONSE);
+            }
+
+        } catch (Exception e) {
+            onError(ResponseError.COULD_NOT_PARSE_JSON);
+        }
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
         System.out.println("Error: " + error);
+        onError(ResponseError.UNKNOWN);
     }
 
     /**
-     * Helper method, use Gson to serialize the JsonObject's string to
+     * The response must be deserialized into the appropriate object
      *
      * @param response
-     * @param clazz
-     * @param <T>
      * @return
      */
-    private <T> T deserialize(JSONObject response, Class<T> clazz) {
-        System.out.println("deserialize response");
-        Gson gson = new Gson();
-        return gson.fromJson(response.toString(), clazz);
-    }
+    public abstract T deserialize(JSONObject response);
 
     /**
      * Developer using JsonResponseListener children MUST implement this class
@@ -57,8 +57,8 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
      *
      * @param error
      */
-    public void onError(String error) {
-
+    public void onError(ResponseError error) {
+        System.out.println("On Error: " + error);
     }
 
 
