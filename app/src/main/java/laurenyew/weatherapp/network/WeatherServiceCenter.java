@@ -12,6 +12,7 @@ import laurenyew.weatherapp.network.requests.BaseObjectRequest;
  */
 public class WeatherServiceCenter implements WeatherServiceApi {
 
+
     private String getWeatherServiceBaseUri() {
         return "http://api.wunderground.com/api/";
     }

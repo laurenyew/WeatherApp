@@ -1,7 +1,5 @@
 package laurenyew.weatherapp.network.listeners;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -31,17 +29,19 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
                 if (jsonArray != null) {
                     CurrentWeatherConditionsResponse[] currentWeatherConditions = gson.fromJson(jsonArray.toString(), CurrentWeatherConditionsResponse[].class);
                     if (currentWeatherConditions != null && currentWeatherConditions.length > 0) {
-                        for (CurrentWeatherConditionsResponse currentWeather : currentWeatherConditions) {
-                            Log.i("LOG", currentWeather.toString());
-                        }
+                        return currentWeatherConditions[0];
                     }
                 }
             }
         }
+
+        return null;
     }
+
 
     @Override
     public void onSuccess(CurrentWeatherConditionsResponse data) {
         System.out.println("onSuccess: " + data);
+
     }
 }
