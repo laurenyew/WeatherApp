@@ -8,6 +8,7 @@
     <string name="weather_info_card_title">Weather Info</string>
 
     <!--Company Detail default info-->
+    <string name="processing_weather_data">Weather Data</string>
     <string name="unknown">Unknown</string>
     <string name="no_data_available">No data available.</string>
 
@@ -19,4 +20,7 @@
     <string name="data_connection_error_message">Could not connect to database.</string>
     <string name="cache_connection_error_message">Could not connect to cache.</string>
     <string name="unknown_error_message">Unknown error occurred.</string>
+    <string name="open_google_maps_button_title">View Displayed Location in Maps</string>
+    <string name="reference_info_title_string">Powered by</string>
+    <string name="default_reference_info">Weather Underground</string>
 </resources>
