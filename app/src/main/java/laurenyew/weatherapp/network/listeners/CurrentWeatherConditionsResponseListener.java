@@ -14,6 +14,11 @@ import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
 
 /**
  * Created by laurenyew on 4/19/16.
+ * <p/>
+ * This class implements:
+ * - deserialization of CurrentWeatherCondition JSON
+ * - caching of current weather conditions,
+ * - updating UI with Observer pattern using FetchCurrentWeatherUpdateListener
  */
 public class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditions> {
 
