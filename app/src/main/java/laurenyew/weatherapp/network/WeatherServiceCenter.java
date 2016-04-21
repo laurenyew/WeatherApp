@@ -4,12 +4,13 @@ import android.content.Context;
 
 import com.android.volley.Request;
 
-import laurenyew.weatherapp.Constants;
 import laurenyew.weatherapp.network.listeners.JsonResponseListener;
 import laurenyew.weatherapp.network.requests.BaseObjectRequest;
 
 /**
  * Created by laurenyew on 4/19/16.
+ * <p/>
+ * Uses Volley's Request Queue to send out network requests as per the WeatherServiceApi
  */
 public class WeatherServiceCenter implements WeatherServiceApi {
 
@@ -65,7 +66,7 @@ public class WeatherServiceCenter implements WeatherServiceApi {
             public void execute(JsonResponseListener listener) {
                 BaseObjectRequest request = new BaseObjectRequest(Request.Method.GET, getUri("conditions", zipcode), null,
                         listener);
-                request.setTag(Constants.ACTION_GET_CURRENT_CONDITIONS + zipcode);
+                request.setTag(WeatherServiceApiContract.ACTION_GET_CURRENT_CONDITIONS + zipcode);
                 getRequestQueue(context).addToRequestQueue(request);
             }
         };
@@ -78,7 +79,7 @@ public class WeatherServiceCenter implements WeatherServiceApi {
      */
     @Override
     public void cancelCurrentConditionsRequest(Context context, String zipcode) {
-        getRequestQueue(context).cancelRequestsWithTag(Constants.ACTION_GET_CURRENT_CONDITIONS + zipcode);
+        getRequestQueue(context).cancelRequestsWithTag(WeatherServiceApiContract.ACTION_GET_CURRENT_CONDITIONS + zipcode);
     }
 
 }

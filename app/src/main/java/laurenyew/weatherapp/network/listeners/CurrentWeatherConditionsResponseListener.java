@@ -5,12 +5,26 @@ import android.support.annotation.NonNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
+
+import laurenyew.weatherapp.cache.CurrentWeatherConditionsCache;
 import laurenyew.weatherapp.network.responses.CurrentWeatherConditionsResponse;
 
 /**
  * Created by laurenyew on 4/19/16.
  */
-public class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditionsResponse> {
+public abstract class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditionsResponse> {
+
+    /**
+     * Add the response's data to the cache with the key being
+     * the zipcode
+     *
+     * @param data
+     */
+    @Override
+    public void onSuccessUpdateCache(CurrentWeatherConditionsResponse data) {
+        CurrentWeatherConditionsCache.getInstance().addResponse(data);
+    }
 
     /**
      * Convert the response into a proper CurrentWeatherCondiationsResponse
@@ -19,9 +33,7 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
      * @return
      */
     @Override
-
     public CurrentWeatherConditionsResponse deserialize(JSONObject response) throws JSONException {
-        System.out.println("deserialize response: " + response);
         CurrentWeatherConditionsResponse result = null;
         if (response != null) {
             JSONObject jsonObject = response.optJSONObject("current_observation");
@@ -33,14 +45,22 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
     }
 
     /**
-     * @param response
-     * @return
+     * parse the JsonObject response into a CalendarWeatherConditionsResponse. Also set eviction date.
+     *
+     * @param response JSONObject
+     * @return populated CalendarWeatherConditionsResponse
      * @throws JSONException
      */
     @NonNull
     private CurrentWeatherConditionsResponse parseJSONObjectResponse(JSONObject response) throws JSONException {
         CurrentWeatherConditionsResponse result = new CurrentWeatherConditionsResponse();
 
+        //set eviction date to be 1 day after receiving this response
+        Calendar currentTime = Calendar.getInstance();
+        currentTime.add(Calendar.HOUR, 24);
+        result.evictionDate = currentTime.getTime();
+
+        //Parse the rest of the Json object
         JSONObject image_info = response.optJSONObject("image");
         result.logoImageUrl = image_info.getString("url");
 
@@ -66,10 +86,4 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
         return result;
     }
 
-
-    @Override
-    public void onSuccess(CurrentWeatherConditionsResponse data) {
-        System.out.println("onSuccess: " + data);
-
-    }
 }

@@ -1,5 +1,7 @@
 package laurenyew.weatherapp.network.responses;
 
+import java.util.Date;
+
 /**
  * Created by laurenyew on 4/19/16.
  * <p/>
@@ -8,6 +10,9 @@ package laurenyew.weatherapp.network.responses;
  * Gson should ignore the unmentioned values when deserializing.
  */
 public class CurrentWeatherConditionsResponse {
+
+    //Used for eviction strategy (evict if 1 day off original received time)
+    public Date evictionDate;
 
     public String logoImageUrl; //"image.url":"http://icons-ak.wxug.com/graphics/wu2/logo_130x80.png"
 
@@ -42,7 +47,6 @@ public class CurrentWeatherConditionsResponse {
         weatherIconName = null;
         iconUrl = null;
         openForecastUrl = null;
-
     }
 
     @Override
