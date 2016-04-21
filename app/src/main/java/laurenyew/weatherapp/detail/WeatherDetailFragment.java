@@ -99,12 +99,12 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
     }
 
     /**
-     * On Stop cacnel the condition request
+     * On Stop cancel the condition request
      */
     @Override
     public void onStop() {
         super.onStop();
-        WeatherServiceCenter.getInstance().cancelCurrentConditionsRequest(getActivity(), "75078");
+        WeatherServiceCenter.getInstance().cancelCurrentConditionsRequest(getActivity(), detailZipcode);
 
         if (mFetchWeatherInfoListenerRef != null && mFetchWeatherInfoListenerRef.get() != null) {
             mFetchWeatherInfoListenerRef.get().removeListener(this);

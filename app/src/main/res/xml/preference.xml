@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string-array name="zipcode_cache">
+        <item>75078</item> <!--Prosper-->
+        <item>78757</item> <!--Phunware Austin-->
+        <item>92127</item> <!--Phunware California-->
+    </string-array>
+</map>

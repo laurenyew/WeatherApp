@@ -4,14 +4,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 
 import laurenyew.weatherapp.R;
+import laurenyew.weatherapp.cache.ZipcodeCache;
 
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class WeatherListAdapter extends RecyclerView.Adapter<ZipcodeViewHolder>{
+public class WeatherListAdapter extends RecyclerView.Adapter<ZipcodeViewHolder> {
 
 
     @Override
@@ -19,23 +19,22 @@ public class WeatherListAdapter extends RecyclerView.Adapter<ZipcodeViewHolder>{
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.zipcode_weather_preview_card, parent, false);
-        ZipcodeViewHolder vh = new ZipcodeViewHolder(v);
-        return vh;
+        return new ZipcodeViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(ZipcodeViewHolder holder, int position) {
 
-        //TODO: Get info from the Zipcode cache
-        holder.mZipcode.setText("75078");
+        //Get info from the Zipcode cache
+        String zipcode = ZipcodeCache.getInstance().getItem(position);
+        holder.zipCode = zipcode;
+        holder.mZipcode.setText(zipcode);
     }
 
     @Override
     public int getItemCount() {
-        //TODO: Get info from Zipcode cache
-        return 1;
+        return ZipcodeCache.getInstance().size();
     }
-
 
 
 }

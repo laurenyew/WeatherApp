@@ -16,7 +16,7 @@ import laurenyew.weatherapp.detail.WeatherDetailActivity;
  */
 public class ZipcodeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
+    public String zipCode;
     public CardView mCard;
     public TextView mZipcode;
 
@@ -33,7 +33,7 @@ public class ZipcodeViewHolder extends RecyclerView.ViewHolder implements View.O
         Intent openZipcodeWeatherDetail = new Intent(context, WeatherDetailActivity.class);
         Bundle bundle = new Bundle();
         //TODO: Get zipcode from cache
-        bundle.putString(WeatherDetailActivity.ZIPCODE_KEY, "75078");
+        bundle.putString(WeatherDetailActivity.ZIPCODE_KEY, zipCode);
         openZipcodeWeatherDetail.putExtras(bundle);
         context.startActivity(openZipcodeWeatherDetail);
     }
