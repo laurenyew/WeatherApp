@@ -3,8 +3,8 @@ package laurenyew.weatherapp.list;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -16,6 +16,7 @@ import java.util.HashSet;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.cache.ZipcodeCache;
+import laurenyew.weatherapp.dialog.AlertDialogUtil;
 
 public class WeatherListActivity extends AppCompatActivity {
     private static final String[] defaultZipcodes = {"75078", "78757", "92127"};
@@ -44,13 +45,7 @@ public class WeatherListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(new AddZipcodeOnClickListener());
     }
 
     /**
@@ -105,5 +100,22 @@ public class WeatherListActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * On click of the Floating Action Button, pop up a dialog to add a zipcode
+     */
+    private class AddZipcodeOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            AlertDialog addZipcodeDialog = AlertDialogUtil.createAddZipcodeAlertDialog(
+                    WeatherListActivity.this,
+                    getString(R.string.add_zipcode_dialog_title),
+                    R.layout.dialog_input_text_view,
+                    getString(R.string.submit_button_title),
+                    getString(R.string.cancel_button_title));
+
+            addZipcodeDialog.show();
+        }
     }
 }
