@@ -22,13 +22,14 @@ import laurenyew.weatherapp.network.ApiRequest;
 import laurenyew.weatherapp.network.WeatherServiceCenter;
 import laurenyew.weatherapp.network.listeners.CurrentWeatherConditionsResponseListener;
 import laurenyew.weatherapp.network.listeners.FetchCurrentWeatherUpdateListener;
-import laurenyew.weatherapp.network.listeners.Result;
+import laurenyew.weatherapp.network.listeners.RequestErrorListener;
 import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
+import laurenyew.weatherapp.network.responses.ErrorResponse;
 
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class WeatherDetailFragment extends Fragment implements FetchCurrentWeatherUpdateListener {
+public class WeatherDetailFragment extends Fragment implements FetchCurrentWeatherUpdateListener, RequestErrorListener {
     //Views
     public ImageView weather_icon;
     public TextView weather_info;
@@ -39,22 +40,12 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
 
     //Values
     String detailZipcode = null;
+    CurrentWeatherConditions currentWeather = null;
 
     //Listeners
     WeakReference<CurrentWeatherConditionsResponseListener> mFetchWeatherInfoListenerRef = null;
+    WeakReference<RequestErrorListener> mRequestErrorListener = null;
 
-    /**
-     * FetchCurrentWeatherUpdateListener implementation
-     *
-     * @param result
-     */
-    @Override
-    public void onFetchComplete(Result result) {
-        if (result == Result.SUCCESS) {
-            CurrentWeatherConditions weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
-            updateDetailInfoView(weather);
-        }
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,17 +76,67 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
     public void onStart() {
         super.onStart();
 
+        populateWeatherDetail();
+    }
+
+    /**
+     * helper method: populate the weather detail
+     */
+    private void populateWeatherDetail() {
         if (detailZipcode != null) {
-            CurrentWeatherConditions weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
-            if (weather == null) {
-                CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener();
-                listener.addListener(this);
-                mFetchWeatherInfoListenerRef = new WeakReference<CurrentWeatherConditionsResponseListener>(listener);
-                ApiRequest request = WeatherServiceCenter.getInstance().getCurrentConditions(getActivity(), detailZipcode);
-                request.execute(listener);
+            CurrentWeatherConditions weather = getCurrentWeatherConditions();
+
+            //Only update the weather UI if details have changed
+            if (hasWeatherChanged(weather)) {
+                updateDetailInfoView(weather);
             }
-            updateDetailInfoView(weather);
         }
+    }
+
+    /**
+     * Helper method: compare new weather vs stored weather
+     *
+     * @param newWeather
+     * @return
+     */
+    private boolean hasWeatherChanged(CurrentWeatherConditions newWeather) {
+        boolean weatherChanged = false;
+        if (currentWeather == null) {
+            currentWeather = newWeather;
+            weatherChanged = true;
+        } else {
+            weatherChanged = !currentWeather.equals(newWeather);
+        }
+        return weatherChanged;
+    }
+
+    /**
+     * Helper method: get the current weather conditions for the given zipcode
+     * <p/>
+     * 1) Attempt to get the conditions from the cache.
+     * 2) If cache detail not available, start an API call
+     * 3) Listen for the result, updating the UI accordingly
+     *
+     * @return
+     */
+    @Nullable
+    private CurrentWeatherConditions getCurrentWeatherConditions() {
+        CurrentWeatherConditions weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
+
+        //Cache does not have the details we need. Start an api call and listen for its result.
+        if (weather == null) {
+
+            //Create weak reference to a listener for result of api call
+            CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener();
+            listener.addListener(this);
+            listener.addErrorListener(this);
+            mFetchWeatherInfoListenerRef = new WeakReference<>(listener);
+
+            //Making the api call with the service center
+            ApiRequest request = WeatherServiceCenter.getInstance().getCurrentConditions(getActivity(), detailZipcode);
+            request.execute(listener);
+        }
+        return weather;
     }
 
     /**
@@ -148,4 +189,29 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
             Picasso.with(getActivity()).load(weather.logoImageUrl).into(reference_logo);
         }
     }
+
+    /**
+     * FetchCurrentWeatherUpdateListener implementation
+     * <p/>
+     * Let the UI know that the fetch has been completed. Get the data.
+     */
+    @Override
+    public void onFetchComplete() {
+        CurrentWeatherConditions weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
+        updateDetailInfoView(weather);
+    }
+
+    /**
+     * RequestErrorListener implementaiton
+     * <p/>
+     * update the UI that the fetch failed with the error associated
+     *
+     * @param error
+     */
+    @Override
+    public void onError(ErrorResponse error) {
+
+    }
+
+
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 import laurenyew.weatherapp.cache.CurrentWeatherConditionsCache;
 import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
+import laurenyew.weatherapp.network.responses.Result;
 
 /**
  * Created by laurenyew on 4/19/16.
@@ -22,8 +23,7 @@ import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
  */
 public class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditions> {
 
-    private List<FetchCurrentWeatherUpdateListener> listeners = new ArrayList<FetchCurrentWeatherUpdateListener>();
-
+    private List<FetchCurrentWeatherUpdateListener> listeners = new ArrayList<>();
 
     /**
      * Add the response's data to the cache with the key being
@@ -38,7 +38,7 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
 
     @Override
     public void onSuccess(CurrentWeatherConditions data) {
-        notifyListenersOfFetchComplete(Result.SUCCESS);
+        notifyListenersOfFetchStatus(Result.SUCCESS);
     }
 
     /**
@@ -109,9 +109,11 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
         listeners.remove(listUpdateListener);
     }
 
-    private void notifyListenersOfFetchComplete(Result result) {
-        for (FetchCurrentWeatherUpdateListener listener : listeners) {
-            listener.onFetchComplete(result);
+    private void notifyListenersOfFetchStatus(Result result) {
+        if (result == Result.SUCCESS) {
+            for (FetchCurrentWeatherUpdateListener listener : listeners) {
+                listener.onFetchComplete();
+            }
         }
     }
 

@@ -6,12 +6,17 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import laurenyew.weatherapp.network.ResponseError;
+import java.util.ArrayList;
+import java.util.List;
+
+import laurenyew.weatherapp.network.responses.ErrorResponse;
 
 /**
  * Created by laurenyew on 4/19/16.
  */
 public abstract class JsonResponseListener<T> implements Response.Listener<JSONObject>, Response.ErrorListener {
+
+    private List<RequestErrorListener> listeners = new ArrayList<RequestErrorListener>();
 
     @Override
     public void onResponse(JSONObject response) {
@@ -21,18 +26,18 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
                 onSuccessUpdateCache(responseModel);
                 onSuccess(responseModel);
             } else {
-                onError(ResponseError.NULL_RESPONSE);
+                onError(ErrorResponse.EMPTY_RESPONSE);
             }
 
         } catch (Exception e) {
-            onError(ResponseError.COULD_NOT_PARSE_JSON);
+            onError(ErrorResponse.INVALID_JSON);
         }
     }
 
     @Override
     public void onErrorResponse(VolleyError error) {
         System.out.println("Error: " + error);
-        onError(ResponseError.UNKNOWN);
+        onError(ErrorResponse.UNKNOWN);
     }
 
     /**
@@ -70,8 +75,23 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
      *
      * @param error
      */
-    public void onError(ResponseError error) {
+    public void onError(ErrorResponse error) {
         System.out.println("On Error: " + error);
+        notifyListenersOfError(error);
+    }
+
+    public void addErrorListener(RequestErrorListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeErrorListener(RequestErrorListener listUpdateListener) {
+        listeners.remove(listUpdateListener);
+    }
+
+    private void notifyListenersOfError(ErrorResponse result) {
+        for (RequestErrorListener listener : listeners) {
+            listener.onError(result);
+        }
     }
 
 

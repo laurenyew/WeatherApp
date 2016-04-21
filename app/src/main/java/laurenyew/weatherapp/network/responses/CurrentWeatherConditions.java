@@ -50,6 +50,16 @@ public class CurrentWeatherConditions {
     }
 
     @Override
+    public boolean equals(Object o) {
+        CurrentWeatherConditions c = (CurrentWeatherConditions) o;
+        boolean isEqual = false;
+        if (c != null) {
+            isEqual = zipcode.equals(c.zipcode) && evictionDate.equals(c.evictionDate);
+        }
+        return isEqual;
+    }
+
+    @Override
     public String toString() {
         return "CurrentWeatherConditions [response=" +
                 zipcode + "," + displayLocationFull + "]";
