@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/zipcode_preview_card_view"
+    android:id="@+id/zipcode_preview_header_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="1dp"
+    android:layout_marginBottom="3dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    card_view:cardBackgroundColor="@android:color/white">
+    card_view:cardBackgroundColor="@android:color/darker_gray">
 
     <TextView
-        android:id="@+id/zipcode_preview_text"
+        android:id="@+id/zipcode_preview_header_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="7dp"
-        android:text="@string/unknown"
+        android:text="@string/zipcode_list_title"
         android:textAlignment="center"
-        android:textSize="25dp" />
+        android:textSize="30dp" />
 
 </android.support.v7.widget.CardView>

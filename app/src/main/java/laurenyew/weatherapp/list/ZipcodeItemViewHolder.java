@@ -14,13 +14,13 @@ import laurenyew.weatherapp.detail.WeatherDetailActivity;
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class ZipcodeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ZipcodeItemViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public String zipCode;
     public CardView mCard;
     public TextView mZipcode;
 
-    public ZipcodeViewHolder(View itemView) {
+    public ZipcodeItemViewHolder(View itemView) {
         super(itemView);
         mCard = (CardView) itemView.findViewById(R.id.zipcode_preview_card_view);
         mZipcode = (TextView) itemView.findViewById(R.id.zipcode_preview_text);

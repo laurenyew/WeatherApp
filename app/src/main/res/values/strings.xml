@@ -24,4 +24,5 @@
     <string name="open_google_maps_button_title">View Displayed Location in Maps</string>
     <string name="reference_info_title_string">Powered by</string>
     <string name="default_reference_info">Weather Underground</string>
+    <string name="zipcode_list_title">Weather by Zipcode</string>
 </resources>
