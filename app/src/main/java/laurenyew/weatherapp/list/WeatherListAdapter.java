@@ -38,7 +38,7 @@ public class WeatherListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             ZipcodeItemViewHolder itemHolder = (ZipcodeItemViewHolder) holder;
             //ignore header in cache position
             String zipcode = ZipcodeCache.getInstance().getItem(position - 1);
-            itemHolder.zipCode = zipcode;
+            itemHolder.zipcode = zipcode;
             itemHolder.mZipcode.setText(zipcode);
         }
 

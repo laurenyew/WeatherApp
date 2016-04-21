@@ -1,4 +1,4 @@
-package laurenyew.weatherapp.dialog;
+package laurenyew.weatherapp.util;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import laurenyew.weatherapp.R;
+import laurenyew.weatherapp.cache.ZipcodeCache;
 import laurenyew.weatherapp.constants.Regex;
 
 /**
@@ -92,9 +93,12 @@ public class AlertDialogUtil {
                     errorText.setVisibility(View.VISIBLE);
 
                 } else {
-                    //TODO: Add to cache/database
-                    //TODO: Go to detail view for zipcode
+                    //Add to cache/database
+                    ZipcodeCache.getInstance().addZipcode(zipcode);
                     dialog.dismiss();
+
+                    //Go to detail view for zipcode
+                    CommonlyUsedIntents.openWeatherDetailActivity(context, zipcode);
                 }
 
             }

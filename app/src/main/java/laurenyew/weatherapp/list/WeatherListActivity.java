@@ -15,7 +15,7 @@ import java.util.HashSet;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.cache.ZipcodeCache;
-import laurenyew.weatherapp.dialog.AlertDialogUtil;
+import laurenyew.weatherapp.util.AlertDialogUtil;
 
 public class WeatherListActivity extends AppCompatActivity {
     private static final String[] defaultZipcodes = {"75078", "78757", "92127"};
