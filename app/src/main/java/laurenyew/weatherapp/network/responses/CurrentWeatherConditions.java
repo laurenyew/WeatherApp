@@ -5,11 +5,11 @@ import java.util.Date;
 /**
  * Created by laurenyew on 4/19/16.
  * <p/>
- * Made a simplified more generic CurrentWeatherConditionsResponse.
+ * Made a simplified more generic CurrentWeatherConditions.
  * There were way too many unneeded values in the original response from underground weather.
  * Gson should ignore the unmentioned values when deserializing.
  */
-public class CurrentWeatherConditionsResponse {
+public class CurrentWeatherConditions {
 
     //Used for eviction strategy (evict if 1 day off original received time)
     public Date evictionDate;
@@ -32,7 +32,7 @@ public class CurrentWeatherConditionsResponse {
     public String iconUrl;//icon_url:"http://icons-ak.wxug.com/i/c/k/partlycloudy.gif"
     public String openForecastUrl;//forecast_url:"http://www.wunderground.com/US/CA/San_Francisco.html"
 
-    public CurrentWeatherConditionsResponse() {
+    public CurrentWeatherConditions() {
         logoImageUrl = null;
         displayLocationFull = null;
         zipcode = null;
@@ -51,7 +51,7 @@ public class CurrentWeatherConditionsResponse {
 
     @Override
     public String toString() {
-        return "CurrentWeatherConditionsResponse [response=" +
+        return "CurrentWeatherConditions [response=" +
                 zipcode + "," + displayLocationFull + "]";
     }
 }

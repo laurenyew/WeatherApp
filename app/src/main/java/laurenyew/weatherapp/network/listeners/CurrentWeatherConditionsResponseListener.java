@@ -5,15 +5,20 @@ import android.support.annotation.NonNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import laurenyew.weatherapp.cache.CurrentWeatherConditionsCache;
-import laurenyew.weatherapp.network.responses.CurrentWeatherConditionsResponse;
+import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
 
 /**
  * Created by laurenyew on 4/19/16.
  */
-public abstract class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditionsResponse> {
+public class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditions> {
+
+    private List<FetchCurrentWeatherUpdateListener> listeners = new ArrayList<FetchCurrentWeatherUpdateListener>();
+
 
     /**
      * Add the response's data to the cache with the key being
@@ -22,8 +27,13 @@ public abstract class CurrentWeatherConditionsResponseListener extends JsonRespo
      * @param data
      */
     @Override
-    public void onSuccessUpdateCache(CurrentWeatherConditionsResponse data) {
+    public void onSuccessUpdateCache(CurrentWeatherConditions data) {
         CurrentWeatherConditionsCache.getInstance().addResponse(data);
+    }
+
+    @Override
+    public void onSuccess(CurrentWeatherConditions data) {
+        notifyListenersOfFetchComplete(Result.SUCCESS);
     }
 
     /**
@@ -33,8 +43,8 @@ public abstract class CurrentWeatherConditionsResponseListener extends JsonRespo
      * @return
      */
     @Override
-    public CurrentWeatherConditionsResponse deserialize(JSONObject response) throws JSONException {
-        CurrentWeatherConditionsResponse result = null;
+    public CurrentWeatherConditions deserialize(JSONObject response) throws JSONException {
+        CurrentWeatherConditions result = null;
         if (response != null) {
             JSONObject jsonObject = response.optJSONObject("current_observation");
             if (jsonObject != null) {
@@ -52,8 +62,8 @@ public abstract class CurrentWeatherConditionsResponseListener extends JsonRespo
      * @throws JSONException
      */
     @NonNull
-    private CurrentWeatherConditionsResponse parseJSONObjectResponse(JSONObject response) throws JSONException {
-        CurrentWeatherConditionsResponse result = new CurrentWeatherConditionsResponse();
+    private CurrentWeatherConditions parseJSONObjectResponse(JSONObject response) throws JSONException {
+        CurrentWeatherConditions result = new CurrentWeatherConditions();
 
         //set eviction date to be 1 day after receiving this response
         Calendar currentTime = Calendar.getInstance();
@@ -84,6 +94,20 @@ public abstract class CurrentWeatherConditionsResponseListener extends JsonRespo
         result.openForecastUrl = response.getString("forecast_url");
 
         return result;
+    }
+
+    public void addListener(FetchCurrentWeatherUpdateListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(FetchCurrentWeatherUpdateListener listUpdateListener) {
+        listeners.remove(listUpdateListener);
+    }
+
+    private void notifyListenersOfFetchComplete(Result result) {
+        for (FetchCurrentWeatherUpdateListener listener : listeners) {
+            listener.onFetchComplete(result);
+        }
     }
 
 }

@@ -4,7 +4,7 @@ import android.util.LruCache;
 
 import java.util.Date;
 
-import laurenyew.weatherapp.network.responses.CurrentWeatherConditionsResponse;
+import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
 
 /**
  * Created by laurenyew on 4/20/16.
@@ -15,7 +15,7 @@ import laurenyew.weatherapp.network.responses.CurrentWeatherConditionsResponse;
  */
 public class CurrentWeatherConditionsCache {
     private static final int MAX_CACHE_ITEMS = 20;
-    private LruCache<String, CurrentWeatherConditionsResponse> mCache;
+    private LruCache<String, CurrentWeatherConditions> mCache;
     private static CurrentWeatherConditionsCache mInstance = null;
 
     private CurrentWeatherConditionsCache() {
@@ -29,14 +29,17 @@ public class CurrentWeatherConditionsCache {
         return mInstance;
     }
 
-    public CurrentWeatherConditionsResponse getCurrentWeatherCondition(String zipcode) {
-        CurrentWeatherConditionsResponse response = mCache.get(zipcode);
-        if (response != null) {
-            //evict if necessary, and if evicted, we should return a null response
-            //to trigger an api call.
-            if (shouldEvictResponse(response.evictionDate)) {
-                mCache.remove(zipcode);
-                response = null;
+    public CurrentWeatherConditions getCurrentWeatherCondition(String zipcode) {
+        CurrentWeatherConditions response = null;
+        if (zipcode != null) {
+            response = mCache.get(zipcode);
+            if (response != null) {
+                //evict if necessary, and if evicted, we should return a null response
+                //to trigger an api call.
+                if (shouldEvictResponse(response.evictionDate)) {
+                    mCache.remove(zipcode);
+                    response = null;
+                }
             }
         }
         return response;
@@ -54,7 +57,7 @@ public class CurrentWeatherConditionsCache {
         return date.before(currentDate);
     }
 
-    public void addResponse(CurrentWeatherConditionsResponse response) {
+    public void addResponse(CurrentWeatherConditions response) {
         mCache.put(response.zipcode, response);
     }
 }
