@@ -11,13 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import laurenyew.weatherapp.R;
+import laurenyew.weatherapp.cache.ZipcodeCache;
 
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class WeatherListFragment extends Fragment{
+public class WeatherListFragment extends Fragment implements ZipcodeCache.UpdateListener {
     private RecyclerView mWeatherListRecyclerView = null;
     private ProgressBar mWeatherListLoadingProgressBar = null;
+    private WeatherListAdapter mAdapter = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,41 +35,55 @@ public class WeatherListFragment extends Fragment{
         mWeatherListLoadingProgressBar = (ProgressBar) view.findViewById(R.id.weather_list_load_progress_bar);
         mWeatherListRecyclerView = (RecyclerView) view.findViewById(R.id.weather_recyler_list_view);
         mWeatherListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mWeatherListRecyclerView.setAdapter(new WeatherListAdapter());
+        mAdapter = new WeatherListAdapter();
+        mWeatherListRecyclerView.setAdapter(mAdapter);
 
         return view;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
+        ZipcodeCache.getInstance().addListener(this);
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        ZipcodeCache.getInstance().removeListener(this);
+    }
 
-    private void showProgressBar()
-    {
+    /**
+     * Implementing the ZipcodeCache.UpdateListener interface
+     * <p/>
+     * notify the adapter if the cache has been updated
+     */
+    @Override
+    public void onCacheUpdate() {
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    private void showProgressBar() {
         //show progress bar, hide recyclerView
-        if(mWeatherListLoadingProgressBar != null)
-        {
+        if (mWeatherListLoadingProgressBar != null) {
             mWeatherListLoadingProgressBar.setVisibility(View.VISIBLE);
         }
-        if(mWeatherListRecyclerView != null)
-        {
+        if (mWeatherListRecyclerView != null) {
             mWeatherListRecyclerView.setVisibility(View.GONE);
         }
     }
 
-    private void hideProgressBar()
-    {
+    private void hideProgressBar() {
 
-        if(mWeatherListLoadingProgressBar != null)
-        {
+        if (mWeatherListLoadingProgressBar != null) {
             mWeatherListLoadingProgressBar.setVisibility(View.GONE);
         }
-        if(mWeatherListRecyclerView != null)
-        {
+        if (mWeatherListRecyclerView != null) {
             mWeatherListRecyclerView.setVisibility(View.VISIBLE);
         }
     }
+
 
 }

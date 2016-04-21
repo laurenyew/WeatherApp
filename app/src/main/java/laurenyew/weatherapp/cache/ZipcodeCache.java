@@ -16,8 +16,15 @@ import java.util.Set;
  */
 public class ZipcodeCache {
     private static ZipcodeCache mInstance = null;
-    private String appName = "laurenyew.weatherapp";
-    private String zipcodeCacheKey = "zipcode_cache";
+
+    public interface UpdateListener {
+        void onCacheUpdate();
+    }
+
+    private List<UpdateListener> listeners = new ArrayList<UpdateListener>();
+
+    private static final String APP_NAME = "laurenyew.weatherapp";
+    private static final String ZIPCODE_CACHE_KEY = "zipcode_cache";
 
     //We use a set so that we can ensure that no duplicate zipcodes are added
     //This also helps with sorting the list
@@ -49,29 +56,24 @@ public class ZipcodeCache {
      */
     public void initListCacheAndSharedPreferences(Context context) {
 
-        //if the Shared Preferences default values have not already been set, set them
+        //Load up the ZipCode Cache with the Shared preferences values
+        SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
 
-        if (appName != null) {
-            //Load up the ZipCode Cache with the Shared preferences values
-            SharedPreferences weatherAppPref = context.getSharedPreferences(appName, Context.MODE_PRIVATE);
+        HashSet<String> defaultZipcodeSet = new HashSet<>(Arrays.asList(DEFAULT_ZIPCODES));
 
-            if (zipcodeCacheKey != null) {
-
-                HashSet<String> defaultZipcodeSet = new HashSet<>(Arrays.asList(DEFAULT_ZIPCODES));
-
-                //Setup the Shared preference file if it has not already been set up
-                //Setup the Zipcode Cache with the values
-                if (!weatherAppPref.contains(zipcodeCacheKey)) {
-                    SharedPreferences.Editor editor = weatherAppPref.edit();
-                    editor.putStringSet(zipcodeCacheKey, defaultZipcodeSet);
-                    editor.apply();
-                    setCache(defaultZipcodeSet);
-                } else {
-                    setCache(weatherAppPref.getStringSet(zipcodeCacheKey, defaultZipcodeSet));
-                }
-            }
+        //Setup the Shared preference file if it has not already been set up
+        //Setup the Zipcode Cache with the values
+        if (!weatherAppPref.contains(ZIPCODE_CACHE_KEY)) {
+            SharedPreferences.Editor editor = weatherAppPref.edit();
+            editor.putStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet);
+            editor.apply();
+            setCache(defaultZipcodeSet);
+        } else {
+            setCache(weatherAppPref.getStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet));
         }
+
     }
+
 
     /**
      * Set the cache and update the sorted list
@@ -92,10 +94,13 @@ public class ZipcodeCache {
         mCache.add(zipcode);
         updateSortedList();
 
+        //update the UI
+        notifyListenersOfCacheUpdate();
+
         //update the shared intents (this should make an Asynchrounous call)
-        SharedPreferences weatherAppPref = context.getSharedPreferences(appName, Context.MODE_PRIVATE);
+        SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = weatherAppPref.edit();
-        editor.putStringSet(zipcodeCacheKey, mCache);
+        editor.putStringSet(ZIPCODE_CACHE_KEY, mCache);
         editor.apply();
     }
 
@@ -152,6 +157,22 @@ public class ZipcodeCache {
         }
         builder.append("]");
         return builder.toString();
+    }
+
+    //OBSERVER PATTERN
+
+    public void addListener(UpdateListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(UpdateListener listUpdateListener) {
+        listeners.remove(listUpdateListener);
+    }
+
+    private void notifyListenersOfCacheUpdate() {
+        for (UpdateListener listener : listeners) {
+            listener.onCacheUpdate();
+        }
     }
 
 }

@@ -14,9 +14,10 @@ import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
  * Value: CurrentWeatherConsitionsResponse
  */
 public class CurrentWeatherConditionsCache {
+    private static CurrentWeatherConditionsCache mInstance = null;
+
     private static final int MAX_CACHE_ITEMS = 20;
     private LruCache<String, CurrentWeatherConditions> mCache;
-    private static CurrentWeatherConditionsCache mInstance = null;
 
     private CurrentWeatherConditionsCache() {
         mCache = new LruCache<>(MAX_CACHE_ITEMS);
