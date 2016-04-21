@@ -3,6 +3,7 @@ package laurenyew.weatherapp.network.listeners;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import laurenyew.weatherapp.network.ResponseError;
@@ -40,7 +41,7 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
      * @param response
      * @return
      */
-    public abstract T deserialize(JSONObject response);
+    public abstract T deserialize(JSONObject response) throws JSONException;
 
     /**
      * Developer using JsonResponseListener children MUST implement this class
