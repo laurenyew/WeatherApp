@@ -4,7 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -108,14 +107,12 @@ public class WeatherListActivity extends AppCompatActivity {
     private class AddZipcodeOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            AlertDialog addZipcodeDialog = AlertDialogUtil.createAddZipcodeAlertDialog(
+            AlertDialogUtil.showAddZipcodeAlertDialog(
                     WeatherListActivity.this,
                     getString(R.string.add_zipcode_dialog_title),
                     R.layout.dialog_input_text_view,
                     getString(R.string.submit_button_title),
                     getString(R.string.cancel_button_title));
-
-            addZipcodeDialog.show();
         }
     }
 }

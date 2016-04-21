@@ -4,11 +4,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import laurenyew.weatherapp.R;
+import laurenyew.weatherapp.constants.Regex;
 
 /**
  * Created by laurenyew on 4/21/16.
+ * <p/>
+ * Utility class to create basic alert dialogs
  */
 public class AlertDialogUtil {
 
@@ -19,14 +26,14 @@ public class AlertDialogUtil {
      * @param needsInput
      * @param title
      * @param message
-     * @param viewResource
+     * @param view
      * @param submitButtonTitle
      * @param cancelButtonTitle
      * @param submitListener
      * @param cancelListener
      * @return
      */
-    public static AlertDialog createAlertDialog(Context context, boolean needsInput, String title, String message, int viewResource, String submitButtonTitle, String cancelButtonTitle, DialogInterface.OnClickListener submitListener, DialogInterface.OnClickListener cancelListener) {
+    public static AlertDialog createAlertDialog(Context context, boolean needsInput, String title, String message, View view, String submitButtonTitle, String cancelButtonTitle, DialogInterface.OnClickListener submitListener, DialogInterface.OnClickListener cancelListener) {
         final android.support.v7.app.AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(context, R.style.AppTheme_Dialog));
         if (title != null) {
             dialogBuilder.setTitle(title);
@@ -36,15 +43,15 @@ public class AlertDialogUtil {
         }
 
         if (needsInput) {
-            dialogBuilder.setView(viewResource);
+            dialogBuilder.setView(view);
         }
 
         if (submitButtonTitle != null) {
-            dialogBuilder.setPositiveButton(submitButtonTitle, submitListener);
+            dialogBuilder.setPositiveButton(submitButtonTitle, (submitListener == null) ? getEmptyOnClickListener() : submitListener);
         }
 
         if (cancelButtonTitle != null) {
-            dialogBuilder.setNegativeButton(cancelButtonTitle, cancelListener);
+            dialogBuilder.setNegativeButton(cancelButtonTitle, (cancelListener == null) ? getEmptyOnClickListener() : cancelListener);
         }
 
         AlertDialog dialog = dialogBuilder.create();
@@ -56,30 +63,51 @@ public class AlertDialogUtil {
      *
      * @param context
      * @param title
+     * @param viewResource
      * @param submitButtonTitle
      * @param cancelButtonTitle
      * @return
      */
-    public static AlertDialog createAddZipcodeAlertDialog(Context context, String title, int viewResource, String submitButtonTitle, String cancelButtonTitle) {
-        DialogInterface.OnClickListener submitOnClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("Clicked Submit");
-                //TODO: Check the zipcode and make sure it is valid
-                //TODO: If not valid, show an error
-                //TODO: Add to cache/database
-                //TODO: Go to detail view for zipcode
-            }
-        };
+    public static void showAddZipcodeAlertDialog(final Context context, String title, int viewResource, String submitButtonTitle, String cancelButtonTitle) {
 
-        DialogInterface.OnClickListener cancelOnClickListener = new DialogInterface.OnClickListener() {
+        //Create the layout view with the input text
+        LayoutInflater inflater = LayoutInflater.from(context);
+        final View dialogInputView = inflater.inflate(viewResource, null);
+
+        //Use the generic helper to generate an alert dialog
+        final AlertDialog dialog = createAlertDialog(context, true, title, null, dialogInputView, submitButtonTitle, cancelButtonTitle, null, null);
+        dialog.show();
+
+        //Set the onclick listener for submit after so we don't dismiss the dialog
+        View.OnClickListener submitOnClickListener = new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                System.out.println("Clicked Cancel");
-                dialog.dismiss();
+            public void onClick(View v) {
+
+                EditText inputText = (EditText) dialogInputView.findViewById(R.id.dialog_input_text);
+                String zipcode = inputText.getText().toString();
+                //Check for invalid zipcode
+                if (!zipcode.matches(Regex.ZIPCODE_REGEX)) {
+                    //If not valid, show an error
+                    TextView errorText = (TextView) dialogInputView.findViewById(R.id.dialog_input_error);
+                    errorText.setVisibility(View.VISIBLE);
+
+                } else {
+                    //TODO: Add to cache/database
+                    //TODO: Go to detail view for zipcode
+                    dialog.dismiss();
+                }
+
             }
         };
-        return createAlertDialog(context, true, title, null, viewResource, submitButtonTitle, cancelButtonTitle, submitOnClickListener, cancelOnClickListener);
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(submitOnClickListener);
     }
 
+    private static DialogInterface.OnClickListener getEmptyOnClickListener() {
+        return new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //Do nothing..
+            }
+        };
+    }
 }
