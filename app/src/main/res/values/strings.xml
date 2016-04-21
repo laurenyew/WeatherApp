@@ -2,7 +2,6 @@
 
     <!--App Strings-->
     <string name="app_name">WeatherApp</string>
-    <string name="shared_preferences_zipcode_cache_key">zipcode_cache</string>
     <string name="weather_detail_activity_label">Weather Detail</string>
 
     <!--Main Buttons-->
