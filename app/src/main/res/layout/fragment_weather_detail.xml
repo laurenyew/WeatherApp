@@ -124,6 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/detail_separator1"
                     android:layout_margin="10dp"
+                    android:autoLink="web"
                     android:nestedScrollingEnabled="false"
                     android:text="@string/unknown"
                     android:textSize="16dp" />
