@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Request;
 
+import laurenyew.weatherapp.Constants;
 import laurenyew.weatherapp.network.listeners.JsonResponseListener;
 import laurenyew.weatherapp.network.requests.BaseObjectRequest;
 
@@ -12,6 +13,7 @@ import laurenyew.weatherapp.network.requests.BaseObjectRequest;
  */
 public class WeatherServiceCenter implements WeatherServiceApi {
 
+    private static WeatherServiceApi mInstance;
 
     private String getWeatherServiceBaseUri() {
         return "http://api.wunderground.com/api/";
@@ -23,6 +25,19 @@ public class WeatherServiceCenter implements WeatherServiceApi {
 
     private String getUri(String feature, String queryParams) {
         return getWeatherServiceBaseUri() + getWeatherServiceApiKey() + "/" + feature + "/q/" + queryParams + ".json";
+    }
+
+    /**
+     * We should use the singleton, not this constructor.
+     */
+    private WeatherServiceCenter() {
+    }
+
+    public static WeatherServiceApi getInstance() {
+        if (mInstance == null) {
+            mInstance = new WeatherServiceCenter();
+        }
+        return mInstance;
     }
 
     /**
@@ -50,9 +65,20 @@ public class WeatherServiceCenter implements WeatherServiceApi {
             public void execute(JsonResponseListener listener) {
                 BaseObjectRequest request = new BaseObjectRequest(Request.Method.GET, getUri("conditions", zipcode), null,
                         listener);
+                request.setTag(Constants.ACTION_GET_CURRENT_CONDITIONS + zipcode);
                 getRequestQueue(context).addToRequestQueue(request);
             }
         };
+    }
+
+    /**
+     * Cancel current conditions request
+     *
+     * @param zipcode
+     */
+    @Override
+    public void cancelCurrentConditionsRequest(Context context, String zipcode) {
+        getRequestQueue(context).cancelRequestsWithTag(Constants.ACTION_GET_CURRENT_CONDITIONS + zipcode);
     }
 
 }

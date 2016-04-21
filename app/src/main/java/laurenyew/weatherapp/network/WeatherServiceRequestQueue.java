@@ -39,4 +39,8 @@ public class WeatherServiceRequestQueue {
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
+
+    public void cancelRequestsWithTag(Object tag) {
+        getRequestQueue().cancelAll(tag);
+    }
 }

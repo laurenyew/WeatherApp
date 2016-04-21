@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.network.ApiRequest;
-import laurenyew.weatherapp.network.WeatherServiceApi;
 import laurenyew.weatherapp.network.WeatherServiceCenter;
 import laurenyew.weatherapp.network.listeners.CurrentWeatherConditionsResponseListener;
 
@@ -32,16 +31,29 @@ public class WeatherDetailFragment extends Fragment {
 
         TextView mInfoView = (TextView) view.findViewById(R.id.detail_info);
         mInfoView.setText("HELLO");
-
-        WeatherServiceApi weatherService = new WeatherServiceCenter();
-        ApiRequest request = weatherService.getCurrentConditions(getActivity(), "75078");
-        request.execute(new CurrentWeatherConditionsResponseListener());
-
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ApiRequest request = WeatherServiceCenter.getInstance().getCurrentConditions(getActivity(), "75078");
+        request.execute(new CurrentWeatherConditionsResponseListener());
     }
 
     @Override
     public void onResume() {
         super.onResume();
     }
+
+    /**
+     * On Stop cacnel the condition request
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        WeatherServiceCenter.getInstance().cancelCurrentConditionsRequest(getActivity(), "75078");
+    }
+
+
 }
