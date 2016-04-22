@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by laurenyew on 4/21/16.
@@ -32,13 +30,13 @@ public class ZipcodeCache {
     //Sorted List is used by the array adapter (try to prevent re-calculation
     //of sorted list order unless adding/setting the cache)
     //This should be kept up to date with mCache
-    private List<String> sortedList = null;
+    private List<String> mSortedList = null;
 
     private static final String[] DEFAULT_ZIPCODES = {"75078", "78757", "92127"};
 
     private ZipcodeCache() {
         mCache = new HashSet<>();
-        sortedList = new ArrayList<>();
+        mSortedList = new ArrayList<>();
     }
 
     public static ZipcodeCache getInstance() {
@@ -46,6 +44,28 @@ public class ZipcodeCache {
             mInstance = new ZipcodeCache();
         }
         return mInstance;
+    }
+
+    /**
+     * Get in sorted list for use in array adapter
+     *
+     * @return
+     */
+    public String getItem(int position) {
+        if (mSortedList == null || position < 0 || position >= mSortedList.size()) {
+            return null;
+        } else {
+            return mSortedList.get(position);
+        }
+
+    }
+
+    public int size() {
+        if (mSortedList == null) {
+            return 0;
+        } else {
+            return mSortedList.size();
+        }
     }
 
     /**
@@ -62,30 +82,20 @@ public class ZipcodeCache {
 
             HashSet<String> defaultZipcodeSet = new HashSet<>(Arrays.asList(DEFAULT_ZIPCODES));
 
-            //Setup the Shared preference file if it has not already been set up
-            //Setup the Zipcode Cache with the values
+            //Shared preferences has not yet been set up
             if (!weatherAppPref.contains(ZIPCODE_CACHE_KEY)) {
-                setCache(defaultZipcodeSet);
-                SharedPreferences.Editor editor = weatherAppPref.edit();
-                editor.clear();
-                editor.putStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet);
-                editor.commit();
+                //update the cache and then update the shared preferences
+                mCache = defaultZipcodeSet;
+                updateSortedList();
+                updateCacheInDB(context);
             } else {
-                setCache(weatherAppPref.getStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet));
+                //otherwise, just get the cache from the Shared preferences
+                mCache = (HashSet<String>) weatherAppPref.getStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet);
+                updateSortedList();
             }
         }
     }
 
-
-    /**
-     * Set the cache and update the sorted list
-     *
-     * @param cache
-     */
-    public void setCache(Set<String> cache) {
-        mCache = (HashSet<String>) cache;
-        updateSortedList();
-    }
 
     /**
      * Add to the cache and update the sorted list
@@ -95,10 +105,29 @@ public class ZipcodeCache {
     public void addZipcode(Context context, String zipcode) {
         mCache.add(zipcode);
         updateSortedList();
-
-        //update the UI
         notifyListenersOfCacheUpdate();
+        updateCacheInDB(context);
+    }
 
+    /**
+     * Clear the cache, list, and Shared Preferences
+     *
+     * @param context
+     */
+    public void clear(Context context) {
+        mCache.clear();
+        mSortedList.clear();
+        notifyListenersOfCacheUpdate();
+        updateCacheInDB(context);
+    }
+
+
+    /**
+     * Helper method to update the shared preferences with the current mCache
+     *
+     * @param context
+     */
+    private void updateCacheInDB(Context context) {
         //update the shared intents (this should make an Asynchrounous call)
         SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = weatherAppPref.edit();
@@ -107,34 +136,11 @@ public class ZipcodeCache {
         editor.commit();
     }
 
-    public int size() {
-        if (sortedList == null) {
-            return 0;
-        } else {
-            return sortedList.size();
-        }
-    }
-
-
     /**
-     * Get in sorted list for use in array adapter
-     *
-     * @return
-     */
-    public String getItem(int position) {
-        if (sortedList == null || position < 0 || position >= sortedList.size()) {
-            return null;
-        } else {
-            return sortedList.get(position);
-        }
-
-    }
-
-    /**
-     * Helper method: update the sortedList with the cache values
+     * Helper method: update the mSortedList with the cache values
      */
     private void updateSortedList() {
-        sortedList = createSortedList(mCache);
+        mSortedList = createSortedList(mCache);
     }
 
     /**
@@ -150,19 +156,21 @@ public class ZipcodeCache {
         return list;
     }
 
+    /**
+     * @return String representation of the cache
+     */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Zipcode Cache = [");
-        Iterator<String> iter = mCache.iterator();
-        while (iter.hasNext()) {
-            builder.append(iter.next() + "\n");
+        for (String zipcode : mSortedList) {
+            builder.append(zipcode + "\n");
         }
         builder.append("]");
         return builder.toString();
     }
 
-    //OBSERVER PATTERN
+    //OBSERVER PATTERN to update UI on Zipcode Cache change
 
     public void addListener(UpdateListener listener) {
         listeners.add(listener);
@@ -172,6 +180,9 @@ public class ZipcodeCache {
         listeners.remove(listUpdateListener);
     }
 
+    /**
+     * Notify UI to update
+     */
     private void notifyListenersOfCacheUpdate() {
         for (UpdateListener listener : listeners) {
             listener.onCacheUpdate();

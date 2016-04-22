@@ -1,5 +1,6 @@
 package laurenyew.weatherapp.network.listeners;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
@@ -20,6 +21,7 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
 
     @Override
     public void onResponse(JSONObject response) {
+        System.out.println("onResponse");
         try {
             if (response != null) {
                 T responseModel = deserialize(response);
@@ -36,7 +38,31 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        onError(ErrorResponse.UNKNOWN);
+
+        ErrorResponse errorResponse = ErrorResponse.UNKNOWN;
+        if (error != null) {
+            if (error instanceof com.android.volley.TimeoutError) {
+                errorResponse = ErrorResponse.CONNECTION_NOT_AVAILABLE;
+            } else {
+                NetworkResponse networkResponse = error.networkResponse;
+                if (networkResponse == null) {
+                    errorResponse = ErrorResponse.CONNECTION_NOT_AVAILABLE;
+                } else {
+                    switch (networkResponse.statusCode) {
+                        case 401:
+                        case 404:
+                        case 503: {
+                            errorResponse = ErrorResponse.CONNECTION_NOT_AVAILABLE;
+                            break;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        onError(errorResponse);
+
     }
 
     /**

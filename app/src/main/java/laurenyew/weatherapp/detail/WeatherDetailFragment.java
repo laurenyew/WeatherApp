@@ -212,7 +212,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
     public void onError(ErrorResponse error) {
         if (error != null) {
             AlertDialogUtil.showErrorAlertDialog(
-                    getActivity(),
+                    getContext(),
                     getString(R.string.error_title),
                     getErrorMessage(error));
         }

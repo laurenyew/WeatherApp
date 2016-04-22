@@ -72,7 +72,7 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
 
         //set eviction date to be 1 day after receiving this response
         Calendar currentTime = Calendar.getInstance();
-        currentTime.add(Calendar.HOUR, 24);
+        currentTime.add(Calendar.MINUTE, 1);
         result.evictionDate = currentTime.getTime();
 
         //Parse the rest of the Json object
