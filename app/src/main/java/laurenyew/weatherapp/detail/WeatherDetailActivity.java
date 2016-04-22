@@ -19,6 +19,8 @@ public class WeatherDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_detail);
+        //Show back button to go back to the list
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
             zipcode = getIntent().getStringExtra(ZIPCODE_KEY);
@@ -33,9 +35,6 @@ public class WeatherDetailActivity extends AppCompatActivity {
                 transaction.replace(R.id.weather_detail_fragment_container, weatherDetailFragment);
                 transaction.commit();
             }
-
-            //Show back button to go back to the list
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
             //Change the title to the zipcode
             if (zipcode != null) {

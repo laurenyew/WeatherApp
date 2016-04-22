@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.cache.ZipcodeCache;
@@ -18,7 +17,6 @@ import laurenyew.weatherapp.cache.ZipcodeCache;
  */
 public class WeatherListFragment extends Fragment implements ZipcodeCache.UpdateListener {
     private RecyclerView mWeatherListRecyclerView = null;
-    private ProgressBar mWeatherListLoadingProgressBar = null;
     private WeatherListAdapter mAdapter = null;
 
     @Override
@@ -32,7 +30,6 @@ public class WeatherListFragment extends Fragment implements ZipcodeCache.Update
 
         View view = inflater.inflate(R.layout.fragment_weather_list, container, false);
 
-        mWeatherListLoadingProgressBar = (ProgressBar) view.findViewById(R.id.weather_list_load_progress_bar);
         mWeatherListRecyclerView = (RecyclerView) view.findViewById(R.id.weather_recyler_list_view);
         mWeatherListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new WeatherListAdapter();
@@ -62,26 +59,6 @@ public class WeatherListFragment extends Fragment implements ZipcodeCache.Update
     public void onCacheUpdate() {
         if (mAdapter != null) {
             mAdapter.notifyDataSetChanged();
-        }
-    }
-
-    private void showProgressBar() {
-        //show progress bar, hide recyclerView
-        if (mWeatherListLoadingProgressBar != null) {
-            mWeatherListLoadingProgressBar.setVisibility(View.VISIBLE);
-        }
-        if (mWeatherListRecyclerView != null) {
-            mWeatherListRecyclerView.setVisibility(View.GONE);
-        }
-    }
-
-    private void hideProgressBar() {
-
-        if (mWeatherListLoadingProgressBar != null) {
-            mWeatherListLoadingProgressBar.setVisibility(View.GONE);
-        }
-        if (mWeatherListRecyclerView != null) {
-            mWeatherListRecyclerView.setVisibility(View.VISIBLE);
         }
     }
 

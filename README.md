@@ -66,3 +66,4 @@ NOTE: When Zipcode Weather Info is pulled down, they should be cached.
 ## Acknowledgements
 Original requirements for this project provided by Phunware, Inc.
 Using weather API from Weather Underground, Inc. http://www.wunderground.com
+Phunware icon from : http://i.stack.imgur.com/vZvvQ.png

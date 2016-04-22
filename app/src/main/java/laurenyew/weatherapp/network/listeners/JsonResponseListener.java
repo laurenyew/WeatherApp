@@ -36,7 +36,6 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
 
     @Override
     public void onErrorResponse(VolleyError error) {
-        System.out.println("Error: " + error);
         onError(ErrorResponse.UNKNOWN);
     }
 
@@ -76,7 +75,6 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
      * @param error
      */
     public void onError(ErrorResponse error) {
-        System.out.println("On Error: " + error);
         notifyListenersOfError(error);
     }
 

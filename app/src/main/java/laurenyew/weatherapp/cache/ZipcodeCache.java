@@ -57,7 +57,6 @@ public class ZipcodeCache {
     public void initListCacheAndSharedPreferences(Context context) {
 
         if (mCache == null || mCache.isEmpty()) {
-            System.out.println("init list");
             //Load up the ZipCode Cache with the Shared preferences values
             SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
 

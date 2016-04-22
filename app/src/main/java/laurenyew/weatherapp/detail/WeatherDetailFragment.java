@@ -32,20 +32,19 @@ import laurenyew.weatherapp.util.AlertDialogUtil;
  */
 public class WeatherDetailFragment extends Fragment implements FetchCurrentWeatherUpdateListener, RequestErrorListener {
     //Views
-    public ImageView weather_icon;
-    public TextView weather_info;
-    public TextView location;
-    public TextView detail_info;
-    public Button openGoogleMaps;
-    public ImageView reference_logo;
+    private ImageView weather_icon;
+    private TextView weather_info;
+    private TextView location;
+    private TextView detail_info;
+    private Button openGoogleMaps;
+    private ImageView reference_logo;
 
     //Values
-    String detailZipcode = null;
-    CurrentWeatherConditions currentWeather = null;
+    private String detailZipcode = null;
+    private CurrentWeatherConditions currentWeather = null;
 
     //Listeners
-    WeakReference<CurrentWeatherConditionsResponseListener> mCurrentWeatherConditionsResponseListenerRef = null;
-    WeakReference<RequestErrorListener> mRequestErrorListener = null;
+    private WeakReference<CurrentWeatherConditionsResponseListener> mCurrentWeatherConditionsResponseListenerRef = null;
 
 
     @Override
@@ -68,47 +67,23 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
         openGoogleMaps = (Button) view.findViewById(R.id.detail_location_open_google_maps);
         reference_logo = (ImageView) view.findViewById(R.id.reference_logo_icon);
 
-
         return view;
     }
 
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        populateWeatherDetail();
+    public void onResume() {
+        super.onResume();
+        populateWeatherDetails();
     }
 
-    /**
-     * helper method: populate the weather detail
-     */
-    private void populateWeatherDetail() {
+    private void populateWeatherDetails() {
         if (detailZipcode != null) {
-            CurrentWeatherConditions weather = getCurrentWeatherConditions();
-
-            //Only update the weather UI if details have changed
-            if (hasWeatherChanged(weather)) {
-                updateDetailInfoView(weather);
-            }
+            //Start the fetch command onStart (after the view has been set up
+            //and on the opposite side of the lifecycle as the listeners that are set up.
+            CurrentWeatherConditions weather = fetchCurrentWeatherConditions();
+            updateDetailInfoView(weather);
         }
-    }
-
-    /**
-     * Helper method: compare new weather vs stored weather
-     *
-     * @param newWeather
-     * @return
-     */
-    private boolean hasWeatherChanged(CurrentWeatherConditions newWeather) {
-        boolean weatherChanged = false;
-        if (currentWeather == null) {
-            currentWeather = newWeather;
-            weatherChanged = true;
-        } else {
-            weatherChanged = !currentWeather.equals(newWeather);
-        }
-        return weatherChanged;
     }
 
     /**
@@ -121,22 +96,29 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
      * @return
      */
     @Nullable
-    private CurrentWeatherConditions getCurrentWeatherConditions() {
-        CurrentWeatherConditions weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
+    private CurrentWeatherConditions fetchCurrentWeatherConditions() {
 
-        //Cache does not have the details we need. Start an api call and listen for its result.
+        CurrentWeatherConditions weather = currentWeather;
+
+        //we have not yet set up the current weather for this detail
         if (weather == null) {
+            //Attempt to get info from the cache
+            weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
 
-            //Create weak reference to a listener for result of api call
-            CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener();
-            listener.addListener(this);
-            listener.addErrorListener(this);
-            mCurrentWeatherConditionsResponseListenerRef = new WeakReference<>(listener);
+            //Cache does not have the details we need. Start an api call and listen for its result.
+            if (weather == null) {
+                //Create weak reference to a listener for result of api call
+                CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener();
+                listener.addListener(this);
+                listener.addErrorListener(this);
+                mCurrentWeatherConditionsResponseListenerRef = new WeakReference<>(listener);
 
-            //Making the api call with the service center
-            ApiRequest request = WeatherServiceCenter.getInstance().getCurrentConditions(getActivity(), detailZipcode);
-            request.execute(listener);
+                //Making the api call with the service center
+                ApiRequest request = WeatherServiceCenter.getInstance().getCurrentConditions(getActivity(), detailZipcode);
+                request.execute(listener);
+            }
         }
+
         return weather;
     }
 
@@ -144,18 +126,31 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
      * On Stop cancel the condition request
      */
     @Override
-    public void onStop() {
-        super.onStop();
+    public void onPause() {
+        super.onPause();
+
+        currentWeather = null;
+
         WeatherServiceCenter.getInstance().cancelCurrentConditionsRequest(getActivity(), detailZipcode);
 
         if (mCurrentWeatherConditionsResponseListenerRef != null && mCurrentWeatherConditionsResponseListenerRef.get() != null) {
             CurrentWeatherConditionsResponseListener listener = mCurrentWeatherConditionsResponseListenerRef.get();
             listener.removeListener(this);
             listener.removeErrorListener(this);
-
         }
+
     }
 
+
+    /**
+     * FetchCurrentWeatherUpdateListener implementation
+     * <p/>
+     * Let the UI know that the fetch has been completed. Get the data.
+     */
+    @Override
+    public void onFetchComplete() {
+        populateWeatherDetails();
+    }
 
     /**
      * Update the detail info UI with the given weather info
@@ -163,12 +158,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
      * @param weather
      */
     private void updateDetailInfoView(final CurrentWeatherConditions weather) {
-        System.out.println("Update Detail Info View: " + weather);
-        if (weather == null) {
-            //TODO: Show progress bar for whole page
-        }
-        //Update the UI if the view is still available (weak reference should be null otherwise
-        else {
+        if (weather != null && hasWeatherChanged(weather)) {
             weather_info.setText(weather.weather);
             location.setText(weather.displayLocationFull);
             detail_info.setText(weather.observationTime +
@@ -195,14 +185,20 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
     }
 
     /**
-     * FetchCurrentWeatherUpdateListener implementation
-     * <p/>
-     * Let the UI know that the fetch has been completed. Get the data.
+     * Helper method: compare new weather vs stored weather
+     *
+     * @param newWeather
+     * @return
      */
-    @Override
-    public void onFetchComplete() {
-        CurrentWeatherConditions weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);
-        updateDetailInfoView(weather);
+    private boolean hasWeatherChanged(CurrentWeatherConditions newWeather) {
+        boolean weatherChanged = false;
+        if (currentWeather == null) {
+            currentWeather = newWeather;
+            weatherChanged = true;
+        } else {
+            weatherChanged = !currentWeather.equals(newWeather);
+        }
+        return weatherChanged;
     }
 
     /**
@@ -214,7 +210,6 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
      */
     @Override
     public void onError(ErrorResponse error) {
-        System.out.println("SHOWING ERROR");
         if (error != null) {
             AlertDialogUtil.showErrorAlertDialog(
                     getActivity(),

@@ -49,6 +49,11 @@ public class CurrentWeatherConditions {
         openForecastUrl = null;
     }
 
+    public CurrentWeatherConditions(String zipcode) {
+        super();
+        this.zipcode = zipcode;
+    }
+
     @Override
     public boolean equals(Object o) {
         CurrentWeatherConditions c = (CurrentWeatherConditions) o;

@@ -19,4 +19,5 @@
 
     <style name="AppTheme.Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert" />
 
+
 </resources>
