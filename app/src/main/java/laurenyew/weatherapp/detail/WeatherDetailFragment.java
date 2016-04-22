@@ -25,6 +25,7 @@ import laurenyew.weatherapp.network.listeners.FetchCurrentWeatherUpdateListener;
 import laurenyew.weatherapp.network.listeners.RequestErrorListener;
 import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
 import laurenyew.weatherapp.network.responses.ErrorResponse;
+import laurenyew.weatherapp.util.AlertDialogUtil;
 
 /**
  * Created by laurenyew on 4/18/16.
@@ -43,7 +44,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
     CurrentWeatherConditions currentWeather = null;
 
     //Listeners
-    WeakReference<CurrentWeatherConditionsResponseListener> mFetchWeatherInfoListenerRef = null;
+    WeakReference<CurrentWeatherConditionsResponseListener> mCurrentWeatherConditionsResponseListenerRef = null;
     WeakReference<RequestErrorListener> mRequestErrorListener = null;
 
 
@@ -130,7 +131,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
             CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener();
             listener.addListener(this);
             listener.addErrorListener(this);
-            mFetchWeatherInfoListenerRef = new WeakReference<>(listener);
+            mCurrentWeatherConditionsResponseListenerRef = new WeakReference<>(listener);
 
             //Making the api call with the service center
             ApiRequest request = WeatherServiceCenter.getInstance().getCurrentConditions(getActivity(), detailZipcode);
@@ -147,8 +148,11 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
         super.onStop();
         WeatherServiceCenter.getInstance().cancelCurrentConditionsRequest(getActivity(), detailZipcode);
 
-        if (mFetchWeatherInfoListenerRef != null && mFetchWeatherInfoListenerRef.get() != null) {
-            mFetchWeatherInfoListenerRef.get().removeListener(this);
+        if (mCurrentWeatherConditionsResponseListenerRef != null && mCurrentWeatherConditionsResponseListenerRef.get() != null) {
+            CurrentWeatherConditionsResponseListener listener = mCurrentWeatherConditionsResponseListenerRef.get();
+            listener.removeListener(this);
+            listener.removeErrorListener(this);
+
         }
     }
 
@@ -210,8 +214,35 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
      */
     @Override
     public void onError(ErrorResponse error) {
-
+        System.out.println("SHOWING ERROR");
+        if (error != null) {
+            AlertDialogUtil.showErrorAlertDialog(
+                    getActivity(),
+                    getString(R.string.error_title),
+                    getErrorMessage(error));
+        }
     }
 
+    private String getErrorMessage(ErrorResponse errorResponse) {
+        String errorMessage;
+        switch (errorResponse) {
+            case CONNECTION_NOT_AVAILABLE: {
+                errorMessage = getString(R.string.data_connection_error_message);
+                break;
+            }
+            case INVALID_REQUEST: {
+                errorMessage = getString(R.string.invalid_request);
+                break;
+            }
+            case EMPTY_RESPONSE: {
+                errorMessage = getString(R.string.default_response_error);
+                break;
+            }
+            default: {
+                errorMessage = getString(R.string.invalid_request);
+            }
+        }
+        return errorMessage;
+    }
 
 }

@@ -20,9 +20,7 @@ public class WeatherListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather_list);
-
         if (savedInstanceState == null) {
-
             //Start up the cache
             ZipcodeCache.getInstance().initListCacheAndSharedPreferences(getApplicationContext());
 

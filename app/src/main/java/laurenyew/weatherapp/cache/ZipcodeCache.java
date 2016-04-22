@@ -56,22 +56,25 @@ public class ZipcodeCache {
      */
     public void initListCacheAndSharedPreferences(Context context) {
 
-        //Load up the ZipCode Cache with the Shared preferences values
-        SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
+        if (mCache == null || mCache.isEmpty()) {
+            System.out.println("init list");
+            //Load up the ZipCode Cache with the Shared preferences values
+            SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
 
-        HashSet<String> defaultZipcodeSet = new HashSet<>(Arrays.asList(DEFAULT_ZIPCODES));
+            HashSet<String> defaultZipcodeSet = new HashSet<>(Arrays.asList(DEFAULT_ZIPCODES));
 
-        //Setup the Shared preference file if it has not already been set up
-        //Setup the Zipcode Cache with the values
-        if (!weatherAppPref.contains(ZIPCODE_CACHE_KEY)) {
-            SharedPreferences.Editor editor = weatherAppPref.edit();
-            editor.putStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet);
-            editor.apply();
-            setCache(defaultZipcodeSet);
-        } else {
-            setCache(weatherAppPref.getStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet));
+            //Setup the Shared preference file if it has not already been set up
+            //Setup the Zipcode Cache with the values
+            if (!weatherAppPref.contains(ZIPCODE_CACHE_KEY)) {
+                setCache(defaultZipcodeSet);
+                SharedPreferences.Editor editor = weatherAppPref.edit();
+                editor.clear();
+                editor.putStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet);
+                editor.commit();
+            } else {
+                setCache(weatherAppPref.getStringSet(ZIPCODE_CACHE_KEY, defaultZipcodeSet));
+            }
         }
-
     }
 
 
@@ -100,8 +103,9 @@ public class ZipcodeCache {
         //update the shared intents (this should make an Asynchrounous call)
         SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = weatherAppPref.edit();
+        editor.clear();
         editor.putStringSet(ZIPCODE_CACHE_KEY, mCache);
-        editor.apply();
+        editor.commit();
     }
 
     public int size() {

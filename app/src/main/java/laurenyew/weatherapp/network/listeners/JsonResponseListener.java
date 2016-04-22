@@ -30,7 +30,7 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
             }
 
         } catch (Exception e) {
-            onError(ErrorResponse.INVALID_JSON);
+            onError(ErrorResponse.INVALID_REQUEST);
         }
     }
 

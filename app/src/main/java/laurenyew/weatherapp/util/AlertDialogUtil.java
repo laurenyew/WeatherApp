@@ -58,6 +58,11 @@ public class AlertDialogUtil {
         return dialog;
     }
 
+    public static void showErrorAlertDialog(Context activityContext, String title, String message) {
+        AlertDialog errorDialog = createAlertDialog(activityContext, title, message, null, activityContext.getString(R.string.ok_button), null, getEmptyOnClickListener(), null);
+        errorDialog.show();
+    }
+
     /**
      * Helper method to create the add zipcode alert dialog with the appropriate listeners
      *

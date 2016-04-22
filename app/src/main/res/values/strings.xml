@@ -4,8 +4,9 @@
     <string name="app_name">WeatherApp</string>
     <string name="weather_detail_activity_label">Weather Detail</string>
 
-    <!--Main Buttons-->
+    <!--Common Buttons-->
     <string name="action_settings">Settings</string>
+    <string name="ok_button">OK</string>
 
     <!--Add Zipcode dialog-->
     <string name="add_zipcode_dialog_title">Add Zipcode</string>
@@ -20,6 +21,7 @@
     <!--Weather Detail Title Labels-->
     <string name="weather_info_card_title">Weather Info</string>
     <string name="open_google_maps_button_title">View Displayed Location in Maps</string>
+    <string name="reference_info_title_string">Powered by</string>
 
     <!--Weather Detail default info-->
     <string name="processing_weather_data">Weather Data</string>
@@ -29,8 +31,7 @@
 
     <!--Error Messages-->
     <string name="error_title">Error</string>
-    <string name="data_connection_error_message">Could not connect to database.</string>
-    <string name="cache_connection_error_message">Could not connect to cache.</string>
-    <string name="unknown_error_message">Unknown error occurred.</string>
-    <string name="reference_info_title_string">Powered by</string>
+    <string name="data_connection_error_message">Could not connect to server.</string>
+    <string name="invalid_request">Zipcode not found in server database.</string>
+    <string name="default_response_error">Response error. Please close app and try again.</string>
 </resources>
