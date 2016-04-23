@@ -1,13 +1,14 @@
 package laurenyew.weatherapp;
 
-import android.app.Instrumentation;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
-import android.test.ViewAsserts;
 import android.view.View;
 import android.widget.TextView;
+
+import com.robotium.solo.Solo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +23,11 @@ import laurenyew.weatherapp.list.WeatherListFragment;
  * Sanity Unit test for WeatherListActivity
  */
 public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<WeatherListActivity> {
-    private Instrumentation mInstrumentation;
-    private WeatherListActivity mListActivity;
-    private WeatherListFragment mListFragment;
-    private RecyclerView mListRecyclerView;
-    private TextView mEmptyListView;
-    private View mClearListButton;
-    private View mAddZipcodeButton;
-    private View mAddZipcodeDialog;
 
-    private static List<String> DEFAULT_LIST_ITEMS;
-    private static int TIMEOUT_IN_MS = 10000;
+    private Solo solo;
+
+    private List<String> DEFAULT_LIST_ITEMS;
+    private int TIMEOUT_IN_MS = 2000;
 
     public WeatherListActivityTest() {
         super("laurenyew.weatherapp", WeatherListActivity.class);
@@ -45,93 +40,86 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-
-        //Set up activity
-        setActivityInitialTouchMode(true);
-        mInstrumentation = getInstrumentation();
-
-        mListActivity = getActivity();
-
-        //Use test fragment
-        mListFragment = new WeatherListFragment();
-        mListActivity._setFragment(mListFragment, WeatherListFragment.class.getSimpleName());
-
-
-        //wait for fragment to show up
-        mInstrumentation.waitForIdleSync();
-
-        //Get Activity buttons
-        mClearListButton = mListActivity.findViewById(R.id.action_clear_list);
-        mAddZipcodeButton = mListActivity.findViewById(R.id.fab);
-
-        //wait for fragment to show up
-        mInstrumentation.waitForIdleSync();
-
-        //Get Fragment views
-        mListRecyclerView = (RecyclerView) mListFragment.getView().findViewById(R.id.weather_recyler_list_view);
-        mEmptyListView = (TextView) mListFragment.getView().findViewById(R.id.empty_zipcode_list_view);
+        solo = new Solo(getInstrumentation(), getActivity());
+        Context context = getInstrumentation().getTargetContext();
+        context.getSharedPreferences("laurenyew.weatherapp", Context.MODE_PRIVATE).edit().clear().commit();
     }
 
     @Override
     protected void tearDown() throws Exception {
-        mInstrumentation = null;
-        mListActivity.finish();
+        solo.finishOpenedActivities();
         super.tearDown();
     }
 
+    /**
+     * Main activity should not be null
+     */
     public void testMainActivityNotNull() {
-        assertNotNull("Main Activity should not be null.", mListActivity);
+        solo.assertCurrentActivity("Expecting WeatherListActivity.", WeatherListActivity.class);
     }
 
     /**
      * Should load correct fragment class
      */
     public void testLoadsCorrectDefaultFragment() {
-        Fragment fragment = mListActivity.getSupportFragmentManager()
+        Fragment fragment = getActivity().getSupportFragmentManager()
                 .findFragmentById(R.id.weather_list_fragment_container);
         assertTrue(fragment instanceof WeatherListFragment);
     }
 
+    /**
+     * Should show floating action button
+     */
+    public void testAddZipcodeFloatingActionButtonExists() {
+        assertNotNull(getAddZipcodeButton());
+    }
+
+    /**
+     * Test default items
+     */
     public void testLoadsCorrectNumDefaultListItems() {
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = mListRecyclerView.getAdapter();
+        //check that recyclerview is no longer viewed
+        assertEquals(View.VISIBLE, getListRecyclerView().getVisibility());
+        assertEquals(View.GONE, getEmptyListView().getVisibility());
+
+        //Check number of items
+        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = getListRecyclerView().getAdapter();
         assertEquals("List did not load with expected 3 items", DEFAULT_LIST_ITEMS.size(), adapter.getItemCount() - 1);
     }
 
-    public void testClearListActionBarOptionExists() {
-        View mainActivityDecorView = mListActivity.getWindow().getDecorView();
-        ViewAsserts.assertOnScreen(mainActivityDecorView, mClearListButton);
+    /**
+     * Test clear zipcode list option
+     */
+    public void testClearZipcodeList() {
+
+        //Click the clear list button
+        solo.sendKey(Solo.MENU);
+        solo.clickOnMenuItem("Clear Zipcode List");
+
+        solo.waitForActivity(WeatherListActivity.class);
+
+        //check that recyclerview is no longer viewed
+        assertEquals(View.GONE, getListRecyclerView().getVisibility());
+        assertEquals(View.VISIBLE, getEmptyListView().getVisibility());
+
+        //The adapter should have been updated to size of 0.
+        assertEquals(0, getListRecyclerView().getAdapter().getItemCount());
     }
 
-    public void _testAddZipcodeFloatingActionButtonExists() {
-        View mainActivityDecorView = mListActivity.getWindow().getDecorView();
-        ViewAsserts.assertOnScreen(mainActivityDecorView, mAddZipcodeButton);
-    }
-
-    public void _testClickZipcodeListEntryLoadsWeatherDetail() {
-        // Set up Activity Monitor
-        Instrumentation.ActivityMonitor weatherDetailActivityMonitor =
-                mInstrumentation.addMonitor(WeatherDetailActivity.class.getName(),
-                        null, false);
+    /**
+     * Sanity test go to weather detail
+     */
+    public void testClickZipcodeListEntryLoadsWeatherDetail() {
 
         // Click List item
         clickListItem(0);
 
-        // Wait for the Detail Activity to Load
-        WeatherDetailActivity receiverActivity = (WeatherDetailActivity)
-                weatherDetailActivityMonitor.waitForActivityWithTimeout(TIMEOUT_IN_MS);
+        solo.waitForActivity(WeatherDetailActivity.class, TIMEOUT_IN_MS);
+        solo.assertCurrentActivity("Should be taken to WeatherDetailActivity.", WeatherDetailActivity.class);
 
-        // Check the Activity has exists
-        assertNotNull("WeatherDetailActivity is null", receiverActivity);
-
-        // Check the Activity has loaded
-        assertEquals("Monitor for WeatherDetailActivity has not been called",
-                1, weatherDetailActivityMonitor.getHits());
-
+        WeatherDetailActivity detailActivity = (WeatherDetailActivity) solo.getCurrentActivity();
         // Check that Weather Detail Activity has the correct title
-        assertEquals("Did not open correct list item", DEFAULT_LIST_ITEMS.get(0), receiverActivity.getTitle());
-
-        // Cleanup: Remove the Activity Monitor
-        getInstrumentation().removeMonitor(weatherDetailActivityMonitor);
+        assertEquals("Did not open correct list item", DEFAULT_LIST_ITEMS.get(0), detailActivity.getSupportActionBar().getTitle());
     }
 
     /**
@@ -141,8 +129,20 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
      */
     private void clickListItem(int index) {
         // Check if list has at least one item to click
-        View item = mListRecyclerView.getChildAt(index + 1); //ignore header
+        View item = getListRecyclerView().getChildAt(index + 1); //ignore header
         assertNotNull(item);
         TouchUtils.clickView(this, item);
+    }
+
+    private RecyclerView getListRecyclerView() {
+        return (RecyclerView) solo.getView(R.id.weather_recyler_list_view);
+    }
+
+    private View getAddZipcodeButton() {
+        return getActivity().findViewById(R.id.fab);
+    }
+
+    private TextView getEmptyListView() {
+        return (TextView) solo.getView(R.id.empty_zipcode_list_view);
     }
 }
