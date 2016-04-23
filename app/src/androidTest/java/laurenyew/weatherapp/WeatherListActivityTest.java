@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.robotium.solo.Solo;
@@ -70,7 +71,7 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
      * Should show floating action button
      */
     public void testAddZipcodeFloatingActionButtonExists() {
-        assertNotNull(getAddZipcodeButton());
+        assertNotNull(solo.getView(R.id.fab));
     }
 
     /**
@@ -82,8 +83,7 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
         assertEquals(View.GONE, getEmptyListView().getVisibility());
 
         //Check number of items
-        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = getListRecyclerView().getAdapter();
-        assertEquals("List did not load with expected 3 items", DEFAULT_LIST_ITEMS.size(), adapter.getItemCount() - 1);
+        assertEquals("List did not load with expected 3 items", DEFAULT_LIST_ITEMS.size(), getListItemCount());
     }
 
     /**
@@ -102,11 +102,39 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
         assertEquals(View.VISIBLE, getEmptyListView().getVisibility());
 
         //The adapter should have been updated to size of 0.
-        assertEquals(1, getListRecyclerView().getAdapter().getItemCount());
+        assertEquals(0, getListItemCount());
 
         //Cleanup
         Context context = getInstrumentation().getTargetContext();
         context.getSharedPreferences("laurenyew.weatherapp", Context.MODE_PRIVATE).edit().clear().commit();
+    }
+
+    public void testSanityAddZipcodeListEntry() {
+        final String ZIPCODE_TO_ADD = "75024";
+        DEFAULT_LIST_ITEMS.add(0, ZIPCODE_TO_ADD);
+
+        //open add zipcode dialog
+        solo.clickOnButton(R.id.fab);
+        EditText inputField = solo.getEditText(R.id.dialog_input_text);
+
+        //submit valid zipcode
+        solo.enterText(inputField, ZIPCODE_TO_ADD);
+        solo.clickOnButton("OK");
+
+        //expect to be taken to detail
+        solo.waitForActivity(WeatherDetailActivity.class, TIMEOUT_IN_MS);
+        solo.assertCurrentActivity("Should be in Weather Detail Activity.", WeatherDetailActivity.class);
+        WeatherDetailActivity detailActivity = (WeatherDetailActivity) solo.getCurrentActivity();
+        // Check that Weather Detail Activity has the correct title
+        assertEquals("Did not open correct list item", ZIPCODE_TO_ADD, detailActivity.getSupportActionBar().getTitle());
+
+        //Go back to list
+        solo.goBackToActivity(WeatherListActivity.class.getName());
+        solo.waitForActivity(WeatherListActivity.class, TIMEOUT_IN_MS);
+        solo.assertCurrentActivity("Should be in Weather List Activity.", WeatherListActivity.class);
+
+        //Check that list has correct number of items
+        assertEquals(DEFAULT_LIST_ITEMS.size(), getListItemCount());//ignore header
     }
 
     /**
@@ -141,11 +169,17 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
         return (RecyclerView) solo.getView(R.id.weather_recyler_list_view);
     }
 
-    private View getAddZipcodeButton() {
-        return getActivity().findViewById(R.id.fab);
-    }
 
     private TextView getEmptyListView() {
         return (TextView) solo.getView(R.id.empty_zipcode_list_view);
+    }
+
+    /**
+     * Helper method. -1 (ignores header on list)
+     *
+     * @return
+     */
+    private int getListItemCount() {
+        return getListRecyclerView().getAdapter().getItemCount() - 1;
     }
 }
