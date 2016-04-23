@@ -22,11 +22,10 @@ import laurenyew.weatherapp.list.WeatherListFragment;
  * Sanity Unit test for WeatherListActivity
  */
 public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<WeatherListActivity> {
-
     private Instrumentation mInstrumentation;
     private WeatherListActivity mListActivity;
     private WeatherListFragment mListFragment;
-    private RecyclerView mListView;
+    private RecyclerView mListRecyclerView;
     private TextView mEmptyListView;
     private View mClearListButton;
     private View mAddZipcodeButton;
@@ -50,6 +49,7 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
         //Set up activity
         setActivityInitialTouchMode(true);
         mInstrumentation = getInstrumentation();
+
         mListActivity = getActivity();
 
         //Use test fragment
@@ -68,13 +68,19 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
         mInstrumentation.waitForIdleSync();
 
         //Get Fragment views
-        mListView = (RecyclerView) mListFragment.getView().findViewById(R.id.weather_recyler_list_view);
+        mListRecyclerView = (RecyclerView) mListFragment.getView().findViewById(R.id.weather_recyler_list_view);
         mEmptyListView = (TextView) mListFragment.getView().findViewById(R.id.empty_zipcode_list_view);
     }
 
+    @Override
+    protected void tearDown() throws Exception {
+        mInstrumentation = null;
+        mListActivity.finish();
+        super.tearDown();
+    }
 
-    public void testActivityExists() {
-        assertNotNull("Main activity is null", getActivity());
+    public void testMainActivityNotNull() {
+        assertNotNull("Main Activity should not be null.", mListActivity);
     }
 
     /**
@@ -87,7 +93,8 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
     }
 
     public void testLoadsCorrectNumDefaultListItems() {
-        assertEquals("List did not load with expected 3 items", DEFAULT_LIST_ITEMS.size(), mListView.getAdapter().getItemCount() - 1);
+        RecyclerView.Adapter<RecyclerView.ViewHolder> adapter = mListRecyclerView.getAdapter();
+        assertEquals("List did not load with expected 3 items", DEFAULT_LIST_ITEMS.size(), adapter.getItemCount() - 1);
     }
 
     public void testClearListActionBarOptionExists() {
@@ -134,7 +141,7 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
      */
     private void clickListItem(int index) {
         // Check if list has at least one item to click
-        View item = mListView.getChildAt(index + 1); //ignore header
+        View item = mListRecyclerView.getChildAt(index + 1); //ignore header
         assertNotNull(item);
         TouchUtils.clickView(this, item);
     }
