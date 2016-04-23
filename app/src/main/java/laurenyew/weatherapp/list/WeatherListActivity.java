@@ -2,6 +2,7 @@ package laurenyew.weatherapp.list;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -25,14 +26,9 @@ public class WeatherListActivity extends AppCompatActivity {
             ZipcodeCache.getInstance().initListCacheAndSharedPreferences(getApplicationContext());
 
             //Update the fragment
-            if (findViewById(R.id.weather_list_fragment_container) != null) {
-                WeatherListFragment weatherListFragment = new WeatherListFragment();
-                Bundle args = new Bundle();
-                weatherListFragment.setArguments(args);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.weather_list_fragment_container, weatherListFragment);
-                transaction.commit();
-            }
+            WeatherListFragment weatherListFragment = new WeatherListFragment();
+            _setFragment(weatherListFragment, WeatherListFragment.class.getSimpleName());
+
         }
 
         //Setup toolbar and Floating Action Button
@@ -41,6 +37,23 @@ public class WeatherListActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new AddZipcodeOnClickListener());
+    }
+
+
+    /**
+     * Helper method: used by testing framework to set the fragment on the activity
+     *
+     * @param fragment
+     */
+    public void _setFragment(Fragment fragment, String tag) {
+
+        if (findViewById(R.id.weather_list_fragment_container) != null) {
+            Bundle args = new Bundle();
+            fragment.setArguments(args);
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.weather_list_fragment_container, fragment, tag);
+            transaction.commit();
+        }
     }
 
 
