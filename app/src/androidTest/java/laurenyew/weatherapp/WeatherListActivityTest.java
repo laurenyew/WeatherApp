@@ -40,9 +40,8 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+
         solo = new Solo(getInstrumentation(), getActivity());
-        Context context = getInstrumentation().getTargetContext();
-        context.getSharedPreferences("laurenyew.weatherapp", Context.MODE_PRIVATE).edit().clear().commit();
     }
 
     @Override
@@ -94,7 +93,7 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
 
         //Click the clear list button
         solo.sendKey(Solo.MENU);
-        solo.clickOnMenuItem("Clear Zipcode List");
+        solo.clickOnText("Clear Zipcode List");
 
         solo.waitForActivity(WeatherListActivity.class);
 
@@ -103,7 +102,11 @@ public class WeatherListActivityTest extends ActivityInstrumentationTestCase2<We
         assertEquals(View.VISIBLE, getEmptyListView().getVisibility());
 
         //The adapter should have been updated to size of 0.
-        assertEquals(0, getListRecyclerView().getAdapter().getItemCount());
+        assertEquals(1, getListRecyclerView().getAdapter().getItemCount());
+
+        //Cleanup
+        Context context = getInstrumentation().getTargetContext();
+        context.getSharedPreferences("laurenyew.weatherapp", Context.MODE_PRIVATE).edit().clear().commit();
     }
 
     /**
