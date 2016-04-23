@@ -17,15 +17,16 @@ public class WeatherServiceCenter implements WeatherServiceApi {
     private static WeatherServiceApi mInstance;
 
     private String getWeatherServiceBaseUri() {
-        return "http://api.wunderground.com/api/";
+        return WeatherUndergroundApiContract.API_URL;
     }
 
     private String getWeatherServiceApiKey() {
-        return "731efe0d70901aaf";
+        return WeatherUndergroundApiContract.API_APP_KEY;
     }
 
     private String getUri(String feature, String queryParams) {
-        return getWeatherServiceBaseUri() + getWeatherServiceApiKey() + "/" + feature + "/q/" + queryParams + ".json";
+        return getWeatherServiceBaseUri() + getWeatherServiceApiKey()
+                + WeatherUndergroundApiContract.getUriJsonGETRequestFormat(feature, queryParams);
     }
 
     /**

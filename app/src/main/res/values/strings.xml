@@ -34,4 +34,5 @@
     <string name="data_connection_error_message">Could not connect to server.</string>
     <string name="invalid_request">Zipcode not found in server database.</string>
     <string name="default_response_error">Response error. Please close app and try again.</string>
+    <string name="invalid_app_api_key">Weather App Api Permissions Expired. Please contact your administrator.</string>
 </resources>

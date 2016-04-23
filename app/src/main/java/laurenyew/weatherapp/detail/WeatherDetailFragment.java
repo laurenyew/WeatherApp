@@ -229,6 +229,10 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
                 errorMessage = getString(R.string.invalid_request);
                 break;
             }
+            case INVALID_APP_API_KEY:{
+                errorMessage = getString(R.string.invalid_app_api_key);
+                break;
+            }
             case EMPTY_RESPONSE: {
                 errorMessage = getString(R.string.default_response_error);
                 break;

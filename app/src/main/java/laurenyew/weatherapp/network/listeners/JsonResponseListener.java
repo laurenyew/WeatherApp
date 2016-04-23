@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import laurenyew.weatherapp.network.WeatherUndergroundApiContract;
 import laurenyew.weatherapp.network.responses.ErrorResponse;
 
 /**
@@ -21,9 +22,10 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
 
     @Override
     public void onResponse(JSONObject response) {
-        System.out.println("onResponse");
+        System.out.println("onResponse: " + response);
         try {
             if (response != null) {
+                //No error response
                 T responseModel = deserialize(response);
                 onSuccessUpdateCache(responseModel);
                 onSuccess(responseModel);
@@ -32,7 +34,36 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
             }
 
         } catch (Exception e) {
-            onError(ErrorResponse.INVALID_REQUEST);
+
+            checkForWeatherApiErrorResponse(response);
+
+
+        }
+    }
+
+
+    /**
+     * Helper method: look through the response from the Weather API for clues
+     * why it did not return the expected response
+     *
+     * @param fullResponse
+     */
+    protected void checkForWeatherApiErrorResponse(JSONObject fullResponse) {
+        try {
+            JSONObject response = fullResponse.getJSONObject("response");
+            JSONObject errorResponse = response.getJSONObject(WeatherUndergroundApiContract.ERROR_KEY);
+            String errorType = errorResponse.getString(WeatherUndergroundApiContract.ERROR_TYPE_KEY);
+
+            if (errorType.equals(WeatherUndergroundApiContract.ERROR_RESPONSE_INVALID_CITY_KEY)) {
+                onError(ErrorResponse.INVALID_REQUEST);
+            } else if (errorType.equals(WeatherUndergroundApiContract.ERROR_RESPONSE_INVALID_APP_KEY)) {
+                onError(ErrorResponse.INVALID_APP_API_KEY);
+            } else {
+                onError(ErrorResponse.UNKNOWN);
+            }
+
+        } catch (JSONException e) {
+            onError(ErrorResponse.UNKNOWN);
         }
     }
 
@@ -101,6 +132,7 @@ public abstract class JsonResponseListener<T> implements Response.Listener<JSONO
      * @param error
      */
     public void onError(ErrorResponse error) {
+        System.out.println("onError: " + error);
         notifyListenersOfError(error);
     }
 
