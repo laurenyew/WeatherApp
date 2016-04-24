@@ -23,7 +23,7 @@
 
     <!--Weather Detail Tab Title labels-->
     <string name="current_conditions_tab_title">Current Conditions</string>
-    <string name="forecast_tab_title">7 Day Forecast</string>
+    <string name="forecast_tab_title">Forecast</string>
 
     <!--Current Condition Detail Title Labels-->
     <string name="weather_info_card_title">Weather Info</string>
