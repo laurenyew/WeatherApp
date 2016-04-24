@@ -1,16 +1,22 @@
 package laurenyew.weatherapp.detail;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.detail.current_conditions.CurrentConditionsWeatherDetailFragment;
 import laurenyew.weatherapp.detail.forecast.SevenDayForecastWeatherDetailFragment;
+import laurenyew.weatherapp.network.responses.models.ForecastProjection;
 
 /**
  * Created by laurenyew on 4/18/16.
@@ -19,10 +25,13 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
     public static String ZIPCODE_KEY = "zipcode";
     private static String zipcode;
 
+    //Views
     private Toolbar mToolbar;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
 
+    //Share action
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
             zipcode = savedInstanceState.getString(ZIPCODE_KEY, zipcode);
         }
 
+        //Setup View
         setContentView(R.layout.activity_weather_detail_pager);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -47,6 +57,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
         mTabLayout.setupWithViewPager(mViewPager);
 
     }
+
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -85,15 +96,57 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    /**
+     * Set up toolbar menu and share action provider
+     *
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate menu resource file.
+        getMenuInflater().inflate(R.menu.menu_weather_detail, menu);
+        // Locate MenuItem with ShareActionProvider
+        MenuItem item = menu.findItem(R.id.menu_item_share);
+        // Fetch reference to the share action provider
+        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        // Return true to display menu
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    /**
+     * Helper method creates an intent for sharing forecast data
+     *
+     * @return
+     */
+    public void setShareForecastIntent(ForecastProjection projection) {
+        if (projection != null) {
+            String forecastData = projection.getForecastInSharingHtmlFormat();
+            System.out.println("Share: " + forecastData);
+            //Setup share intent
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/html");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(forecastData));
+            mShareActionProvider.setShareIntent(sharingIntent);
+        }
+    }
+
+
+    /**
+     * Setup the back button to exit detail and go to list
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
+        int id = item.getItemId();
         if (id == android.R.id.home) {
             finish();
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

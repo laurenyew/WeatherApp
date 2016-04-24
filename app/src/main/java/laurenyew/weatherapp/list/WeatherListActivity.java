@@ -55,7 +55,7 @@ public class WeatherListActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //User wants to clear the zipcode list
-        if (id == R.id.action_clear_list) {
+        if (id == R.id.menu_item_clear_list) {
             ZipcodeCache.getInstance().clear(getApplicationContext());
             return true;
         }

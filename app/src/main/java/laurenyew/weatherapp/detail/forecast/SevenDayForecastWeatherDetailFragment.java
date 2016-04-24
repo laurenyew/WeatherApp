@@ -58,7 +58,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
         mForecastListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new ForecastListAdapter(inflater);
         mForecastListRecyclerView.setAdapter(mAdapter);
-        updateForecastListViewIfEmpty();
+        updateForecastListViewIfEmpty(currentForecast);
 
         return view;
     }
@@ -134,7 +134,13 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
      */
     @Override
     public void onFetchComplete() {
+        //Update the fragment UI
         populateForecastWeatherDetails();
+
+        //Update the activity's share intent
+        if (getActivity() instanceof WeatherDetailPagerActivity) {
+            ((WeatherDetailPagerActivity) getActivity()).setShareForecastIntent(currentForecast);
+        }
     }
 
     private void populateForecastWeatherDetails() {
@@ -152,8 +158,9 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
      * @param forecast
      */
     private void updateDetailInfoView(final ForecastProjection forecast) {
+
+        updateForecastListViewIfEmpty(forecast);
         if (forecast != null && hasForecastChanged(forecast)) {
-            updateForecastListViewIfEmpty();
             mAdapter.setForecasts(forecast);
             mAdapter.notifyDataSetChanged();
         }
@@ -162,8 +169,8 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     /**
      * Show/Hide Empty list view as appropriate
      */
-    private void updateForecastListViewIfEmpty() {
-        if (ForecastProjectionCache.getInstance().size() == 0) {
+    private void updateForecastListViewIfEmpty(ForecastProjection forecast) {
+        if (forecast == null || forecast.size() == 0) {
             mForecastListRecyclerView.setVisibility(View.GONE);
             mEmptyListTextView.setVisibility(View.VISIBLE);
         } else {

@@ -24,6 +24,22 @@ public class ForecastProjection extends BaseKeyEvictionModel {
                 key + "," + mForecasts + "]";
     }
 
+    /**
+     * Puts the forecast in html format
+     *
+     * @return String to be parsed into html
+     */
+    public String getForecastInSharingHtmlFormat() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<p>Forecast for " + key + ": </p>");
+
+        for (DailyForecast dailyForecast : mForecasts) {
+            builder.append("<p>" + dailyForecast.dayOfWeek + " : " + dailyForecast.fullForecastSummary + "</p>");
+        }
+
+        return builder.toString();
+    }
+
     public void add(DailyForecast forecast) {
         mForecasts.add(forecast);
     }
