@@ -22,15 +22,15 @@ import laurenyew.weatherapp.network.responses.status.Result;
  * <p/>
  * This class implements:
  * - deserialization of ForecastProjection JSON
- * - caching of seven day forecast weather conditions,
- * - updating UI with Observer pattern using FetchSevenDayForecastUpdateListener
+ * - caching of forecast weather conditions,
+ * - updating UI with Observer pattern using FetchForecastUpdateListener
  */
-public class SevenDayForecastResponseListener extends JsonResponseListener<ForecastProjection> {
+public class ForecastResponseListener extends JsonResponseListener<ForecastProjection> {
 
     private String zipcodeKey = null;
     private List<FetchRequestStatusUpdateListener> listeners = new ArrayList<>();
 
-    public SevenDayForecastResponseListener(String zipcode) {
+    public ForecastResponseListener(String zipcode) {
         zipcodeKey = zipcode;
     }
 

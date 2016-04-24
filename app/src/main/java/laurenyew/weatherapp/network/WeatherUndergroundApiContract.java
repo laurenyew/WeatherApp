@@ -14,7 +14,7 @@ public class WeatherUndergroundApiContract {
 
     //WeatherUnderground feature uris
     public static final String CURRENT_CONDITION_FEATURE = "conditions";
-    public static final String SEVEN_DAY_FORECAST_FEATURE = "forecast";
+    public static final String FORECAST_FEATURE = "forecast";
 
     //API Response Error values
     public static final String ERROR_KEY = "error";

@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.detail.current_conditions.CurrentConditionsWeatherDetailFragment;
-import laurenyew.weatherapp.detail.forecast.SevenDayForecastWeatherDetailFragment;
+import laurenyew.weatherapp.detail.forecast.ForecastWeatherDetailFragment;
 
 /**
  * Created by laurenyew on 4/18/16.
@@ -90,7 +90,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
         args.putString(ZIPCODE_KEY, zipcode);
         WeatherDetailViewPagerAdapter adapter = new WeatherDetailViewPagerAdapter(getSupportFragmentManager(), args);
         adapter.addFragment(new CurrentConditionsWeatherDetailFragment(), getString(R.string.current_conditions_tab_title));
-        adapter.addFragment(new SevenDayForecastWeatherDetailFragment(), getString(R.string.seven_day_forecast_tab_title));
+        adapter.addFragment(new ForecastWeatherDetailFragment(), getString(R.string.forecast_tab_title));
         viewPager.setAdapter(adapter);
     }
 

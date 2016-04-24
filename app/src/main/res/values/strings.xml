@@ -23,7 +23,7 @@
 
     <!--Weather Detail Tab Title labels-->
     <string name="current_conditions_tab_title">Current Conditions</string>
-    <string name="seven_day_forecast_tab_title">7 Day Forecast</string>
+    <string name="forecast_tab_title">7 Day Forecast</string>
 
     <!--Current Condition Detail Title Labels-->
     <string name="weather_info_card_title">Weather Info</string>
@@ -34,9 +34,7 @@
     <string name="processing_weather_data">Weather Data</string>
     <string name="unknown">Unknown</string>
 
-    <!--Seven Day Detail Title Labels-->
-
-    <!--Seven Day DailyForecast default info-->
+    <!--Forecast default info-->
     <string name="no_forecast_data">No forecast data.</string>
     <string name="day_of_week">Day of Week</string>
 
@@ -46,6 +44,5 @@
     <string name="invalid_request">Zipcode not found in server database.</string>
     <string name="default_response_error">Response error. Please close app and try again.</string>
     <string name="invalid_app_api_key">Weather App Api Permissions Expired. Please contact your administrator.</string>
-
 
 </resources>

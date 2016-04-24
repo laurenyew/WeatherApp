@@ -7,5 +7,5 @@ package laurenyew.weatherapp.network;
  */
 public final class WeatherServiceApiContract {
     public static final String ACTION_GET_CURRENT_CONDITIONS = "laurenyew.weatherapp.ACTION_GET_CURRENT_CONDITIONS.";
-    public static final String ACTION_GET_7_DAY_FORECAST = "laurenyew.weatherapp.ACTION_GET_7_DAY_FORECAST.";
+    public static final String ACTION_GET_FORECAST = "laurenyew.weatherapp.ACTION_GET_FORECAST.";
 }

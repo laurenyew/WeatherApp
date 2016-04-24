@@ -19,7 +19,7 @@ import laurenyew.weatherapp.network.ApiRequest;
 import laurenyew.weatherapp.network.WeatherServiceCenter;
 import laurenyew.weatherapp.network.listeners.ui_update.FetchRequestStatusUpdateListener;
 import laurenyew.weatherapp.network.listeners.ui_update.RequestErrorListener;
-import laurenyew.weatherapp.network.listeners.volley_response.SevenDayForecastResponseListener;
+import laurenyew.weatherapp.network.listeners.volley_response.ForecastResponseListener;
 import laurenyew.weatherapp.network.responses.models.ForecastProjection;
 import laurenyew.weatherapp.network.responses.status.ErrorResponse;
 import laurenyew.weatherapp.util.AlertDialogUtil;
@@ -27,7 +27,7 @@ import laurenyew.weatherapp.util.AlertDialogUtil;
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class SevenDayForecastWeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
+public class ForecastWeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
     //Views
     private RecyclerView mForecastListRecyclerView = null;
     private TextView mEmptyListTextView = null;
@@ -38,7 +38,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     private ForecastProjection currentForecast = null;
 
     //Listeners
-    private WeakReference<SevenDayForecastResponseListener> mSevenDayForecastResponseListenerRef = null;
+    private WeakReference<ForecastResponseListener> mForecastResponseListenerRef = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,11 +50,11 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_seven_day_forecast_weather_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_forecast_weather_detail, container, false);
 
         //populate the views for use later
-        mEmptyListTextView = (TextView) view.findViewById(R.id.empty_seven_day_forecast_list_view);
-        mForecastListRecyclerView = (RecyclerView) view.findViewById(R.id.seven_day_forecast_recyler_list_view);
+        mEmptyListTextView = (TextView) view.findViewById(R.id.empty_forecast_list_view);
+        mForecastListRecyclerView = (RecyclerView) view.findViewById(R.id.forecast_recyler_list_view);
         mForecastListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new ForecastListAdapter(inflater);
         mForecastListRecyclerView.setAdapter(mAdapter);
@@ -99,8 +99,8 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
 
         WeatherServiceCenter.getInstance().cancel7DayForecastRequest(getActivity(), detailZipcode);
 
-        if (mSevenDayForecastResponseListenerRef != null && mSevenDayForecastResponseListenerRef.get() != null) {
-            SevenDayForecastResponseListener listener = mSevenDayForecastResponseListenerRef.get();
+        if (mForecastResponseListenerRef != null && mForecastResponseListenerRef.get() != null) {
+            ForecastResponseListener listener = mForecastResponseListenerRef.get();
             listener.removeListener(this);
             listener.removeErrorListener(this);
         }
@@ -117,7 +117,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
      * @return
      */
     @Nullable
-    private ForecastProjection fetchSevenDayForecast() {
+    private ForecastProjection fetchForecastProjection() {
 
         ForecastProjection forecast = currentForecast;
 
@@ -129,13 +129,13 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
             //Cache does not have the details we need. Start an api call and listen for its result.
             if (forecast == null) {
                 //Create weak reference to a listener for result of api call
-                SevenDayForecastResponseListener listener = new SevenDayForecastResponseListener(detailZipcode);
+                ForecastResponseListener listener = new ForecastResponseListener(detailZipcode);
                 listener.addListener(this);
                 listener.addErrorListener(this);
-                mSevenDayForecastResponseListenerRef = new WeakReference<>(listener);
+                mForecastResponseListenerRef = new WeakReference<>(listener);
 
                 //Making the api call with the service center
-                ApiRequest request = WeatherServiceCenter.getInstance().get7DayForecast(getActivity(), detailZipcode);
+                ApiRequest request = WeatherServiceCenter.getInstance().getForecastProjection(getActivity(), detailZipcode);
                 request.execute(listener);
             }
         }
@@ -170,8 +170,8 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
         if (detailZipcode != null && isMenuVisible()) {
             //Start the fetch command onStart (after the view has been add up
             //and on the opposite side of the lifecycle as the listeners that are add up.
-            ForecastProjection sevenDayForecast = fetchSevenDayForecast();
-            updateDetailInfoView(sevenDayForecast);
+            ForecastProjection forecastProjection = fetchForecastProjection();
+            updateDetailInfoView(forecastProjection);
 
             updateShareIntent();
         }

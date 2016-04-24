@@ -84,17 +84,17 @@ public class WeatherServiceCenter implements WeatherServiceApi {
     }
 
     @Override
-    public ApiRequest get7DayForecast(final Context context, final String zipcode) {
+    public ApiRequest getForecastProjection(final Context context, final String zipcode) {
         return new ApiRequest() {
             @Override
             public void execute(JsonResponseListener listener) {
                 BaseObjectRequest request = new BaseObjectRequest(
                         Request.Method.GET,
-                        getUri(WeatherUndergroundApiContract.SEVEN_DAY_FORECAST_FEATURE,
+                        getUri(WeatherUndergroundApiContract.FORECAST_FEATURE,
                                 zipcode),
                         null,
                         listener);
-                request.setTag(WeatherServiceApiContract.ACTION_GET_7_DAY_FORECAST + zipcode);
+                request.setTag(WeatherServiceApiContract.ACTION_GET_FORECAST + zipcode);
                 getRequestQueue(context).addToRequestQueue(request);
             }
         };
@@ -102,7 +102,7 @@ public class WeatherServiceCenter implements WeatherServiceApi {
 
     @Override
     public void cancel7DayForecastRequest(Context context, String zipcode) {
-        getRequestQueue(context).cancelRequestsWithTag(WeatherServiceApiContract.ACTION_GET_7_DAY_FORECAST + zipcode);
+        getRequestQueue(context).cancelRequestsWithTag(WeatherServiceApiContract.ACTION_GET_FORECAST + zipcode);
     }
 
 }

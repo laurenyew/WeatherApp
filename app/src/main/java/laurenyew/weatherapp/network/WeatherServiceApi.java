@@ -20,7 +20,7 @@ public interface WeatherServiceApi {
 
     public void cancelCurrentConditionsRequest(Context context, String zipcode);
 
-    public ApiRequest get7DayForecast(final Context context, final String zipcode);
+    public ApiRequest getForecastProjection(final Context context, final String zipcode);
 
     public void cancel7DayForecastRequest(Context context, String zipcode);
 
