@@ -79,5 +79,12 @@ public class WeatherListActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Test only method. Need activity to clear its own Shared preferences
+     */
+    public void _clearSharedPreferences() {
+        ZipcodeCache.getInstance()._clearSharedPreferences(getApplicationContext());
+    }
+
 
 }

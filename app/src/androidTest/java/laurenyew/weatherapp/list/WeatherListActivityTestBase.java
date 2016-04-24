@@ -21,6 +21,7 @@ import laurenyew.weatherapp.R;
 public class WeatherListActivityTestBase extends ActivityInstrumentationTestCase2<WeatherListActivity> {
 
     protected Solo solo;
+    private final String APP_NAME = "laurenyew.weatherapp";
 
     protected List<String> DEFAULT_LIST_ITEMS;
     protected int TIMEOUT_IN_MS = 2000;
@@ -36,7 +37,6 @@ public class WeatherListActivityTestBase extends ActivityInstrumentationTestCase
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        //TODO: Reset app state
 
         //Start up the weather list activity
         solo = new Solo(getInstrumentation(), getActivity());
@@ -45,8 +45,11 @@ public class WeatherListActivityTestBase extends ActivityInstrumentationTestCase
     @Override
     protected void tearDown() throws Exception {
 
+        getActivity()._clearSharedPreferences();
+
         //Clean up activities
         solo.finishOpenedActivities();
+        getActivity().finish();
         super.tearDown();
     }
 

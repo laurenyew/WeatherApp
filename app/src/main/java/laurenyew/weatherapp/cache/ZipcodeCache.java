@@ -118,6 +118,7 @@ public class ZipcodeCache {
         mCache.clear();
         mSortedList.clear();
         notifyListenersOfCacheUpdate();
+
         updateCacheInDB(context);
     }
 
@@ -128,6 +129,7 @@ public class ZipcodeCache {
      * @param context
      */
     private void updateCacheInDB(Context context) {
+
         //update the shared intents (this should make an Asynchrounous call)
         SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = weatherAppPref.edit();
@@ -135,6 +137,7 @@ public class ZipcodeCache {
         editor.putStringSet(ZIPCODE_CACHE_KEY, mCache);
         editor.commit();
     }
+
 
     /**
      * Helper method: update the mSortedList with the cache values
@@ -187,6 +190,19 @@ public class ZipcodeCache {
         for (UpdateListener listener : listeners) {
             listener.onCacheUpdate();
         }
+    }
+
+
+    /**
+     * For test use only: Clear the shared preference file for test reset
+     *
+     * @param context
+     */
+    public void _clearSharedPreferences(Context context) {
+        SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = weatherAppPref.edit();
+        editor.clear();
+        editor.commit();
     }
 
 }
