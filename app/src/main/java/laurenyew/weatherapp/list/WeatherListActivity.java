@@ -15,7 +15,6 @@ import laurenyew.weatherapp.util.AlertDialogUtil;
 
 public class WeatherListActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,4 +78,6 @@ public class WeatherListActivity extends AppCompatActivity {
                     getString(R.string.cancel_button_title));
         }
     }
+
+
 }
