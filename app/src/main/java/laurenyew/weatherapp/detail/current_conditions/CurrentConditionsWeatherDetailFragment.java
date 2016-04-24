@@ -95,7 +95,6 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
      * Helper method, update the share intent for the activity
      */
     private void updateShareIntent() {
-        System.out.println("CURRENT CONDITIONS: SHARE");
         //Update the activity's share intent
         if (isMenuVisible() && getActivity() instanceof WeatherDetailPagerActivity) {
             String forecastData = (currentWeather != null) ? currentWeather.getCurrentConditionsInSharingFormat() : null;

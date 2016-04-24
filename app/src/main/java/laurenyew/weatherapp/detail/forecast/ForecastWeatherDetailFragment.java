@@ -159,7 +159,6 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
      * Helper method, update the share intent for the activity
      */
     private void updateShareIntent() {
-        System.out.println("FORECAST: SHARE");
         //Update the activity's share intent
         if (isMenuVisible() && getActivity() instanceof WeatherDetailPagerActivity) {
             String forecastData = (currentForecast != null) ? currentForecast.getForecastInSharingFormat() : null;
