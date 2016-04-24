@@ -9,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -122,12 +121,13 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
      */
     public void setShareForecastIntent(ForecastProjection projection) {
         if (projection != null) {
-            String forecastData = projection.getForecastInSharingHtmlFormat();
+            String forecastData = projection.getForecastInSharingFormat();
             System.out.println("Share: " + forecastData);
             //Setup share intent
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-            sharingIntent.setType("text/html");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, Html.fromHtml(forecastData));
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, forecastData);
             mShareActionProvider.setShareIntent(sharingIntent);
         }
     }
