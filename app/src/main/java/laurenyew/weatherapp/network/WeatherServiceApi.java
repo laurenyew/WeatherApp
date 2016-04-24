@@ -9,16 +9,20 @@ public interface WeatherServiceApi {
 
     /**
      * Get the current weather conditions for the given zipcode of a US city
-     * <p>
+     * <p/>
      * This method should query the weather API,
      *
      * @param context
      * @param zipcode of US city
      * @return
      */
-    public ApiRequest getCurrentConditions(Context context, String zipcode);
+    public ApiRequest getCurrentConditions(final Context context, final String zipcode);
 
     public void cancelCurrentConditionsRequest(Context context, String zipcode);
+
+    public ApiRequest get7DayForecast(final Context context, final String zipcode);
+
+    public void cancel7DayForecastRequest(Context context, String zipcode);
 
 
 }

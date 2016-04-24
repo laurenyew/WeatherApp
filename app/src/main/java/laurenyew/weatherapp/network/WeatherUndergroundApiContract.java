@@ -6,9 +6,13 @@ package laurenyew.weatherapp.network;
  * This is a class to keep track of Weather Api Constantt
  */
 public class WeatherUndergroundApiContract {
-    //Service API call values
+    //WeatherUnderground values
     public static final String API_APP_KEY = "731efe0d70901aaf";
     public static final String API_URL = "http://api.wunderground.com/api/";
+
+    //WeatherUnderground feature uris
+    public static final String CURRENT_CONDITION_FEATURE = "conditions";
+    public static final String SEVEN_DAY_FORECAST_FEATURE="forecast";
 
     //API Response Error values
     public static final String ERROR_KEY = "error";

@@ -65,7 +65,7 @@ public class WeatherServiceCenter implements WeatherServiceApi {
         return new ApiRequest() {
             @Override
             public void execute(JsonResponseListener listener) {
-                BaseObjectRequest request = new BaseObjectRequest(Request.Method.GET, getUri("conditions", zipcode), null,
+                BaseObjectRequest request = new BaseObjectRequest(Request.Method.GET, getUri(WeatherUndergroundApiContract.CURRENT_CONDITION_FEATURE, zipcode), null,
                         listener);
                 request.setTag(WeatherServiceApiContract.ACTION_GET_CURRENT_CONDITIONS + zipcode);
                 getRequestQueue(context).addToRequestQueue(request);
@@ -81,6 +81,28 @@ public class WeatherServiceCenter implements WeatherServiceApi {
     @Override
     public void cancelCurrentConditionsRequest(Context context, String zipcode) {
         getRequestQueue(context).cancelRequestsWithTag(WeatherServiceApiContract.ACTION_GET_CURRENT_CONDITIONS + zipcode);
+    }
+
+    @Override
+    public ApiRequest get7DayForecast(final Context context, final String zipcode) {
+        return new ApiRequest() {
+            @Override
+            public void execute(JsonResponseListener listener) {
+                BaseObjectRequest request = new BaseObjectRequest(
+                        Request.Method.GET,
+                        getUri(WeatherUndergroundApiContract.SEVEN_DAY_FORECAST_FEATURE,
+                                zipcode),
+                        null,
+                        listener);
+                request.setTag(WeatherServiceApiContract.ACTION_GET_7_DAY_FORECAST + zipcode);
+                getRequestQueue(context).addToRequestQueue(request);
+            }
+        };
+    }
+
+    @Override
+    public void cancel7DayForecastRequest(Context context, String zipcode) {
+        getRequestQueue(context).cancelRequestsWithTag(WeatherServiceApiContract.ACTION_GET_7_DAY_FORECAST + zipcode);
     }
 
 }
