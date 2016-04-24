@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/forecast_detail_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    card_view:cardBackgroundColor="@android:color/white">
+
+    <!--Contains the weather icon, the day of the week, and the icon summary-->
+    <RelativeLayout
+        android:id="@+id/icon_day_summary_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/forecast_weather_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:minHeight="100dp"
+            android:minWidth="100dp"
+            android:visibility="visible" />
+
+
+        <TextView
+            android:id="@+id/day_of_week"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@id/forecast_weather_icon"
+            android:text="@string/day_of_week"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/detail_separator0"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/day_of_week"
+            android:layout_toRightOf="@id/forecast_weather_icon"
+            android:background="#CFD8DC" />
+
+        <TextView
+            android:id="@+id/forecast_icon_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_separator0"
+            android:layout_margin="10dp"
+            android:layout_toRightOf="@id/forecast_weather_icon"
+            android:gravity="fill_horizontal"
+            android:text="@string/unknown"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/detail_separator1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/forecast_weather_icon"
+            android:background="#CFD8DC" />
+
+        <TextView
+            android:id="@+id/forecast_summary_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_separator1"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="10dp"
+            android:minHeight="100dp"
+            android:nestedScrollingEnabled="false"
+            android:text="@string/unknown"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>

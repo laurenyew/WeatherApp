@@ -59,4 +59,12 @@ public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
     public void addResponse(T response) {
         mCache.put(response.key, response);
     }
+
+    public int size() {
+        if (mCache == null) {
+            return 0;
+        } else {
+            return mCache.size();
+        }
+    }
 }

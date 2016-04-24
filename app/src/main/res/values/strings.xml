@@ -3,6 +3,7 @@
     <!--App Strings-->
     <string name="app_name">WeatherApp</string>
     <string name="weather_detail_activity_label">Weather Detail</string>
+    <string name="default_reference_info">Weather Underground</string>
 
     <!--Common Buttons-->
     <string name="action_clear_list">Clear Zipcode List</string>
@@ -17,21 +18,26 @@
 
     <!--Weather List Title labels-->
     <string name="zipcode_list_title">Weather by Zipcode</string>
+    <string name="no_zipcode_data_available">Please add a zipcode.</string>
 
-    <!--Weather Tab Title labels-->
+    <!--Weather Detail Tab Title labels-->
     <string name="current_conditions_tab_title">Current Conditions</string>
     <string name="seven_day_forecast_tab_title">7 Day Forecast</string>
 
-    <!--Weather Detail Title Labels-->
+    <!--Current Condition Detail Title Labels-->
     <string name="weather_info_card_title">Weather Info</string>
     <string name="open_google_maps_button_title">View Displayed Location in Maps</string>
     <string name="reference_info_title_string">Powered by</string>
 
-    <!--Weather Detail default info-->
+    <!--Current Condition default info-->
     <string name="processing_weather_data">Weather Data</string>
     <string name="unknown">Unknown</string>
-    <string name="no_zipcode_data_available">Please add a zipcode.</string>
-    <string name="default_reference_info">Weather Underground</string>
+
+    <!--Seven Day Detail Title Labels-->
+
+    <!--Seven Day DailyForecast default info-->
+    <string name="no_forecast_data">No forecast data.</string>
+    <string name="day_of_week">Day of Week</string>
 
     <!--Error Messages-->
     <string name="error_title">Error</string>
@@ -39,4 +45,6 @@
     <string name="invalid_request">Zipcode not found in server database.</string>
     <string name="default_response_error">Response error. Please close app and try again.</string>
     <string name="invalid_app_api_key">Weather App Api Permissions Expired. Please contact your administrator.</string>
+
+
 </resources>

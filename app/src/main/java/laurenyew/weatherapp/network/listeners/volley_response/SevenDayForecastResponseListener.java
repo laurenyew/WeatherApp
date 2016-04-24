@@ -10,21 +10,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import laurenyew.weatherapp.cache.SevenDayForecastCache;
+import laurenyew.weatherapp.cache.ForecastProjectionCache;
 import laurenyew.weatherapp.network.listeners.ui_update.FetchRequestStatusUpdateListener;
-import laurenyew.weatherapp.network.responses.models.Forecast;
-import laurenyew.weatherapp.network.responses.models.SevenDayForecast;
+import laurenyew.weatherapp.network.responses.models.DailyForecast;
+import laurenyew.weatherapp.network.responses.models.ForecastProjection;
 import laurenyew.weatherapp.network.responses.status.Result;
 
 /**
  * Created by laurenyew on 4/19/16.
  * <p/>
  * This class implements:
- * - deserialization of SevenDayForecast JSON
+ * - deserialization of ForecastProjection JSON
  * - caching of seven day forecast weather conditions,
  * - updating UI with Observer pattern using FetchSevenDayForecastUpdateListener
  */
-public class SevenDayForecastResponseListener extends JsonResponseListener<SevenDayForecast> {
+public class SevenDayForecastResponseListener extends JsonResponseListener<ForecastProjection> {
 
     private String zipcodeKey = null;
     private List<FetchRequestStatusUpdateListener> listeners = new ArrayList<>();
@@ -40,12 +40,12 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Seven
      * @param data
      */
     @Override
-    public void onSuccessUpdateCache(SevenDayForecast data) {
-        SevenDayForecastCache.getInstance().addResponse(data);
+    public void onSuccessUpdateCache(ForecastProjection data) {
+        ForecastProjectionCache.getInstance().addResponse(data);
     }
 
     @Override
-    public void onSuccess(SevenDayForecast data) {
+    public void onSuccess(ForecastProjection data) {
         notifyListenersOfFetchStatus(Result.SUCCESS);
     }
 
@@ -56,8 +56,8 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Seven
      * @return
      */
     @Override
-    public SevenDayForecast deserialize(JSONObject response) throws JSONException {
-        SevenDayForecast result = null;
+    public ForecastProjection deserialize(JSONObject response) throws JSONException {
+        ForecastProjection result = null;
         if (response != null) {
             JSONObject jsonObject = response.optJSONObject("forecast");
             if (jsonObject != null) {
@@ -68,15 +68,15 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Seven
     }
 
     /**
-     * parse the JsonObject response into a SevenDayForecast. Also set eviction date.
+     * parse the JsonObject response into a ForecastProjection. Also set eviction date.
      *
      * @param response JSONObject
-     * @return populated SevenDayForecast
+     * @return populated ForecastProjection
      * @throws JSONException
      */
     @NonNull
-    private SevenDayForecast parseJSONObjectResponse(JSONObject response) throws JSONException {
-        SevenDayForecast result = new SevenDayForecast();
+    private ForecastProjection parseJSONObjectResponse(JSONObject response) throws JSONException {
+        ForecastProjection result = new ForecastProjection();
 
         //set eviction date to be 1 day after receiving this response
         Calendar currentTime = Calendar.getInstance();
@@ -95,18 +95,18 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Seven
     }
 
     /**
-     * Helper method: transforms object into a Forecast
+     * Helper method: transforms object into a DailyForecast
      *
      * @param object
      * @return
      */
-    private Forecast parseSummaryJSONObjectIntoForecast(JSONObject object) throws JSONException {
-        Forecast forecast = new Forecast();
+    private DailyForecast parseSummaryJSONObjectIntoForecast(JSONObject object) throws JSONException {
+        DailyForecast forecast = new DailyForecast();
 
         forecast.iconSummary = object.getString("icon");
         forecast.iconUrl = object.getString("icon_url");
         forecast.dayOfWeek = object.getString("title");
-        forecast.summaryF = object.getString("fcttext");
+        forecast.fullForecastSummary = object.getString("fcttext");
 
         return forecast;
     }

@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import laurenyew.weatherapp.R;
+import laurenyew.weatherapp.detail.current_conditions.CurrentConditionsWeatherDetailFragment;
+import laurenyew.weatherapp.detail.forecast.SevenDayForecastWeatherDetailFragment;
 
 /**
  * Created by laurenyew on 4/18/16.
@@ -33,7 +35,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
             zipcode = savedInstanceState.getString(ZIPCODE_KEY, zipcode);
         }
 
-        setContentView(R.layout.activity_weather_detail);
+        setContentView(R.layout.activity_weather_detail_pager);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setupToolbar(mToolbar);
@@ -41,7 +43,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
         //Set up tab view pager
         mViewPager = (ViewPager) findViewById(R.id.weather_detail_pager);
         setupViewPager(mViewPager);
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
+        mTabLayout = (TabLayout) findViewById(R.id.weather_detail_tabs);
         mTabLayout.setupWithViewPager(mViewPager);
 
     }

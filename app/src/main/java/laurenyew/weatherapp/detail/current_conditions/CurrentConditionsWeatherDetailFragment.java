@@ -1,4 +1,4 @@
-package laurenyew.weatherapp.detail;
+package laurenyew.weatherapp.detail.current_conditions;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +18,7 @@ import java.lang.ref.WeakReference;
 
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.cache.CurrentWeatherConditionsCache;
+import laurenyew.weatherapp.detail.WeatherDetailPagerActivity;
 import laurenyew.weatherapp.network.ApiRequest;
 import laurenyew.weatherapp.network.WeatherServiceCenter;
 import laurenyew.weatherapp.network.listeners.ui_update.FetchRequestStatusUpdateListener;
@@ -56,7 +57,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_weather_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_current_condition_weather_detail, container, false);
 
         //populate the views for use later
         weather_icon = (ImageView) view.findViewById(R.id.weather_icon);
@@ -165,7 +166,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
                     "\nTemp (C): " + weather.tempC +
                     "\nHumidity: " + weather.humidity +
                     "\nWind: " + weather.windSummary +
-                    "\nForecast URL:\n" + weather.openForecastUrl);
+                    "\nDailyForecast URL:\n" + weather.openForecastUrl);
             //Setup the button to click to google maps
             openGoogleMaps.setOnClickListener(new View.OnClickListener() {
                 @Override
