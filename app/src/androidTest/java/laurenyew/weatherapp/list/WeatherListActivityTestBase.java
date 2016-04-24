@@ -47,6 +47,7 @@ public class WeatherListActivityTestBase extends ActivityInstrumentationTestCase
 
         getActivity()._clearSharedPreferences();
 
+
         //Clean up activities
         solo.finishOpenedActivities();
         getActivity().finish();

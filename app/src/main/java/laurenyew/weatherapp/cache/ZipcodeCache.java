@@ -199,10 +199,14 @@ public class ZipcodeCache {
      * @param context
      */
     public void _clearSharedPreferences(Context context) {
+        //Clear shared preferences
         SharedPreferences weatherAppPref = context.getSharedPreferences(APP_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = weatherAppPref.edit();
-        editor.clear();
-        editor.commit();
+        editor.clear().commit();
+
+        //Also clear the cache
+        mCache.clear();
+        mSortedList.clear();
     }
 
 }
