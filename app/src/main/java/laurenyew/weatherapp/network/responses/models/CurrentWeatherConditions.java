@@ -1,6 +1,4 @@
-package laurenyew.weatherapp.network.responses;
-
-import java.util.Date;
+package laurenyew.weatherapp.network.responses.models;
 
 /**
  * Created by laurenyew on 4/19/16.
@@ -9,10 +7,7 @@ import java.util.Date;
  * There were way too many unneeded values in the original response from underground weather.
  * Gson should ignore the unmentioned values when deserializing.
  */
-public class CurrentWeatherConditions {
-
-    //Used for eviction strategy (evict if 1 day off original received time)
-    public Date evictionDate;
+public class CurrentWeatherConditions extends BaseKeyEvictionModel {
 
     public String logoImageUrl; //"image.url":"http://icons-ak.wxug.com/graphics/wu2/logo_130x80.png"
 
@@ -49,24 +44,10 @@ public class CurrentWeatherConditions {
         openForecastUrl = null;
     }
 
-    public CurrentWeatherConditions(String zipcode) {
-        super();
-        this.zipcode = zipcode;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        CurrentWeatherConditions c = (CurrentWeatherConditions) o;
-        boolean isEqual = false;
-        if (c != null) {
-            isEqual = zipcode.equals(c.zipcode) && evictionDate.equals(c.evictionDate);
-        }
-        return isEqual;
-    }
 
     @Override
     public String toString() {
         return "CurrentWeatherConditions [response=" +
-                zipcode + "," + displayLocationFull + "]";
+                key + "," + displayLocationFull + "]";
     }
 }

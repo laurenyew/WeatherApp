@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.android.volley.Request;
 
-import laurenyew.weatherapp.network.listeners.JsonResponseListener;
+import laurenyew.weatherapp.network.listeners.volley_response.JsonResponseListener;
 import laurenyew.weatherapp.network.requests.BaseObjectRequest;
 
 /**

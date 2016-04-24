@@ -20,17 +20,17 @@ import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.cache.CurrentWeatherConditionsCache;
 import laurenyew.weatherapp.network.ApiRequest;
 import laurenyew.weatherapp.network.WeatherServiceCenter;
-import laurenyew.weatherapp.network.listeners.CurrentWeatherConditionsResponseListener;
-import laurenyew.weatherapp.network.listeners.FetchCurrentWeatherUpdateListener;
-import laurenyew.weatherapp.network.listeners.RequestErrorListener;
-import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
-import laurenyew.weatherapp.network.responses.ErrorResponse;
+import laurenyew.weatherapp.network.listeners.ui_update.FetchRequestStatusUpdateListener;
+import laurenyew.weatherapp.network.listeners.ui_update.RequestErrorListener;
+import laurenyew.weatherapp.network.listeners.volley_response.CurrentWeatherConditionsResponseListener;
+import laurenyew.weatherapp.network.responses.models.CurrentWeatherConditions;
+import laurenyew.weatherapp.network.responses.status.ErrorResponse;
 import laurenyew.weatherapp.util.AlertDialogUtil;
 
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class WeatherDetailFragment extends Fragment implements FetchCurrentWeatherUpdateListener, RequestErrorListener {
+public class WeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
     //Views
     private ImageView weather_icon;
     private TextView weather_info;
@@ -108,7 +108,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
             //Cache does not have the details we need. Start an api call and listen for its result.
             if (weather == null) {
                 //Create weak reference to a listener for result of api call
-                CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener();
+                CurrentWeatherConditionsResponseListener listener = new CurrentWeatherConditionsResponseListener(detailZipcode);
                 listener.addListener(this);
                 listener.addErrorListener(this);
                 mCurrentWeatherConditionsResponseListenerRef = new WeakReference<>(listener);
@@ -143,7 +143,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
 
 
     /**
-     * FetchCurrentWeatherUpdateListener implementation
+     * FetchRequestStatusUpdateListener implementation
      * <p/>
      * Let the UI know that the fetch has been completed. Get the data.
      */
@@ -229,7 +229,7 @@ public class WeatherDetailFragment extends Fragment implements FetchCurrentWeath
                 errorMessage = getString(R.string.invalid_request);
                 break;
             }
-            case INVALID_APP_API_KEY:{
+            case INVALID_APP_API_KEY: {
                 errorMessage = getString(R.string.invalid_app_api_key);
                 break;
             }

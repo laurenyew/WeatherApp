@@ -1,4 +1,4 @@
-package laurenyew.weatherapp.network.responses;
+package laurenyew.weatherapp.network.responses.models;
 
 /**
  * Created by laurenyew on 4/23/16.
@@ -10,24 +10,22 @@ package laurenyew.weatherapp.network.responses;
  */
 public class Forecast {
 
-    String iconSummary;
-    String iconUrl;
-    String dayOfWeek;
-    String summaryF;
-    Integer tempF;
+    public String iconSummary;
+    public String iconUrl;
+    public String dayOfWeek;
+    public String summaryF;
 
     public Forecast() {
         iconSummary = null;
         iconUrl = null;
         dayOfWeek = null;
         summaryF = null;
-        tempF = null;
     }
 
 
     @Override
     public String toString() {
         return "CurrentWeatherConditions [response=" +
-                dayOfWeek + ":" + iconSummary + "," + tempF + "]";
+                dayOfWeek + ":" + iconSummary + "]";
     }
 }

@@ -1,6 +1,6 @@
 package laurenyew.weatherapp.network;
 
-import laurenyew.weatherapp.network.listeners.JsonResponseListener;
+import laurenyew.weatherapp.network.listeners.volley_response.JsonResponseListener;
 
 /**
  * Created by laurenyew on 4/19/16.

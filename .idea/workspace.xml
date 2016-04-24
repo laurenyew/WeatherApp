@@ -12,14 +12,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/SevenDayForecastResponseListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Forecast.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/SevenDayForecast.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/SevenDayForecastCache.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/FetchRequestStatusUpdateListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/BaseKeyEvictionModel.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/FetchCurrentWeatherUpdateListener.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/CurrentWeatherConditionsResponseListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/CurrentWeatherConditionsResponseListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/JsonResponseListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/JsonResponseListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/RequestErrorListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/RequestErrorListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/SevenDayForecastResponseListener.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/SevenDayForecastResponseListener.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/CurrentWeatherConditions.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/CurrentWeatherConditions.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/ErrorResponse.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/status/ErrorResponse.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Forecast.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/Forecast.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Result.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/status/Result.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/SevenDayForecast.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/SevenDayForecast.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApi.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApiContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApiContract.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/CurrentWeatherConditionsCache.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/CurrentWeatherConditionsCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/ApiRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/ApiRequest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceCenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceCenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherUndergroundApiContract.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherUndergroundApiContract.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/requests/BaseObjectRequest.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/requests/BaseObjectRequest.java" />
     </list>
     <ignored path="WeatherApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,104 +72,129 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WeatherServiceApi.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApi.java">
+      <file leaf-file-name="WeatherDetailFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.3652174">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="CurrentWeatherConditionsResponseListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/CurrentWeatherConditionsResponseListener.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/CurrentWeatherConditionsResponseListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
+              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1098#1099#0" expanded="true" />
+                <element signature="e#1134#1135#0" expanded="true" />
+                <element signature="e#4025#4026#0" expanded="true" />
+                <element signature="e#4064#4065#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeatherDetailsEvictionBaseCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="e#656#657#0" expanded="true" />
+                <element signature="e#694#695#0" expanded="true" />
+                <element signature="e#1579#1580#0" expanded="true" />
+                <element signature="e#1629#1630#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurrentWeatherConditionsCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/CurrentWeatherConditionsCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+              <folding>
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#539#540#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SevenDayForecastCache.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/SevenDayForecastCache.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+              <folding>
+                <element signature="e#728#729#0" expanded="true" />
+                <element signature="e#767#768#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SevenDayForecastResponseListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/SevenDayForecastResponseListener.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/SevenDayForecastResponseListener.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="99" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="99" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CurrentWeatherConditions.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/CurrentWeatherConditions.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3127962">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SevenDayForecast.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/SevenDayForecast.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+              <caret line="77" column="52" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="52" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1155#1156#0" expanded="true" />
+                <element signature="e#1191#1192#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JsonResponseListener.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/JsonResponseListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseKeyEvictionModel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/BaseKeyEvictionModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding>
+                <element signature="e#573#574#0" expanded="true" />
+                <element signature="e#603#604#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Forecast.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Forecast.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/Forecast.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeatherServiceCenter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceCenter.java">
+      <file leaf-file-name="SevenDayForecast.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/SevenDayForecast.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#543#544#0" expanded="true" />
-                <element signature="e#603#604#0" expanded="true" />
-                <element signature="e#651#652#0" expanded="true" />
-                <element signature="e#715#716#0" expanded="true" />
-                <element signature="e#1840#2338#0" expanded="true" />
-                <element signature="e#2337#2338#0" expanded="true" />
-                <element signature="e#2773#3373#0" expanded="true" />
-                <element signature="e#3372#3373#0" expanded="true" />
+                <element signature="e#510#511#0" expanded="true" />
+                <element signature="e#564#565#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeatherUndergroundApiContract.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherUndergroundApiContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="57" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WeatherServiceApiContract.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApiContract.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -1841,26 +1878,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/JsonGETRequestResponseListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Result.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/RequestErrorListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/FetchCurrentWeatherUpdateListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/util/AlertDialogUtil.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_weather_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/CurrentWeatherConditions.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/bundles/debug/instant-run/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/test.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_weather_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/list/WeatherListFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_weather_list.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/CurrentWeatherConditionsResponseListener.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/ErrorResponse.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/JsonResponseListener.java" />
         <option value="$PROJECT_DIR$/app/src/test/java/laurenyew/weatherapp/WeatherListActivityUnitTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/test/java/laurenyew/weatherapp/WeatherListActivityTest.java" />
@@ -1889,9 +1906,29 @@
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherUndergroundApiContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceApi.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/WeatherServiceCenter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/SevenDayForecastResponseListener.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Forecast.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/SevenDayForecast.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/requests/BaseObjectRequest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/SevenDayForecastResponseListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/FetchSevenDayForecastUpdateListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/FetchCurrentWeatherUpdateListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/RequestErrorListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/FetchRequestStatusUpdateListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/status/Result.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/status/ErrorResponse.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/data/CurrentWeatherConditions.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/BaseEvictionModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/CurrentWeatherConditions.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/BaseKeyEvictionModel.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/CurrentWeatherConditionsResponseListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/SevenDayForecast.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/SevenDayForecastResponseListener.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/Forecast.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionCache.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/CurrentWeatherConditionsCache.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/SevenDayForecastCache.java" />
       </list>
     </option>
   </component>
@@ -1933,6 +1970,32 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WeatherApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WeatherApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WeatherApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="WeatherApp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT USER_OBJECT="Root">
@@ -1984,6 +2047,62 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="res">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="res">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="values">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -2018,6 +2137,44 @@
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="laurenyew">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="util">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -2139,7 +2296,217 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="responses">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="models">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="laurenyew">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="network">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="listeners">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="volley_response">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="laurenyew">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="network">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="listeners">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ui_update">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="laurenyew">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="list">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="laurenyew">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="detail">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="main">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="laurenyew">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="weatherapp">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="cache">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -2373,17 +2740,18 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="laurenyew.weatherapp.network.responses.models" />
+      <recent name="laurenyew.weatherapp.cache" />
+      <recent name="laurenyew.weatherapp.network.listeners.ui_update" />
       <recent name="laurenyew.weatherapp.network.responses" />
       <recent name="laurenyew.weatherapp.network.listeners" />
-      <recent name="laurenyew.weatherapp.list" />
-      <recent name="laurenyew.weatherapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Tests.Tests in 'laurenyew.weatherapp.list'">
+  <component name="RunManager" selected="Android Application.app">
     <configuration default="false" name="testAddZipcodeFloa...()" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <option name="TESTING_TYPE" value="3" />
@@ -2872,7 +3240,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="23" width="1234" height="777" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.4261745" order="7" side_tool="false" content_ui="tabs" />
@@ -2889,8 +3257,8 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32802013" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4357035" sideWeight="0.46979865" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32802013" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4357035" sideWeight="0.46979865" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2949,8 +3317,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/JsonResponseListener.java</url>
-          <line>53</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/JsonResponseListener.java</url>
+          <line>54</line>
           <properties />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
@@ -2969,88 +3337,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/phunware_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36599424">
-          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_weather_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3368984">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.volley/volley/1.0.0/c79696d64f9520675054e27b77f490c17d8b4b9e/volley-1.0.0-sources.jar!/com/android/volley/TimeoutError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_weather_detail.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/org/json/JSONObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="22.84788">
-          <caret line="548" column="18" selection-start-line="548" selection-start-column="18" selection-end-line="548" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/ErrorResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2693267">
-          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="231" column="17" selection-start-line="231" selection-start-column="17" selection-end-line="231" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/JsonResponseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -3233,14 +3519,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/CurrentWeatherConditionsCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-23/android/test/ActivityTestCase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.95662653">
@@ -3355,56 +3633,169 @@
           <caret line="95" column="34" selection-start-line="95" selection-start-column="34" selection-end-line="95" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#651#652#0" expanded="true" />
-            <element signature="e#715#716#0" expanded="true" />
-            <element signature="e#1840#2338#0" expanded="true" />
-            <element signature="e#2337#2338#0" expanded="true" />
-            <element signature="e#2773#3373#0" expanded="true" />
-            <element signature="e#3372#3373#0" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#619#620#0" expanded="true" />
+            <element signature="e#667#668#0" expanded="true" />
+            <element signature="e#731#732#0" expanded="true" />
+            <element signature="e#1856#2354#0" expanded="true" />
+            <element signature="e#2353#2354#0" expanded="true" />
+            <element signature="e#2789#3389#0" expanded="true" />
+            <element signature="e#3388#3389#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/CurrentWeatherConditionsResponseListener.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/requests/BaseObjectRequest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/SevenDayForecastResponseListener.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/RequestErrorListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="99" selection-start-line="23" selection-start-column="75" selection-end-line="23" selection-end-column="99" />
+          <caret line="10" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/Forecast.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/ui_update/FetchRequestStatusUpdateListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="31" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/SevenDayForecast.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/status/Result.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="48" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/status/ErrorResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/CurrentWeatherConditions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/BaseKeyEvictionModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/SevenDayForecast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#510#511#0" expanded="true" />
+            <element signature="e#564#565#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/CurrentWeatherConditions.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/SevenDayForecastResponseListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3127962">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="52" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="52" />
+          <folding>
+            <element signature="e#1155#1156#0" expanded="true" />
+            <element signature="e#1191#1192#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/JsonResponseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/listeners/volley_response/CurrentWeatherConditionsResponseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#4025#4026#0" expanded="true" />
+            <element signature="e#4064#4065#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/Forecast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/CurrentWeatherConditionsCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
+          <folding>
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#1629#1630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/SevenDayForecastCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#767#768#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3652174">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
           <folding />
         </state>
       </provider>

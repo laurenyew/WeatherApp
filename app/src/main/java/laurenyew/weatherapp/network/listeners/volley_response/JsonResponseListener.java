@@ -1,4 +1,4 @@
-package laurenyew.weatherapp.network.listeners;
+package laurenyew.weatherapp.network.listeners.volley_response;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import laurenyew.weatherapp.network.WeatherUndergroundApiContract;
-import laurenyew.weatherapp.network.responses.ErrorResponse;
+import laurenyew.weatherapp.network.listeners.ui_update.RequestErrorListener;
+import laurenyew.weatherapp.network.responses.status.ErrorResponse;
 
 /**
  * Created by laurenyew on 4/19/16.

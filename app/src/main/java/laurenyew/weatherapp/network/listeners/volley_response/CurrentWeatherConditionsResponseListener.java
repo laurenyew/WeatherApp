@@ -1,4 +1,4 @@
-package laurenyew.weatherapp.network.listeners;
+package laurenyew.weatherapp.network.listeners.volley_response;
 
 import android.support.annotation.NonNull;
 
@@ -10,8 +10,9 @@ import java.util.Calendar;
 import java.util.List;
 
 import laurenyew.weatherapp.cache.CurrentWeatherConditionsCache;
-import laurenyew.weatherapp.network.responses.CurrentWeatherConditions;
-import laurenyew.weatherapp.network.responses.Result;
+import laurenyew.weatherapp.network.listeners.ui_update.FetchRequestStatusUpdateListener;
+import laurenyew.weatherapp.network.responses.models.CurrentWeatherConditions;
+import laurenyew.weatherapp.network.responses.status.Result;
 
 /**
  * Created by laurenyew on 4/19/16.
@@ -19,11 +20,16 @@ import laurenyew.weatherapp.network.responses.Result;
  * This class implements:
  * - deserialization of CurrentWeatherCondition JSON
  * - caching of current weather conditions,
- * - updating UI with Observer pattern using FetchCurrentWeatherUpdateListener
+ * - updating UI with Observer pattern using FetchRequestStatusUpdateListener
  */
 public class CurrentWeatherConditionsResponseListener extends JsonResponseListener<CurrentWeatherConditions> {
 
-    private List<FetchCurrentWeatherUpdateListener> listeners = new ArrayList<>();
+    private String zipcodeKey = null;
+    private List<FetchRequestStatusUpdateListener> listeners = new ArrayList<>();
+
+    public CurrentWeatherConditionsResponseListener(String zipcode) {
+        zipcodeKey = zipcode;
+    }
 
     /**
      * Add the response's data to the cache with the key being
@@ -70,6 +76,9 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
     private CurrentWeatherConditions parseJSONObjectResponse(JSONObject response) throws JSONException {
         CurrentWeatherConditions result = new CurrentWeatherConditions();
 
+        //Set the key for the model
+        result.setKey(zipcodeKey);
+
         //set eviction date to be 1 day after receiving this response
         Calendar currentTime = Calendar.getInstance();
         currentTime.add(Calendar.MINUTE, 1);
@@ -101,17 +110,17 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
         return result;
     }
 
-    public void addListener(FetchCurrentWeatherUpdateListener listener) {
+    public void addListener(FetchRequestStatusUpdateListener listener) {
         listeners.add(listener);
     }
 
-    public void removeListener(FetchCurrentWeatherUpdateListener listUpdateListener) {
+    public void removeListener(FetchRequestStatusUpdateListener listUpdateListener) {
         listeners.remove(listUpdateListener);
     }
 
     private void notifyListenersOfFetchStatus(Result result) {
         if (result == Result.SUCCESS) {
-            for (FetchCurrentWeatherUpdateListener listener : listeners) {
+            for (FetchRequestStatusUpdateListener listener : listeners) {
                 listener.onFetchComplete();
             }
         }
