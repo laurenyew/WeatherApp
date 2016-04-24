@@ -34,6 +34,7 @@
                     android:layout_margin="5dp"
                     android:minHeight="100dp"
                     android:minWidth="100dp"
+                    android:src="@mipmap/phunware_launcher"
                     android:visibility="visible" />
 
 

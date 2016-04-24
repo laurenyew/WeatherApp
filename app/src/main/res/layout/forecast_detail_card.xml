@@ -4,11 +4,14 @@
     android:id="@+id/forecast_detail_card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="1dp"
+    android:layout_margin="5dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    card_view:cardBackgroundColor="@android:color/white">
+    card_view:cardBackgroundColor="@android:color/white"
+    card_view:cardCornerRadius="4dp"
+    card_view:contentPaddingBottom="10dp"
+    card_view:contentPaddingTop="10dp">
 
     <!--Contains the weather icon, the day of the week, and the icon summary-->
     <RelativeLayout
@@ -20,12 +23,11 @@
             android:id="@+id/forecast_weather_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_margin="5dp"
             android:minHeight="100dp"
             android:minWidth="100dp"
+            android:src="@mipmap/phunware_launcher"
             android:visibility="visible" />
-
 
         <TextView
             android:id="@+id/day_of_week"
@@ -54,7 +56,7 @@
             android:layout_toRightOf="@id/forecast_weather_icon"
             android:gravity="fill_horizontal"
             android:text="@string/unknown"
-            android:textSize="26dp"
+            android:textSize="19dp"
             android:textStyle="bold" />
 
         <View
@@ -71,7 +73,6 @@
             android:layout_below="@id/detail_separator1"
             android:layout_gravity="center_vertical"
             android:layout_margin="10dp"
-            android:minHeight="100dp"
             android:nestedScrollingEnabled="false"
             android:text="@string/unknown"
             android:textSize="16dp" />

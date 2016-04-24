@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import laurenyew.weatherapp.cache.ForecastProjectionCache;
+import laurenyew.weatherapp.network.WeatherUndergroundApiContract;
 import laurenyew.weatherapp.network.listeners.ui_update.FetchRequestStatusUpdateListener;
 import laurenyew.weatherapp.network.responses.models.DailyForecast;
 import laurenyew.weatherapp.network.responses.models.ForecastProjection;
@@ -106,7 +107,7 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Forec
     private DailyForecast parseSummaryJSONObjectIntoForecast(JSONObject object) throws JSONException {
         DailyForecast forecast = new DailyForecast();
 
-        forecast.iconSummary = object.getString("icon");
+        forecast.iconSummary = WeatherUndergroundApiContract.translateWeatherSummary(object.getString("icon"));
         forecast.iconUrl = object.getString("icon_url");
         forecast.dayOfWeek = object.getString("title");
         forecast.fullForecastSummary = object.getString("fcttext");
