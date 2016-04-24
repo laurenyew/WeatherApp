@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-import laurenyew.weatherapp.detail.WeatherDetailActivity;
+import laurenyew.weatherapp.detail.WeatherDetailPagerActivity;
 
 /**
  * Created by laurenyew on 4/21/16.
@@ -21,9 +21,9 @@ public class CommonlyUsedIntents {
      * @param zipcode
      */
     public static void openWeatherDetailActivity(Context context, String zipcode) {
-        Intent openZipcodeWeatherDetail = new Intent(context, WeatherDetailActivity.class);
+        Intent openZipcodeWeatherDetail = new Intent(context, WeatherDetailPagerActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString(WeatherDetailActivity.ZIPCODE_KEY, zipcode);
+        bundle.putString(WeatherDetailPagerActivity.ZIPCODE_KEY, zipcode);
         openZipcodeWeatherDetail.putExtras(bundle);
         context.startActivity(openZipcodeWeatherDetail);
     }

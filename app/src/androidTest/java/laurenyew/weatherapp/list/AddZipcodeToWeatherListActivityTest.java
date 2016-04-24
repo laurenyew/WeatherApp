@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import laurenyew.weatherapp.R;
-import laurenyew.weatherapp.detail.WeatherDetailActivity;
+import laurenyew.weatherapp.detail.WeatherDetailPagerActivity;
 
 /**
  * Created by laurenyew on 4/23/16.
@@ -29,9 +29,9 @@ public class AddZipcodeToWeatherListActivityTest extends WeatherListActivityTest
         enterZipcode(ZIPCODE_TO_ADD);
 
         //expect to be taken to detail
-        solo.waitForActivity(WeatherDetailActivity.class, TIMEOUT_IN_MS);
-        solo.assertCurrentActivity("Should be in Weather Detail Activity.", WeatherDetailActivity.class);
-        WeatherDetailActivity detailActivity = (WeatherDetailActivity) solo.getCurrentActivity();
+        solo.waitForActivity(WeatherDetailPagerActivity.class, TIMEOUT_IN_MS);
+        solo.assertCurrentActivity("Should be in Weather Detail Activity.", WeatherDetailPagerActivity.class);
+        WeatherDetailPagerActivity detailActivity = (WeatherDetailPagerActivity) solo.getCurrentActivity();
         // Check that Weather Detail Activity has the correct title
         assertEquals("Did not open correct list item", ZIPCODE_TO_ADD, detailActivity.getSupportActionBar().getTitle());
 
@@ -70,9 +70,9 @@ public class AddZipcodeToWeatherListActivityTest extends WeatherListActivityTest
         enterZipcode(ZIPCODE_TO_ADD);
 
         //expect to be taken to detail
-        solo.waitForActivity(WeatherDetailActivity.class, TIMEOUT_IN_MS);
-        solo.assertCurrentActivity("Should be in Weather Detail Activity.", WeatherDetailActivity.class);
-        WeatherDetailActivity detailActivity = (WeatherDetailActivity) solo.getCurrentActivity();
+        solo.waitForActivity(WeatherDetailPagerActivity.class, TIMEOUT_IN_MS);
+        solo.assertCurrentActivity("Should be in Weather Detail Activity.", WeatherDetailPagerActivity.class);
+        WeatherDetailPagerActivity detailActivity = (WeatherDetailPagerActivity) solo.getCurrentActivity();
 
         // Check that we got an error message
         assertTrue("Could not find the dialog!", solo.searchText("Zipcode not found in server database."));

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import laurenyew.weatherapp.R;
-import laurenyew.weatherapp.detail.WeatherDetailActivity;
+import laurenyew.weatherapp.detail.WeatherDetailPagerActivity;
 
 /**
  * Created by laurenyew on 4/23/16.
@@ -51,10 +51,10 @@ public class WeatherListActivitySanityTest extends WeatherListActivityTestBase {
         // Click List item
         clickListItem(0);
 
-        solo.waitForActivity(WeatherDetailActivity.class, TIMEOUT_IN_MS);
-        solo.assertCurrentActivity("Should be taken to WeatherDetailActivity.", WeatherDetailActivity.class);
+        solo.waitForActivity(WeatherDetailPagerActivity.class, TIMEOUT_IN_MS);
+        solo.assertCurrentActivity("Should be taken to WeatherDetailPagerActivity.", WeatherDetailPagerActivity.class);
 
-        WeatherDetailActivity detailActivity = (WeatherDetailActivity) solo.getCurrentActivity();
+        WeatherDetailPagerActivity detailActivity = (WeatherDetailPagerActivity) solo.getCurrentActivity();
         // Check that Weather Detail Activity has the correct title
         assertEquals("Did not open correct list item", DEFAULT_LIST_ITEMS.get(0), detailActivity.getSupportActionBar().getTitle());
     }

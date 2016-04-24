@@ -18,6 +18,10 @@
     <!--Weather List Title labels-->
     <string name="zipcode_list_title">Weather by Zipcode</string>
 
+    <!--Weather Tab Title labels-->
+    <string name="current_conditions_tab_title">Current Conditions</string>
+    <string name="seven_day_forecast_tab_title">7 Day Forecast</string>
+
     <!--Weather Detail Title Labels-->
     <string name="weather_info_card_title">Weather Info</string>
     <string name="open_google_maps_button_title">View Displayed Location in Maps</string>

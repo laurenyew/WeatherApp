@@ -30,7 +30,7 @@ import laurenyew.weatherapp.util.AlertDialogUtil;
 /**
  * Created by laurenyew on 4/18/16.
  */
-public class WeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
+public class CurrentConditionsWeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
     //Views
     private ImageView weather_icon;
     private TextView weather_info;
@@ -46,12 +46,11 @@ public class WeatherDetailFragment extends Fragment implements FetchRequestStatu
     //Listeners
     private WeakReference<CurrentWeatherConditionsResponseListener> mCurrentWeatherConditionsResponseListenerRef = null;
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        detailZipcode = getArguments().getString(WeatherDetailActivity.ZIPCODE_KEY);
+        detailZipcode = getArguments().getString(WeatherDetailPagerActivity.ZIPCODE_KEY);
     }
 
     @Override
