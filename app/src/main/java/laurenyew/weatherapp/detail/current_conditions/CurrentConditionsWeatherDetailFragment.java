@@ -71,10 +71,29 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
     }
 
 
+    /**
+     * Only show the fragment and perform a download if it is visible
+     */
     @Override
     public void onResume() {
         super.onResume();
-        populateWeatherDetails();
+        if (isMenuVisible()) {
+            populateWeatherDetails();
+        }
+
+    }
+
+    /**
+     * Only show the fragment and perform a download if it is visible
+     *
+     * @param visible
+     */
+    @Override
+    public void setMenuVisibility(final boolean visible) {
+        super.setMenuVisibility(visible);
+        if (visible) {
+            populateWeatherDetails();
+        }
     }
 
     private void populateWeatherDetails() {

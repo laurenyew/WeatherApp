@@ -12,14 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_weather_detail.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/forecast/SevenDayForecastWeatherDetailFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/forecast/SevenDayForecastWeatherDetailFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/list/WeatherListActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/list/WeatherListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/ForecastProjection.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/ForecastProjection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_weather_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_weather_list.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
     </list>
     <ignored path="WeatherApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="122" column="39" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
+              <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2999#3047#0" expanded="true" />
@@ -74,23 +69,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ForecastProjection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/ForecastProjection.java">
+      <file leaf-file-name="SevenDayForecastWeatherDetailFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/forecast/SevenDayForecastWeatherDetailFragment.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="9" selection-start-line="0" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+              <caret line="67" column="69" selection-start-line="0" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CurrentConditionsWeatherDetailFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4563591">
+              <caret line="85" column="7" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#6179#6180#0" expanded="true" />
+                <element signature="e#6219#6220#0" expanded="true" />
+                <element signature="e#8530#8561#0" expanded="true" />
+                <element signature="e#8829#8878#0" expanded="true" />
+                <element signature="e#8984#9019#0" expanded="true" />
+                <element signature="e#9129#9168#0" expanded="true" />
+                <element signature="e#9273#9315#0" expanded="true" />
+                <element signature="e#9408#9443#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SevenDayForecastWeatherDetailFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/forecast/SevenDayForecastWeatherDetailFragment.java">
+      <file leaf-file-name="WeatherDetailViewPagerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73566085">
-              <caret line="60" column="53" selection-start-line="0" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -1826,7 +1838,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_weather_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_seven_day_forecast_weather_detail.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/list/ZipcodeItemViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/seven_day_forecast/ZipcodeItemViewHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/seven_day_forecast/ForecastItemViewHolder.java" />
@@ -1851,6 +1862,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/network/responses/models/ForecastProjection.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/forecast/SevenDayForecastWeatherDetailFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java" />
       </list>
     </option>
   </component>
@@ -2731,16 +2743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4937656">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_weather_list.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6347826">
@@ -2816,14 +2818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.259259">
-          <caret line="181" column="81" selection-start-line="180" selection-start-column="12" selection-end-line="181" selection-end-column="81" />
           <folding />
         </state>
       </provider>
@@ -3109,10 +3103,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="122" column="39" selection-start-line="122" selection-start-column="39" selection-end-line="122" selection-end-column="39" />
+          <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2999#3047#0" expanded="true" />
@@ -3123,9 +3125,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/forecast/SevenDayForecastWeatherDetailFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73566085">
-          <caret line="60" column="53" selection-start-line="0" selection-start-column="0" selection-end-line="242" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="69" selection-start-line="0" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/current_conditions/CurrentConditionsWeatherDetailFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4563591">
+          <caret line="85" column="7" selection-start-line="85" selection-start-column="7" selection-end-line="85" selection-end-column="7" />
+          <folding>
+            <element signature="e#6179#6180#0" expanded="true" />
+            <element signature="e#6219#6220#0" expanded="true" />
+            <element signature="e#8530#8561#0" expanded="true" />
+            <element signature="e#8829#8878#0" expanded="true" />
+            <element signature="e#8984#9019#0" expanded="true" />
+            <element signature="e#9129#9168#0" expanded="true" />
+            <element signature="e#9273#9315#0" expanded="true" />
+            <element signature="e#9408#9443#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

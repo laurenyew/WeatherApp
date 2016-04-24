@@ -64,10 +64,29 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     }
 
 
+    /**
+     * Only show the fragment and perform a download if it is visible
+     */
     @Override
     public void onResume() {
         super.onResume();
-        populateForecastWeatherDetails();
+        if (isMenuVisible()) {
+            populateForecastWeatherDetails();
+        }
+
+    }
+
+    /**
+     * Only show the fragment and perform a download if it is visible
+     *
+     * @param visible
+     */
+    @Override
+    public void setMenuVisibility(final boolean visible) {
+        super.setMenuVisibility(visible);
+        if (visible) {
+            populateForecastWeatherDetails();
+        }
     }
 
 
