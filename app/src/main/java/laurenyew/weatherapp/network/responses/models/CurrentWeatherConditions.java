@@ -60,7 +60,9 @@ public class CurrentWeatherConditions extends BaseKeyEvictionModel {
         StringBuilder builder = new StringBuilder();
         builder.append("Current Conditions for " + key + ": \n");
         builder.append("City: " + displayLocationFull + "\n");
-        builder.append("Weather: " + weather);
+        builder.append("Weather: " + weather + "\n");
+        builder.append("Temperature (F): " + tempF + "\n");
+        builder.append(observationTime + "\n");
 
         return builder.toString();
     }
