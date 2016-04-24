@@ -45,8 +45,8 @@ public class WeatherListActivityTestBase extends ActivityInstrumentationTestCase
     @Override
     protected void tearDown() throws Exception {
 
+        //Clear the list cache to reset state
         getActivity()._clearSharedPreferences();
-
 
         //Clean up activities
         solo.finishOpenedActivities();
