@@ -30,6 +30,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
 
     //Share action
     private ShareActionProvider mShareActionProvider;
+    private Intent mShareActionIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +109,7 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
         MenuItem item = menu.findItem(R.id.menu_item_share);
         // Fetch reference to the share action provider
         mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+        mShareActionProvider.setShareIntent(mShareActionIntent);
         // Return true to display menu
         return super.onCreateOptionsMenu(menu);
 
@@ -120,20 +122,21 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
      */
     public void setWeatherDetailShareIntent(String data) {
 
+        //Clear shared intents -- the share action provider should
+        //do nothing if clicked
+        if (data == null) {
+            mShareActionIntent = null;
+        }
+        //Update shared intents
+        else {
+            mShareActionIntent = new Intent(Intent.ACTION_SEND);
+            mShareActionIntent.setType("text/plain");
+            mShareActionIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
+            mShareActionIntent.putExtra(Intent.EXTRA_TEXT, data);
+        }
+
         if (mShareActionProvider != null) {
-            //Clear shared intents -- the share action provider should
-            //do nothing if clicked
-            if (data == null) {
-                mShareActionProvider.setShareIntent(null);
-            }
-            //Update shared intents
-            else {
-                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, data);
-                mShareActionProvider.setShareIntent(sharingIntent);
-            }
+            mShareActionProvider.setShareIntent(mShareActionIntent);
         }
     }
 
