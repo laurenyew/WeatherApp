@@ -23,13 +23,14 @@ public class WeatherUndergroundApiContract {
     public static final String ERROR_RESPONSE_INVALID_CITY_KEY = "No cities match your search query";
 
     //Weather Summary Codes
-
     private static final String NIGHT = "nt_";
     private static final String PARTLY_CLOUDY = "partlycloudy";
     private static final String MOSTLY_CLOUDY = "mostlycloudy";
     private static final String CLEAR = "clear";
     private static final String CHANCE_OF_THUNDER_STORMS = "chancetstorms";
     private static final String THUNDER_STORMS = "tstorms";
+    private static final String CHANCE_OF_RAIN = "chancerain";
+    private static final String RAIN = "rain ";
 
     /**
      * Different Weather APIs may have different formats for their requests
@@ -62,11 +63,13 @@ public class WeatherUndergroundApiContract {
             builder.append(WeatherSummaryCodes.CLEAR);
         } else if (wUndergroundWeatherSummaryCode.contains(CHANCE_OF_THUNDER_STORMS)) {
             builder.append(WeatherSummaryCodes.CHANCE_OF_THUNDER_STORMS);
-        }else if(wUndergroundWeatherSummaryCode.contains(THUNDER_STORMS))
-        {
+        } else if (wUndergroundWeatherSummaryCode.contains(THUNDER_STORMS)) {
             builder.append(WeatherSummaryCodes.THUNDER_STORMS);
-        }
-        else {
+        } else if (wUndergroundWeatherSummaryCode.contains(CHANCE_OF_RAIN)) {
+            builder.append(WeatherSummaryCodes.CHANCE_OF_RAIN);
+        } else if (wUndergroundWeatherSummaryCode.contains(RAIN)) {
+            builder.append(WeatherSummaryCodes.RAIN);
+        } else {
             couldNotFindCode = true;
             builder.append(wUndergroundWeatherSummaryCode);
         }

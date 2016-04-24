@@ -12,4 +12,6 @@ public class WeatherSummaryCodes {
     public static final String CLEAR = "Clear";
     public static final String CHANCE_OF_THUNDER_STORMS = "Chance of thunderstorms";
     public static final String THUNDER_STORMS = "Thunderstorms";
+    public static final String CHANCE_OF_RAIN = "Chance of rain";
+    public static final String RAIN = "Rain";
 }
