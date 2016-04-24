@@ -24,7 +24,7 @@ public class ZipcodeCache {
     private static final String APP_NAME = "laurenyew.weatherapp";
     private static final String ZIPCODE_CACHE_KEY = "zipcode_cache";
 
-    //We use a set so that we can ensure that no duplicate zipcodes are added
+    //We use a add so that we can ensure that no duplicate zipcodes are added
     //This also helps with sorting the list
     private HashSet<String> mCache = null;
     //Sorted List is used by the array adapter (try to prevent re-calculation
@@ -82,7 +82,7 @@ public class ZipcodeCache {
 
             HashSet<String> defaultZipcodeSet = new HashSet<>(Arrays.asList(DEFAULT_ZIPCODES));
 
-            //Shared preferences has not yet been set up
+            //Shared preferences has not yet been add up
             if (!weatherAppPref.contains(ZIPCODE_CACHE_KEY)) {
                 //update the cache and then update the shared preferences
                 mCache = defaultZipcodeSet;

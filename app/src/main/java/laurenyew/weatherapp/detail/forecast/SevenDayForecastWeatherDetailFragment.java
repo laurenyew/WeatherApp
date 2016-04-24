@@ -56,7 +56,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
         mEmptyListTextView = (TextView) view.findViewById(R.id.empty_seven_day_forecast_list_view);
         mForecastListRecyclerView = (RecyclerView) view.findViewById(R.id.seven_day_forecast_recyler_list_view);
         mForecastListRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mAdapter = new ForecastListAdapter(inflater, ForecastProjectionCache.getInstance().getForecastList(detailZipcode));
+        mAdapter = new ForecastListAdapter(inflater);
         mForecastListRecyclerView.setAdapter(mAdapter);
         updateForecastListViewIfEmpty();
 
@@ -104,7 +104,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
 
         ForecastProjection forecast = currentForecast;
 
-        //we have not yet set up the forecast projection for this detail
+        //we have not yet add up the forecast projection for this detail
         if (forecast == null) {
             //Attempt to get info from the cache
             forecast = ForecastProjectionCache.getInstance().getForecastList(detailZipcode);
@@ -139,8 +139,8 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
 
     private void populateForecastWeatherDetails() {
         if (detailZipcode != null) {
-            //Start the fetch command onStart (after the view has been set up
-            //and on the opposite side of the lifecycle as the listeners that are set up.
+            //Start the fetch command onStart (after the view has been add up
+            //and on the opposite side of the lifecycle as the listeners that are add up.
             ForecastProjection sevenDayForecast = fetchSevenDayForecast();
             updateDetailInfoView(sevenDayForecast);
         }
@@ -154,6 +154,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     private void updateDetailInfoView(final ForecastProjection forecast) {
         if (forecast != null && hasForecastChanged(forecast)) {
             updateForecastListViewIfEmpty();
+            mAdapter.setForecasts(forecast);
             mAdapter.notifyDataSetChanged();
         }
     }

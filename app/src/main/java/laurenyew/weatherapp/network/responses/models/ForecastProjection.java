@@ -15,7 +15,7 @@ public class ForecastProjection extends BaseKeyEvictionModel {
     private List<DailyForecast> mForecasts;
 
     public ForecastProjection() {
-        mForecasts = new ArrayList<>(7);
+        mForecasts = new ArrayList<>();
     }
 
     @Override
@@ -24,10 +24,8 @@ public class ForecastProjection extends BaseKeyEvictionModel {
                 key + "," + mForecasts + "]";
     }
 
-    public void set(int index, DailyForecast forecast) {
-        if (index >= 0 && index < mForecasts.size()) {
-            mForecasts.set(index, forecast);
-        }
+    public void add(DailyForecast forecast) {
+        mForecasts.add(forecast);
     }
 
     public DailyForecast get(int index) {

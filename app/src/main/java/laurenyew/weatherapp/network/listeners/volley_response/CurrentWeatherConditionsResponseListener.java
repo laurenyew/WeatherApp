@@ -66,7 +66,7 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
     }
 
     /**
-     * parse the JsonObject response into a CalendarWeatherConditionsResponse. Also set eviction date.
+     * parse the JsonObject response into a CalendarWeatherConditionsResponse. Also add eviction date.
      *
      * @param response JSONObject
      * @return populated CalendarWeatherConditionsResponse
@@ -79,7 +79,7 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
         //Set the key for the model
         result.setKey(zipcodeKey);
 
-        //set eviction date to be 1 day after receiving this response
+        //add eviction date to be 1 day after receiving this response
         Calendar currentTime = Calendar.getInstance();
         currentTime.add(Calendar.MINUTE, 1);
         result.evictionDate = currentTime.getTime();

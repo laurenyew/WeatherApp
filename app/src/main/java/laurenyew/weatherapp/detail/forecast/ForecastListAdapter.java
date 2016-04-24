@@ -20,9 +20,13 @@ public class ForecastListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private LayoutInflater inflater;
     private ForecastProjection forecasts;
 
-    public ForecastListAdapter(LayoutInflater inflater, ForecastProjection forecasts) {
+    public ForecastListAdapter(LayoutInflater inflater) {
         this.inflater = inflater;
         this.forecasts = forecasts;
+    }
+
+    public void setForecasts(ForecastProjection newForecasts) {
+        forecasts = newForecasts;
     }
 
     @Override
@@ -51,7 +55,7 @@ public class ForecastListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     @Override
     public int getItemCount() {
-        return forecasts.size();
+        return (forecasts != null) ? forecasts.size() : 0;
     }
 
 

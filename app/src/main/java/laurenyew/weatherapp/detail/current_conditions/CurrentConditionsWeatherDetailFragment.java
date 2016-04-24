@@ -79,8 +79,8 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
 
     private void populateWeatherDetails() {
         if (detailZipcode != null) {
-            //Start the fetch command onStart (after the view has been set up
-            //and on the opposite side of the lifecycle as the listeners that are set up.
+            //Start the fetch command onStart (after the view has been add up
+            //and on the opposite side of the lifecycle as the listeners that are add up.
             CurrentWeatherConditions weather = fetchCurrentWeatherConditions();
             updateDetailInfoView(weather);
         }
@@ -100,7 +100,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
 
         CurrentWeatherConditions weather = currentWeather;
 
-        //we have not yet set up the current weather for this detail
+        //we have not yet add up the current weather for this detail
         if (weather == null) {
             //Attempt to get info from the cache
             weather = CurrentWeatherConditionsCache.getInstance().getCurrentWeatherCondition(detailZipcode);

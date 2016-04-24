@@ -25,7 +25,7 @@ public class DailyForecast {
 
     @Override
     public String toString() {
-        return "CurrentWeatherConditions [response=" +
+        return "DailyForecast [response=" +
                 dayOfWeek + ":" + iconSummary + "]";
     }
 }

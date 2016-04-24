@@ -68,7 +68,7 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Forec
     }
 
     /**
-     * parse the JsonObject response into a ForecastProjection. Also set eviction date.
+     * parse the JsonObject response into a ForecastProjection. Also add eviction date.
      *
      * @param response JSONObject
      * @return populated ForecastProjection
@@ -78,7 +78,10 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Forec
     private ForecastProjection parseJSONObjectResponse(JSONObject response) throws JSONException {
         ForecastProjection result = new ForecastProjection();
 
-        //set eviction date to be 1 day after receiving this response
+        //Setup Projection key
+        result.setKey(zipcodeKey);
+
+        //add eviction date to be 1 day after receiving this response
         Calendar currentTime = Calendar.getInstance();
         currentTime.add(Calendar.MINUTE, 1);
         result.evictionDate = currentTime.getTime();
@@ -89,7 +92,7 @@ public class SevenDayForecastResponseListener extends JsonResponseListener<Forec
         JSONObject dayForecast;
         for (int index = 0; index < forecastSummaries.length(); index++) {
             dayForecast = forecastSummaries.getJSONObject(index);
-            result.set(index, parseSummaryJSONObjectIntoForecast(dayForecast));
+            result.add(parseSummaryJSONObjectIntoForecast(dayForecast));
         }
         return result;
     }
