@@ -38,7 +38,8 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] Volley
 - [x] Picasso
 - [x] Android Support Libraries (RecylcerView, CardView, etc.)
-
+- [x] Robotium (for testing)
+- [x] Mockito (for testing)
 ## Weather Services APIs used
 - Weather Underground: http://www.wunderground.com/weather/api/
 	- Had the best documentation
@@ -63,11 +64,11 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] Phunware icon / splash screen
 - [x] Zipcode list stored in Shared Preferences for the app, so even if app is closed, the zipcodes stored will remain.
 - [x] Eviction time for asking new details = 1 minute (for demo purposes). For practical production cases, it should probably be more like 1 hour or 1 day. Can tell when the cache item has been 'evicted' by when the data reloads in the view on rotate/going back to detail.
-- [ ] Toolbar for switching fragments for zipcode weather details
-- [ ] 3-5 day forecast
-- [ ] Content sharing
-- [ ] weather map
-- [ ] Swipe between fragments (weather views)
+- [x] Tab bar for switching fragments for zipcode weather details (ViewPager)
+- [x] Swipe between fragments (weather views) with ViewPager
+- [x] 7 day forecast
+- [x] Weather Detail Content Sharing with ShareActionProvider
+- [x] Android Unit Tests (Sanity test each page)
 
 ## Acknowledgements
 - Original requirements for this project provided by Phunware, Inc.
