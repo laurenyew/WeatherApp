@@ -93,6 +93,18 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
         super.setMenuVisibility(visible);
         if (visible) {
             populateWeatherDetails();
+            updateShareIntent();
+        }
+    }
+
+    /**
+     * Helper method, update the share intent for the activity
+     */
+    private void updateShareIntent() {
+        //Update the activity's share intent
+        if (currentWeather != null && isMenuVisible() &&  getActivity() instanceof WeatherDetailPagerActivity) {
+            String forecastData = currentWeather.getCurrentConditionsInSharingFormat();
+            ((WeatherDetailPagerActivity) getActivity()).setWeatherDetailShareIntent(forecastData);
         }
     }
 
@@ -169,6 +181,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
     @Override
     public void onFetchComplete() {
         populateWeatherDetails();
+        updateShareIntent();
     }
 
     /**

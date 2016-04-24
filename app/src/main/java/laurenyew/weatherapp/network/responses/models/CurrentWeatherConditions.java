@@ -50,4 +50,18 @@ public class CurrentWeatherConditions extends BaseKeyEvictionModel {
         return "CurrentWeatherConditions [response=" +
                 key + "," + displayLocationFull + "]";
     }
+
+    /**
+     * Puts the current weather in sharing format
+     *
+     * @return String to be parsed into sharing format
+     */
+    public String getCurrentConditionsInSharingFormat() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Current Conditions for " + key + ": \n");
+        builder.append("City: " + displayLocationFull + "\n");
+        builder.append("Weather: " + weather);
+
+        return builder.toString();
+    }
 }

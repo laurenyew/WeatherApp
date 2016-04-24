@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.detail.current_conditions.CurrentConditionsWeatherDetailFragment;
 import laurenyew.weatherapp.detail.forecast.SevenDayForecastWeatherDetailFragment;
-import laurenyew.weatherapp.network.responses.models.ForecastProjection;
 
 /**
  * Created by laurenyew on 4/18/16.
@@ -119,17 +118,12 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
      *
      * @return
      */
-    public void setShareForecastIntent(ForecastProjection projection) {
-        if (projection != null) {
-            String forecastData = projection.getForecastInSharingFormat();
-            System.out.println("Share: " + forecastData);
-            //Setup share intent
-            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
-            sharingIntent.putExtra(Intent.EXTRA_TEXT, forecastData);
-            mShareActionProvider.setShareIntent(sharingIntent);
-        }
+    public void setWeatherDetailShareIntent(String data) {
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, data);
+        mShareActionProvider.setShareIntent(sharingIntent);
     }
 
 

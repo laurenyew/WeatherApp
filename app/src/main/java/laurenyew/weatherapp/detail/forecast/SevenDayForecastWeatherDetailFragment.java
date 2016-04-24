@@ -86,6 +86,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
         super.setMenuVisibility(visible);
         if (visible) {
             populateForecastWeatherDetails();
+            updateShareIntent();
         }
     }
 
@@ -157,8 +158,17 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
         populateForecastWeatherDetails();
 
         //Update the activity's share intent
-        if (getActivity() instanceof WeatherDetailPagerActivity) {
-            ((WeatherDetailPagerActivity) getActivity()).setShareForecastIntent(currentForecast);
+        updateShareIntent();
+    }
+
+    /**
+     * Helper method, update the share intent for the activity
+     */
+    private void updateShareIntent() {
+        //Update the activity's share intent
+        if (currentForecast != null && isMenuVisible() && getActivity() instanceof WeatherDetailPagerActivity) {
+            String forecastData = currentForecast.getForecastInSharingFormat();
+            ((WeatherDetailPagerActivity) getActivity()).setWeatherDetailShareIntent(forecastData);
         }
     }
 

@@ -6,5 +6,5 @@
         android:id="@+id/menu_item_share"
         android:title="@string/action_share_weather_detail_data"
         app:actionProviderClass="android.support.v7.widget.ShareActionProvider"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>
