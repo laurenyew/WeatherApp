@@ -119,11 +119,22 @@ public class WeatherDetailPagerActivity extends AppCompatActivity {
      * @return
      */
     public void setWeatherDetailShareIntent(String data) {
-        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, data);
-        mShareActionProvider.setShareIntent(sharingIntent);
+
+        if (mShareActionProvider != null) {
+            //Clear shared intents -- the share action provider should
+            //do nothing if clicked
+            if (data == null) {
+                mShareActionProvider.setShareIntent(null);
+            }
+            //Update shared intents
+            else {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Forecast Data");
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, data);
+                mShareActionProvider.setShareIntent(sharingIntent);
+            }
+        }
     }
 
 

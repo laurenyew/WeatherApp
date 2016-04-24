@@ -77,10 +77,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
     @Override
     public void onResume() {
         super.onResume();
-        if (isMenuVisible()) {
-            populateWeatherDetails();
-        }
-
+        populateWeatherDetailsIfVisible();
     }
 
     /**
@@ -91,10 +88,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
     @Override
     public void setMenuVisibility(final boolean visible) {
         super.setMenuVisibility(visible);
-        if (visible) {
-            populateWeatherDetails();
-            updateShareIntent();
-        }
+        populateWeatherDetailsIfVisible();
     }
 
     /**
@@ -102,18 +96,24 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
      */
     private void updateShareIntent() {
         //Update the activity's share intent
-        if (currentWeather != null && isMenuVisible() &&  getActivity() instanceof WeatherDetailPagerActivity) {
-            String forecastData = currentWeather.getCurrentConditionsInSharingFormat();
+        if (isMenuVisible() && getActivity() instanceof WeatherDetailPagerActivity) {
+            String forecastData = (currentWeather != null) ? currentWeather.getCurrentConditionsInSharingFormat() : null;
             ((WeatherDetailPagerActivity) getActivity()).setWeatherDetailShareIntent(forecastData);
         }
     }
 
-    private void populateWeatherDetails() {
-        if (detailZipcode != null) {
+    /**
+     * Helper method populates the page's view details and updates the share icon
+     */
+    private void populateWeatherDetailsIfVisible() {
+        if (detailZipcode != null && isMenuVisible()) {
+
             //Start the fetch command onStart (after the view has been add up
             //and on the opposite side of the lifecycle as the listeners that are add up.
             CurrentWeatherConditions weather = fetchCurrentWeatherConditions();
             updateDetailInfoView(weather);
+
+            updateShareIntent();
         }
     }
 
@@ -180,8 +180,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
      */
     @Override
     public void onFetchComplete() {
-        populateWeatherDetails();
-        updateShareIntent();
+        populateWeatherDetailsIfVisible();
     }
 
     /**
@@ -243,6 +242,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
     @Override
     public void onError(ErrorResponse error) {
         if (error != null) {
+            updateShareIntent();
             AlertDialogUtil.showErrorAlertDialog(
                     getContext(),
                     getString(R.string.error_title),

@@ -70,9 +70,8 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     @Override
     public void onResume() {
         super.onResume();
-        if (isMenuVisible()) {
-            populateForecastWeatherDetails();
-        }
+        populateForecastWeatherDetailsIfVisible();
+
 
     }
 
@@ -84,10 +83,8 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     @Override
     public void setMenuVisibility(final boolean visible) {
         super.setMenuVisibility(visible);
-        if (visible) {
-            populateForecastWeatherDetails();
-            updateShareIntent();
-        }
+        populateForecastWeatherDetailsIfVisible();
+
     }
 
 
@@ -155,10 +152,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     @Override
     public void onFetchComplete() {
         //Update the fragment UI
-        populateForecastWeatherDetails();
-
-        //Update the activity's share intent
-        updateShareIntent();
+        populateForecastWeatherDetailsIfVisible();
     }
 
     /**
@@ -166,18 +160,20 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
      */
     private void updateShareIntent() {
         //Update the activity's share intent
-        if (currentForecast != null && isMenuVisible() && getActivity() instanceof WeatherDetailPagerActivity) {
-            String forecastData = currentForecast.getForecastInSharingFormat();
+        if (isMenuVisible() && getActivity() instanceof WeatherDetailPagerActivity) {
+            String forecastData = (currentForecast != null) ? currentForecast.getForecastInSharingFormat() : null;
             ((WeatherDetailPagerActivity) getActivity()).setWeatherDetailShareIntent(forecastData);
         }
     }
 
-    private void populateForecastWeatherDetails() {
-        if (detailZipcode != null) {
+    private void populateForecastWeatherDetailsIfVisible() {
+        if (detailZipcode != null && isMenuVisible()) {
             //Start the fetch command onStart (after the view has been add up
             //and on the opposite side of the lifecycle as the listeners that are add up.
             ForecastProjection sevenDayForecast = fetchSevenDayForecast();
             updateDetailInfoView(sevenDayForecast);
+
+            updateShareIntent();
         }
     }
 
@@ -235,6 +231,7 @@ public class SevenDayForecastWeatherDetailFragment extends Fragment implements F
     @Override
     public void onError(ErrorResponse error) {
         if (error != null) {
+            updateShareIntent();
             AlertDialogUtil.showErrorAlertDialog(
                     getContext(),
                     getString(R.string.error_title),
