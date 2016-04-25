@@ -26,7 +26,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] Error validation (user input: bad zipcode, duplicate zipcode)
 	- Duplicate zipcodes do not produce errors, but do not add duplicate list entries
 - [x] API Error handling (API gives errors)
-- [ ] Presentation
+- [x] Presentation
 
 ## Presentation Requirements:
 - [x] Summary detailing project requirements
@@ -40,6 +40,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] Android Support Libraries (RecylcerView, CardView, etc.)
 - [x] Robotium (for testing)
 - [x] Mockito (for testing)
+
 ## Weather Services APIs used
 - Weather Underground: http://www.wunderground.com/weather/api/
 	- Had the best documentation
@@ -68,7 +69,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] Swipe between fragments (weather views) with ViewPager
 - [x] 7 day forecast
 - [x] Weather Detail Content Sharing with ShareActionProvider
-- [x] Android Unit Tests (Sanity test each page)
+- [x] Android Unit Tests (Sanity test for pages)
 - [x] Zipcode Cache Unit Test
 
 ## Acknowledgements
