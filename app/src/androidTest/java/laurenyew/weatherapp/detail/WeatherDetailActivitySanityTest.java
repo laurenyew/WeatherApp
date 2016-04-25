@@ -1,6 +1,7 @@
 package laurenyew.weatherapp.detail;
 
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,9 +34,26 @@ public class WeatherDetailActivitySanityTest extends WeatherDetailActivityTestBa
      * Test default fragment is Current Conditions Fragment
      */
     public void testLoadsCurrentConditionsFragmentOnDefault() {
+        checkOnCurrentConditionsDetailPage();
+    }
+
+    public void testWeatherDetailTabNavigation() {
+        swipeRightToLeft();
+        checkOnForecastDetailPage();
+        swipeLeftToRight();
+        checkOnCurrentConditionsDetailPage();
+    }
+
+    private void checkOnCurrentConditionsDetailPage() {
         TextView currentConditionsWeatherLocation = (TextView) solo.getView(R.id.weather_location);
         assertNotNull(currentConditionsWeatherLocation);
         assertEquals(EXPECTED_CITY, currentConditionsWeatherLocation.getText());
+    }
+
+    private void checkOnForecastDetailPage() {
+        RecyclerView forecastRecyclerView = getForecastListRecyclerView();
+        assertNotNull(forecastRecyclerView);
+        assertNotSame(0, getListItemCount());
     }
 
 

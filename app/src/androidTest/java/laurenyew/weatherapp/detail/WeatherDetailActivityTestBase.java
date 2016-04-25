@@ -19,11 +19,12 @@ import laurenyew.weatherapp.cache.ForecastProjectionCache;
 public class WeatherDetailActivityTestBase extends ActivityInstrumentationTestCase2<WeatherDetailPagerActivity> {
 
     protected Solo solo;
-    public final static String ZIPCODE_KEY = "zipcode";
-    public final static String ZIPCODE = "75078";
-    public final static String EXPECTED_CITY = "Prosper, TX";
 
+    protected final static String ZIPCODE_KEY = "zipcode";
+    protected final static String ZIPCODE = "75078";
+    protected final static String EXPECTED_CITY = "Prosper, TX";
     protected int TIMEOUT_IN_MS = 2000;
+
 
     public WeatherDetailActivityTestBase() {
         super("laurenyew.weatherapp", WeatherDetailPagerActivity.class);
@@ -39,6 +40,7 @@ public class WeatherDetailActivityTestBase extends ActivityInstrumentationTestCa
 
         //Start up the weather list activity
         solo = new Solo(getInstrumentation(), getActivity());
+        getInstrumentation().waitForIdleSync();
     }
 
     @Override
@@ -54,6 +56,15 @@ public class WeatherDetailActivityTestBase extends ActivityInstrumentationTestCa
         super.tearDown();
     }
 
+    protected void swipeLeftToRight() {
+        solo.scrollViewToSide(solo.getView(R.id.weather_detail_pager), Solo.LEFT);
+        getInstrumentation().waitForIdleSync();
+    }
+
+    protected void swipeRightToLeft() {
+        solo.scrollViewToSide(solo.getView(R.id.weather_detail_pager), Solo.RIGHT);
+        getInstrumentation().waitForIdleSync();
+    }
 
     protected RecyclerView getForecastListRecyclerView() {
         return (RecyclerView) solo.getView(R.id.forecast_recyler_list_view);

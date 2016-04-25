@@ -12,13 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/ForecastProjectionCache.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/ForecastProjectionCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" />
     </list>
     <ignored path="WeatherApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,29 +59,53 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+              <caret line="92" column="122" selection-start-line="92" selection-start-column="74" selection-end-line="92" selection-end-column="122" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#2937#2985#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeatherDetailActivityTestBase.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_weather_detail_pager.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_weather_detail_pager.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.32142857">
+              <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeatherDetailActivityTestBase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.45990565">
+              <caret line="65" column="47" selection-start-line="0" selection-start-column="0" selection-end-line="80" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeatherDetailActivitySanityTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WeatherDetailViewPagerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WeatherDetailActivitySanityTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7028302">
-              <caret line="39" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -1855,8 +1875,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/ForecastProjectionCache.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/cache/WeatherDetailsEvictionBaseCache.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java" />
+        <option value="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" />
       </list>
     </option>
   </component>
@@ -2406,7 +2426,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cache" />
+              <option name="myItemId" value="detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeatherApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WeatherApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="weatherapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="detail" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="forecast" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2516,66 +2574,7 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Tests.WeatherDetailActivit...">
-    <configuration default="false" name="Tests in 'laurenyew.weatherapp.list'" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <option name="TESTING_TYPE" value="1" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="laurenyew.weatherapp.list" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <Native>
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-      </Native>
-      <Java />
-      <Hybrid>
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-      </Hybrid>
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <method />
-    </configuration>
-    <configuration default="false" name="ZipcodeCacheUnitTest.assertInitListOnEmptyPreferencesSetsDefaultPreferences" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="laurenyew.weatherapp.WeatherDetailsEvictionBaseCacheUnitTest" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="app" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="laurenyew.weatherapp" />
-      <option name="MAIN_CLASS_NAME" value="laurenyew.weatherapp.ZipcodeCacheUnitTest" />
-      <option name="METHOD_NAME" value="assertInitListOnEmptyPreferencesSetsDefaultPreferences" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Android Tests.Tests in 'laurenyew.weatherapp'">
     <configuration default="false" name="ZipcodeCacheUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2635,6 +2634,72 @@
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="laurenyew.weatherapp.detail.WeatherDetailActivitySanityTest" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <Native>
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Java />
+      <Hybrid>
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="testWeatherDetailT...()" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="TESTING_TYPE" value="3" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="testWeatherDetailTabNavigation" />
+      <option name="CLASS_NAME" value="laurenyew.weatherapp.detail.WeatherDetailActivitySanityTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <Native>
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Native>
+      <Java />
+      <Hybrid>
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+      </Hybrid>
+      <Profilers>
+        <option name="GAPID_DISABLE_PCS" value="false" />
+      </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="Tests in 'laurenyew.weatherapp'" type="AndroidTestRunConfigurationType" factoryName="Android Tests" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="TESTING_TYPE" value="1" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="android.support.test.runner.AndroidJUnitRunner" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="laurenyew.weatherapp" />
       <option name="EXTRA_OPTIONS" value="" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="PREFERRED_AVD" value="" />
@@ -2909,19 +2974,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Android Application.app" />
-      <item index="1" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp.list'" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest.assertInitListOnEmptyPreferencesSetsDefaultPreferences" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.WeatherDetailsEvictionBaseCacheUnitTest" />
-      <item index="5" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.WeatherDetailsEvictionBaseCacheUnitTest" />
+      <item index="3" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
+      <item index="4" class="java.lang.String" itemvalue="Android Tests.testWeatherDetailT...()" />
+      <item index="5" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp'" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.WeatherDetailsEvictionBaseCacheUnitTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest.assertInitListOnEmptyPreferencesSetsDefaultPreferences" />
-        <item index="4" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp.list'" />
+        <item index="0" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp'" />
+        <item index="1" class="java.lang.String" itemvalue="Android Tests.testWeatherDetailT...()" />
+        <item index="2" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.WeatherDetailsEvictionBaseCacheUnitTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -2951,40 +3016,40 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 10m 48s.xml">
+    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 24m 08s.xml">
       <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 14m 00s.xml">
+    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 24m 35s.xml">
       <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 15m 53s.xml">
+    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 30m 11s.xml">
       <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailsEvictionBaseCacheUnitTest - 2016.04.24 at 19h 40m 02s.xml">
-      <configuration name="WeatherDetailsEvictionBaseCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 31m 50s.xml">
+      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailsEvictionBaseCacheUnitTest - 2016.04.24 at 19h 41m 30s.xml">
-      <configuration name="WeatherDetailsEvictionBaseCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 32m 43s.xml">
+      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailsEvictionBaseCacheUnitTest - 2016.04.24 at 19h 45m 20s.xml">
-      <configuration name="WeatherDetailsEvictionBaseCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 36m 04s.xml">
+      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailsEvictionBaseCacheUnitTest - 2016.04.24 at 19h 50m 22s.xml">
-      <configuration name="WeatherDetailsEvictionBaseCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="testWeatherDetailT___() - 2016.04.24 at 20h 38m 26s.xml">
+      <configuration name="testWeatherDetailT...()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 19h 18m 40s.xml">
-      <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="testWeatherDetailT___() - 2016.04.24 at 20h 38m 56s.xml">
+      <configuration name="testWeatherDetailT...()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 19h 19m 49s.xml">
-      <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="testWeatherDetailT___() - 2016.04.24 at 20h 39m 27s.xml">
+      <configuration name="testWeatherDetailT...()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 19h 23m 21s.xml">
-      <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="testWeatherDetailT___() - 2016.04.24 at 20h 39m 57s.xml">
+      <configuration name="testWeatherDetailT...()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="23" width="1234" height="777" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.4261745" order="7" side_tool="false" content_ui="tabs" />
@@ -3326,25 +3391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_weather_detail_pager.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_forecast_weather_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -3484,24 +3530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_current_condition_weather_detail.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.32142857">
@@ -3513,10 +3541,48 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailViewPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_weather_detail_pager.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.32142857">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/laurenyew/weatherapp/detail/WeatherDetailPagerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="92" column="122" selection-start-line="92" selection-start-column="74" selection-end-line="92" selection-end-column="122" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2937#2985#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7028302">
-          <caret line="39" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="41" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="18" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45990565">
+          <caret line="65" column="47" selection-start-line="0" selection-start-column="0" selection-end-line="80" selection-end-column="1" />
           <folding />
         </state>
       </provider>
