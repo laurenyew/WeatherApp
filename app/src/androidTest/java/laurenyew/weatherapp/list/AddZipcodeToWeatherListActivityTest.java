@@ -8,7 +8,7 @@ import laurenyew.weatherapp.detail.WeatherDetailPagerActivity;
 
 /**
  * Created by laurenyew on 4/23/16.
- * <p/>
+ * <p>
  * Sanity Unit test for Adding Zipcodes to the Zipcode List
  */
 public class AddZipcodeToWeatherListActivityTest extends WeatherListActivityTestBase {
@@ -75,7 +75,7 @@ public class AddZipcodeToWeatherListActivityTest extends WeatherListActivityTest
         WeatherDetailPagerActivity detailActivity = (WeatherDetailPagerActivity) solo.getCurrentActivity();
 
         // Check that we got an error message
-        assertTrue("Could not find the dialog!", solo.searchText("Zipcode not found in server database."));
+        assertTrue("Could not find the dialog!", solo.searchText(solo.getString(R.string.invalid_zipcode)));
         solo.clickOnButton("OK");
 
         //Go back to list

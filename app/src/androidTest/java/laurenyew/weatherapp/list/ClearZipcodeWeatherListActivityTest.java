@@ -4,9 +4,11 @@ import android.view.View;
 
 import com.robotium.solo.Solo;
 
+import laurenyew.weatherapp.R;
+
 /**
  * Created by laurenyew on 4/23/16.
- * <p/>
+ * <p>
  * Sanity Unit test for Clearing the Zipcode list
  */
 public class ClearZipcodeWeatherListActivityTest extends WeatherListActivityTestBase {
@@ -18,7 +20,7 @@ public class ClearZipcodeWeatherListActivityTest extends WeatherListActivityTest
 
         //Click the clear list button
         solo.sendKey(Solo.MENU);
-        solo.clickOnText("Clear Zipcode List");
+        solo.clickOnText(solo.getString(R.string.action_clear_list));
 
         solo.waitForActivity(WeatherListActivity.class);
 
