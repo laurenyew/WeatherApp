@@ -1,5 +1,5 @@
 # WeatherApp
-Android App that pulls weather data from Weather Services using zipcode user input
+Android App that pulls weather data from Weather Services using zip code user input
 
 ## Goals:
 - Create a list based application that allows the user to fetch weather information from a weather services API of your choice. 
@@ -16,15 +16,15 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] List detail will display the weather data in a detail activity. 
 - [x] The weather results are cached.
 - [x] The user should be able to navigate back to the zip code list
-- [x] NOTE TO SELF: The list of zipcodes should probably be stored in the phone's database
+- [x] NOTE TO SELF: The list of zip codes should probably be stored in the phone's database
 
 ## Evaluation Points
 - [x] Code/project organization
 - [x] Android fundamentals
 - [x] Android API design/best practices
-- [x] Error handling (connection to weather service down, invalid zipcode, etc.)
-- [x] Error validation (user input: bad zipcode, duplicate zipcode)
-	- Duplicate zipcodes do not produce errors, but do not add duplicate list entries
+- [x] Error handling (connection to weather service down, invalid zip code, etc.)
+- [x] Error validation (user input: bad zip code, duplicate zip code)
+	- Duplicate zip codes do not produce errors, but do not add duplicate list entries
 - [x] API Error handling (API gives errors)
 - [x] Presentation
 
@@ -51,26 +51,26 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 	- Tried OpenWeatherApp but couldn't get APIKey to work.
 
 ## General Screens
-- [x] List View with Zipcode list items
-- [x] Floating Action button to add a new list item (zipcode)
-- [x] Add New ZipCode Screen/dialog
-- [x] Error message when add bad zipcode on dialog
-- [x] Detail Zipcode weather screen (added zipcode)
+- [x] List View with Zip code list items
+- [x] Floating Action button to add a new list item (zip code)
+- [x] Add New Zip code Screen/dialog
+- [x] Error message when add bad zip code on dialog
+- [x] Detail Zip code weather screen (added zip code)
 - [x] Can navigate back to list 
 
-- [x] NOTE: When Zipcode Weather Info is pulled down, it should be cached.
+- [x] NOTE: When Zip code Weather Info is pulled down, it should be cached.
 
 ## Extras
 - [x] Clear List option on list screen
 - [x] Phunware icon / splash screen
-- [x] Zipcode list stored in Shared Preferences for the app, so even if app is closed, the zipcodes stored will remain.
+- [x] Zip code list stored in Shared Preferences for the app, so even if app is closed, the zip codes stored will remain.
 - [x] Eviction time for asking new details = 1 minute (for demo purposes). For practical production cases, it should probably be more like 1 hour or 1 day. Can tell when the cache item has been 'evicted' by when the data reloads in the view on rotate/going back to detail.
-- [x] Tab bar for switching fragments for zipcode weather details (ViewPager)
+- [x] Tab bar for switching fragments for zip code weather details (ViewPager)
 - [x] Swipe between fragments (weather views) with ViewPager
-- [x] Zipcode Forecast
+- [x] Zip code Forecast
 - [x] Weather Detail Content Sharing with ShareActionProvider
-- [x] Android Unit Tests (Sanity test for pages)
-- [x] Zipcode Cache Unit Test
+- [x] Activity Instrumentation Unit Tests (Sanity test for pages)
+- [x] Zip code Cache Unit Test
 
 ## Acknowledgements
 - Original requirements for this project provided by Phunware, Inc.
