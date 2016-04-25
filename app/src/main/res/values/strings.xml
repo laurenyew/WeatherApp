@@ -6,20 +6,19 @@
     <string name="default_reference_info">Weather Underground</string>
 
     <!--Common Buttons-->
-    <string name="action_clear_list">Clear Zipcode List</string>
+    <string name="action_clear_list">Clear zip code list</string>
     <string name="action_share_weather_detail_data">Share</string>
     <string name="ok_button">OK</string>
 
     <!--Add Zipcode dialog-->
-    <string name="add_zipcode_dialog_title">Add Zipcode</string>
-    <string name="add_zipcode_dialog_message">Input Zipcode</string>
+    <string name="add_zipcode_dialog_title">Add Zip Code</string>
     <string name="submit_button_title">OK</string>
     <string name="cancel_button_title">CANCEL</string>
-    <string name="invalid_zipcode">Invalid Zipcode. Please try again.</string>
+    <string name="invalid_zipcode">Invalid zip code. Please try again.</string>
 
     <!--Weather List Title labels-->
-    <string name="zipcode_list_title">Weather by Zipcode</string>
-    <string name="no_zipcode_data_available">Please add a zipcode.</string>
+    <string name="zipcode_list_title">Weather by Zip Code</string>
+    <string name="no_zipcode_data_available">Please add a zip code.</string>
 
     <!--Weather Detail Tab Title labels-->
     <string name="current_conditions_tab_title">Current Conditions</string>
@@ -27,7 +26,7 @@
 
     <!--Current Condition Detail Title Labels-->
     <string name="weather_info_card_title">Weather Info</string>
-    <string name="open_google_maps_button_title">View Displayed Location in Maps</string>
+    <string name="open_google_maps_button_title">View displayed location in Maps</string>
     <string name="reference_info_title_string">Powered by</string>
 
     <!--Current Condition default info-->
@@ -36,7 +35,7 @@
 
     <!--Forecast default info-->
     <string name="no_forecast_data">No forecast data.</string>
-    <string name="day_of_week">Day of Week</string>
+    <string name="day_of_week">Day of week</string>
 
     <!--Error Messages-->
     <string name="error_title">Error</string>

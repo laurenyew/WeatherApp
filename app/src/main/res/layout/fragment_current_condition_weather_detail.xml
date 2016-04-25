@@ -65,7 +65,7 @@
                     android:layout_toRightOf="@id/weather_icon"
                     android:gravity="fill_horizontal"
                     android:text="@string/unknown"
-                    android:textSize="26dp"
+                    android:textSize="21dp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
