@@ -11,11 +11,7 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivitySanityTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/detail/WeatherDetailActivityTestBase.java" />
-    </list>
+    <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="" />
     <ignored path="WeatherApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -2574,7 +2570,7 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Tests.Tests in 'laurenyew.weatherapp'">
+  <component name="RunManager" selected="JUnit.ZipcodeCacheUnitTest">
     <configuration default="false" name="ZipcodeCacheUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2982,11 +2978,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp'" />
-        <item index="1" class="java.lang.String" itemvalue="Android Tests.testWeatherDetailT...()" />
-        <item index="2" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.WeatherDetailsEvictionBaseCacheUnitTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
+        <item index="1" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp'" />
+        <item index="2" class="java.lang.String" itemvalue="Android Tests.testWeatherDetailT...()" />
+        <item index="3" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.WeatherDetailsEvictionBaseCacheUnitTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -3016,11 +3012,8 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 24m 08s.xml">
-      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 24m 35s.xml">
-      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="Tests_in__laurenyew_weatherapp_ - 2016.04.24 at 20h 40m 57s.xml">
+      <configuration name="Tests in 'laurenyew.weatherapp'" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 30m 11s.xml">
       <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
@@ -3033,6 +3026,9 @@
     </history-entry>
     <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 36m 04s.xml">
       <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 20h 52m 19s.xml">
+      <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="testWeatherDetailT___() - 2016.04.24 at 20h 38m 26s.xml">
       <configuration name="testWeatherDetailT...()" configurationId="AndroidTestRunConfigurationType" />
