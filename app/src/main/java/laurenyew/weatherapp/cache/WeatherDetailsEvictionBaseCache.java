@@ -28,6 +28,13 @@ public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
     }
 
 
+    /**
+     * Get the requested item (if non-expired).
+     * If item is expired, return null and remove from the cache
+     *
+     * @param key
+     * @return
+     */
     protected T getItem(String key) {
         T response = null;
         if (key != null) {
@@ -35,7 +42,7 @@ public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
             if (response != null) {
                 //evict if necessary, and if evicted, we should return a null response
                 //to trigger an api call.
-                if (shouldEvictResponse(response.evictionDate)) {
+                if (shouldEvictModel(response.evictionDate)) {
                     mCache.remove(key);
                     response = null;
                 }
@@ -51,12 +58,12 @@ public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
      * @param date
      * @return true if should evict, false otherwise
      */
-    private boolean shouldEvictResponse(Date date) {
+    private boolean shouldEvictModel(Date date) {
         Date currentDate = new Date();
         return date.before(currentDate);
     }
 
-    public void addResponse(T response) {
+    public void addBaseKeyEvictionModel(T response) {
         mCache.put(response.key, response);
     }
 
@@ -67,4 +74,5 @@ public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
             return mCache.size();
         }
     }
+
 }

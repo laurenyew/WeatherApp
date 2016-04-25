@@ -79,12 +79,12 @@ public class ZipcodeCacheUnitTest {
     }
 
     @Test
-    public void assertInitListOnEmptyPreferencesSetsCorrectDefaults() throws Exception {
+    public void testInitListOnEmptyPreferencesSetsCorrectDefaults() throws Exception {
         compareCacheWithExpectedZipcodes();
     }
 
     @Test
-    public void assertAddZipcodeUpdatesCacheInCorrectOrder() throws Exception {
+    public void testAddZipcodeUpdatesCacheInCorrectOrder() throws Exception {
         String newZipcodeInFront = "11111";
         expectedZipcodes.add(0, newZipcodeInFront);
         mCache.addZipcode(mMockContext, newZipcodeInFront);
@@ -93,6 +93,13 @@ public class ZipcodeCacheUnitTest {
         String newZipcodeAtEnd = "99999";
         expectedZipcodes.add(newZipcodeAtEnd);
         mCache.addZipcode(mMockContext, newZipcodeAtEnd);
+        compareCacheWithExpectedZipcodes();
+    }
+
+    @Test
+    public void testClearZipcodeCache() {
+        expectedZipcodes.clear();
+        mCache.clear(mMockContext);
         compareCacheWithExpectedZipcodes();
     }
 

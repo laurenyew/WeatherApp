@@ -39,7 +39,7 @@ public class CurrentWeatherConditionsResponseListener extends JsonResponseListen
      */
     @Override
     public void onSuccessUpdateCache(CurrentWeatherConditions data) {
-        CurrentWeatherConditionsCache.getInstance().addResponse(data);
+        CurrentWeatherConditionsCache.getInstance().addBaseKeyEvictionModel(data);
     }
 
     @Override

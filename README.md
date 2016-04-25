@@ -69,6 +69,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] 7 day forecast
 - [x] Weather Detail Content Sharing with ShareActionProvider
 - [x] Android Unit Tests (Sanity test each page)
+- [x] Zipcode Cache Unit Test
 
 ## Acknowledgements
 - Original requirements for this project provided by Phunware, Inc.

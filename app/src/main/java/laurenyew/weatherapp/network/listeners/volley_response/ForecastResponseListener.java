@@ -42,7 +42,7 @@ public class ForecastResponseListener extends JsonResponseListener<ForecastProje
      */
     @Override
     public void onSuccessUpdateCache(ForecastProjection data) {
-        ForecastProjectionCache.getInstance().addResponse(data);
+        ForecastProjectionCache.getInstance().addBaseKeyEvictionModel(data);
     }
 
     @Override
