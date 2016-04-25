@@ -67,7 +67,7 @@ Android App that pulls weather data from Weather Services using zipcode user inp
 - [x] Eviction time for asking new details = 1 minute (for demo purposes). For practical production cases, it should probably be more like 1 hour or 1 day. Can tell when the cache item has been 'evicted' by when the data reloads in the view on rotate/going back to detail.
 - [x] Tab bar for switching fragments for zipcode weather details (ViewPager)
 - [x] Swipe between fragments (weather views) with ViewPager
-- [x] 7 day forecast
+- [x] Zipcode Forecast
 - [x] Weather Detail Content Sharing with ShareActionProvider
 - [x] Android Unit Tests (Sanity test for pages)
 - [x] Zipcode Cache Unit Test
