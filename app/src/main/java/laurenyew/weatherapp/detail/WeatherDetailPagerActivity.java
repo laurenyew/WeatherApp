@@ -20,7 +20,7 @@ import laurenyew.weatherapp.detail.forecast.ForecastWeatherDetailFragment;
  * Created by laurenyew on 4/18/16.
  */
 public class WeatherDetailPagerActivity extends AppCompatActivity {
-    public static String ZIPCODE_KEY = "zipcode";
+    public static final String ZIPCODE_KEY = "zipcode";
     private static String zipcode;
 
     //Views

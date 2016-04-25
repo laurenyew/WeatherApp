@@ -75,4 +75,11 @@ public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
         }
     }
 
+    /**
+     * Test only method to reset app state
+     */
+    public void _clear() {
+        mCache.evictAll();
+    }
+
 }

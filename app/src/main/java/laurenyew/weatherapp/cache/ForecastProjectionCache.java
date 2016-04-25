@@ -26,5 +26,4 @@ public class ForecastProjectionCache extends WeatherDetailsEvictionBaseCache<For
     public ForecastProjection getForecastList(String zipcode) {
         return getItem(zipcode);
     }
-
 }
