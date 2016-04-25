@@ -75,7 +75,7 @@ public class AddZipcodeToWeatherListActivityTest extends WeatherListActivityTest
         WeatherDetailPagerActivity detailActivity = (WeatherDetailPagerActivity) solo.getCurrentActivity();
 
         // Check that we got an error message
-        assertTrue("Could not find the dialog!", solo.searchText(solo.getString(R.string.invalid_zipcode)));
+        assertTrue("Could not find the dialog!", solo.searchText(solo.getString(R.string.invalid_request)));
         solo.clickOnButton("OK");
 
         //Go back to list
