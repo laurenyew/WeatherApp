@@ -2,7 +2,7 @@
 Android App that pulls weather data from Weather Services using zipcode user input
 
 ## Goals:
-- Create a list­based application that allows the user to fetch weather information from a weather services API of your choice. 
+- Create a list based application that allows the user to fetch weather information from a weather services API of your choice. 
 - The user should be able to add/remove zip codes from the list. 
 - Focus effort on the weather services API interface.
 

@@ -11,10 +11,7 @@
     <option name="TOOL_WINDOW_REGEXP_FILTER" value="false" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/list/AddZipcodeToWeatherListActivityTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/laurenyew/weatherapp/list/AddZipcodeToWeatherListActivityTest.java" />
-    </list>
+    <list default="true" id="c98fc5ca-6d0c-4550-be2f-67600f0819ca" name="Default" comment="" />
     <ignored path="WeatherApp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,8 +94,8 @@
       <file leaf-file-name="strings.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51890033">
-              <caret line="45" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.06666667">
+              <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -2531,7 +2528,7 @@
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Tests.testSanityZipcodeN...()">
+  <component name="RunManager" selected="JUnit.ZipcodeCacheUnitTest">
     <configuration default="false" name="ZipcodeCacheUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -2946,9 +2943,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Android Tests.testSanityZipcodeN...()" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
         <item index="1" class="java.lang.String" itemvalue="Android Tests.Tests in 'laurenyew.weatherapp'" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ZipcodeCacheUnitTest" />
+        <item index="2" class="java.lang.String" itemvalue="Android Tests.testSanityZipcodeN...()" />
         <item index="3" class="java.lang.String" itemvalue="Android Tests.testWeatherDetailT...()" />
         <item index="4" class="java.lang.String" itemvalue="Android Tests.WeatherDetailActivit..." />
       </list>
@@ -2983,19 +2980,19 @@
     <history-entry file="Tests_in__laurenyew_weatherapp_ - 2016.04.24 at 21h 56m 23s.xml">
       <configuration name="Tests in 'laurenyew.weatherapp'" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 32m 43s.xml">
-      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="WeatherDetailActivit___ - 2016.04.24 at 20h 36m 04s.xml">
-      <configuration name="WeatherDetailActivit..." configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 20h 52m 19s.xml">
-      <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
+    <history-entry file="Tests_in__laurenyew_weatherapp_ - 2016.04.24 at 21h 59m 00s.xml">
+      <configuration name="Tests in 'laurenyew.weatherapp'" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 20h 54m 13s.xml">
       <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ZipcodeCacheUnitTest - 2016.04.24 at 21h 59m 11s.xml">
+      <configuration name="ZipcodeCacheUnitTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="testSanityZipcodeN___() - 2016.04.24 at 21h 56m 48s.xml">
+      <configuration name="testSanityZipcodeN...()" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="testSanityZipcodeN___() - 2016.04.24 at 21h 57m 51s.xml">
       <configuration name="testSanityZipcodeN...()" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="testWeatherDetailT___() - 2016.04.24 at 20h 38m 26s.xml">
@@ -3030,7 +3027,7 @@
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32774517" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4357035" sideWeight="0.46979865" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4357035" sideWeight="0.46979865" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329698" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3493,8 +3490,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51890033">
-          <caret line="45" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.06666667">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
           <folding />
         </state>
       </provider>
