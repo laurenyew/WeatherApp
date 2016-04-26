@@ -9,9 +9,10 @@ import laurenyew.weatherapp.network.requests.BaseObjectRequest;
 
 /**
  * Created by laurenyew on 4/19/16.
- * <p>
+ * <p/>
  * WeatherServiceApi implementation
- * <p>
+ * (See: WeatherServiceApi.java for more info)
+ * <p/>
  * Uses Volley's Request Queue to send out network requests as per the WeatherServiceApi
  */
 public class WeatherServiceCenter implements WeatherServiceApi {
@@ -80,7 +81,7 @@ public class WeatherServiceCenter implements WeatherServiceApi {
     /**
      * Returns an API Request to get the current conditions for a given zipcode
      * Specifies the JsonResponseListener to send the results (error/json) to.
-     * <p>
+     * <p/>
      * Example query: "http://api.wunderground.com/api/731efe0d70901aaf/conditions/q/75078.json"
      *
      * @param context
@@ -113,7 +114,7 @@ public class WeatherServiceCenter implements WeatherServiceApi {
     /**
      * Returns an API Request to get the forecast for a given zipcode
      * Specifies the JsonResponseListener to send the results (error/json) to.
-     * <p>
+     * <p/>
      * Example query: "http://api.wunderground.com/api/731efe0d70901aaf/forecast/q/75078.json"
      *
      * @param context
