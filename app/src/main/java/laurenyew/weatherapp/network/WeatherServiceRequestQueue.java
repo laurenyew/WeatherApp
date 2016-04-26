@@ -8,6 +8,8 @@ import com.android.volley.toolbox.Volley;
 
 /**
  * Created by laurenyew on 4/19/16.
+ * <p>
+ * Singleton Volley Request Queue (Suggested best practice by Volley)
  */
 public class WeatherServiceRequestQueue {
     private static WeatherServiceRequestQueue mInstance;

@@ -19,11 +19,11 @@ import laurenyew.weatherapp.network.responses.status.Result;
 
 /**
  * Created by laurenyew on 4/19/16.
- * <p/>
+ * <p>
  * This class implements:
  * - deserialization of ForecastProjection JSON
  * - caching of forecast weather conditions,
- * - updating UI with Observer pattern using FetchForecastUpdateListener
+ * - updating UI with Observer pattern using FetchRequestStatusUpdateListener
  */
 public class ForecastResponseListener extends JsonResponseListener<ForecastProjection> {
 
@@ -51,7 +51,7 @@ public class ForecastResponseListener extends JsonResponseListener<ForecastProje
     }
 
     /**
-     * Convert the response into a proper CurrentWeatherCondiationsResponse
+     * Convert the response into a proper ForecastProjection
      *
      * @param response
      * @return

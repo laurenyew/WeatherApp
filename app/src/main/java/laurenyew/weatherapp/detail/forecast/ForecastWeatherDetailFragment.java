@@ -26,6 +26,12 @@ import laurenyew.weatherapp.util.AlertDialogUtil;
 
 /**
  * Created by laurenyew on 4/18/16.
+ * ForecastWeatherDetailFragment
+ * <p>
+ * When being viewed: Fetches Forecast List for given zipcode and displays in a RecyclerView list.
+ * First looks in the cache for the forecast list.
+ * If cannot find, makes a WeatherServiceApi call to get the information and
+ * will be updated (if still subscribed) when the data is populated.
  */
 public class ForecastWeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
     //Views
@@ -71,8 +77,6 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
     public void onResume() {
         super.onResume();
         populateForecastWeatherDetailsIfVisible();
-
-
     }
 
     /**
@@ -84,7 +88,6 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
     public void setMenuVisibility(final boolean visible) {
         super.setMenuVisibility(visible);
         populateForecastWeatherDetailsIfVisible();
-
     }
 
 
@@ -97,7 +100,7 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
 
         currentForecast = null;
 
-        WeatherServiceCenter.getInstance().cancel7DayForecastRequest(getActivity(), detailZipcode);
+        WeatherServiceCenter.getInstance().cancelForecastProjectionRequest(getActivity(), detailZipcode);
 
         if (mForecastResponseListenerRef != null && mForecastResponseListenerRef.get() != null) {
             ForecastResponseListener listener = mForecastResponseListenerRef.get();
@@ -109,7 +112,7 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
 
     /**
      * Helper method: get the current weather conditions for the given zipcode
-     * <p/>
+     * <p>
      * 1) Attempt to get the conditions from the cache.
      * 2) If cache detail not available, start an API call
      * 3) Listen for the result, updating the UI accordingly
@@ -146,7 +149,7 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
 
     /**
      * FetchRequestStatusUpdateListener implementation
-     * <p/>
+     * <p>
      * Let the UI know that the fetch has been completed. Get the data.
      */
     @Override
@@ -223,7 +226,7 @@ public class ForecastWeatherDetailFragment extends Fragment implements FetchRequ
 
     /**
      * RequestErrorListener implementaiton
-     * <p/>
+     * <p>
      * update the UI that the fetch failed with the error associated
      *
      * @param error

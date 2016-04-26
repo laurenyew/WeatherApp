@@ -9,13 +9,15 @@ import laurenyew.weatherapp.network.listeners.volley_response.JsonResponseListen
 
 /**
  * Created by laurenyew on 4/19/16
- * <p/>
+ * <p>
  * Helper method, used to simplify the Volley Response listeners into one class.
- * NOTE: Usually VOlley requires two different listeners, but for simplicity sake, I combined them into a single listener
+ * <p>
+ * NOTE: Usually Volley requires two different listeners, but for simplicity sake,
+ * I combined them into a single listener
  */
 public class BaseObjectRequest extends JsonObjectRequest {
 
-    //base volley requirement
+    //Base Volley requirement
     public BaseObjectRequest(int method, String url, JSONObject jsonRequest, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
         super(method, url, jsonRequest, listener, errorListener);
     }
@@ -24,7 +26,7 @@ public class BaseObjectRequest extends JsonObjectRequest {
      * Using this method so that we can use the single JsonResponseListener and override it
      *
      * @param method      (ex: Request.Method.GET)
-     * @param url         (url need to hit)
+     * @param url         (url that will be used)
      * @param jsonRequest (parameters included)
      * @param listener    (custom listener)
      */

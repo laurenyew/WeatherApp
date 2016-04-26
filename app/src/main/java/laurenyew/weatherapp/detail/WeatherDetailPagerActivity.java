@@ -18,6 +18,11 @@ import laurenyew.weatherapp.detail.forecast.ForecastWeatherDetailFragment;
 
 /**
  * Created by laurenyew on 4/18/16.
+ * <p>
+ * Weather Detail Page
+ * Includes:
+ * - Current conditions
+ * - Forecast
  */
 public class WeatherDetailPagerActivity extends AppCompatActivity {
     public static final String ZIPCODE_KEY = "zipcode";

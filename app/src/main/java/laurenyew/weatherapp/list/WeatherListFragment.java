@@ -56,7 +56,7 @@ public class WeatherListFragment extends Fragment implements ZipcodeCache.Update
 
     /**
      * Implementing the ZipcodeCache.UpdateListener interface
-     * <p/>
+     * <p>
      * notify the adapter if the cache has been updated
      */
     @Override
@@ -67,6 +67,12 @@ public class WeatherListFragment extends Fragment implements ZipcodeCache.Update
         }
     }
 
+    /**
+     * Helper method: (update the UI for empty list/full list)
+     * <p>
+     * hide/show zipcode list view based on
+     * zipcode list size
+     */
     private void updateZipcodeListViewIfEmpty() {
         if (ZipcodeCache.getInstance().size() == 0) {
             mWeatherListRecyclerView.setVisibility(View.GONE);

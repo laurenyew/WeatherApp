@@ -8,17 +8,19 @@ import laurenyew.weatherapp.detail.WeatherDetailPagerActivity;
 
 /**
  * Created by laurenyew on 4/21/16.
- * <p/>
+ * <p>
  * Helper class with commonly used intents
  */
 public class CommonlyUsedIntents {
 
     /**
+     * Open Weather Detail Activity Intent start
+     * <p>
      * Since this intent is used in several places (list item click, add detail)
      * pulling this intent out for reuse.
      *
      * @param context
-     * @param zipcode
+     * @param zipcode to send to WeatherDetailPagerActivity
      */
     public static void openWeatherDetailActivity(Context context, String zipcode) {
         Intent openZipcodeWeatherDetail = new Intent(context, WeatherDetailPagerActivity.class);

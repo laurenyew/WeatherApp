@@ -11,10 +11,19 @@ import java.util.List;
 
 /**
  * Created by laurenyew on 4/21/16.
+ * ZipcodeCache
+ * <p>
+ * Zipcodes are stored in SharedPreferences so they can be available across app sessions.
+ * This is a cache wrapper used to update SharedPreferences and keep around
+ * and in-memory sorted list of the zipcodes that should be in sync.
  */
 public class ZipcodeCache {
     private static ZipcodeCache mInstance = null;
 
+    /**
+     * Use observer pattern to notify listeners when the cache is updated
+     * (ex: clear list, add item)
+     */
     public interface UpdateListener {
         void onCacheUpdate();
     }
@@ -24,14 +33,15 @@ public class ZipcodeCache {
     private static final String APP_NAME = "laurenyew.weatherapp";
     private static final String ZIPCODE_CACHE_KEY = "zipcode_cache";
 
-    //We use a add so that we can ensure that no duplicate zipcodes are added
-    //This also helps with sorting the list
+    //We use a HashSet so that we can ensure that no duplicate zipcodes are added
     private HashSet<String> mCache = null;
-    //Sorted List is used by the array adapter (try to prevent re-calculation
-    //of sorted list order unless adding/setting the cache)
-    //This should be kept up to date with mCache
+
+    //We keep a sorted list of zipcode items
+    //(calculated dynamically when a change is made to the cache).
+    //This list is kept in sync with Shared Preferences changes
     private List<String> mSortedList = null;
 
+    //3 default zipcodes that should be populated on installation of app
     private static final String[] DEFAULT_ZIPCODES = {"75078", "78757", "92127"};
 
     private ZipcodeCache() {
@@ -47,8 +57,9 @@ public class ZipcodeCache {
     }
 
     /**
-     * Get in sorted list for use in array adapter
+     * Get zipcode for a given position from the sorted list
      *
+     * @param position
      * @return
      */
     public String getItem(int position) {
@@ -71,8 +82,9 @@ public class ZipcodeCache {
     /**
      * We store the list items in the sharedPreferences
      * (only keeping zipcode strings for now so SqliteDatabase is unnecessary overhead)
-     * <p/>
-     * Update list cache with the current sharedPreferences
+     * <p>
+     * Update in memory list cache with the current sharedPreferences
+     * and the shared preferences with the appropriate default data as needed
      */
     public void initListCacheAndSharedPreferences(Context context) {
 
@@ -98,7 +110,8 @@ public class ZipcodeCache {
 
 
     /**
-     * Add to the cache and update the sorted list
+     * Add to the in memory cache set, update the sorted list,
+     * notify listeners (updating UI), and then update the Shared Preferences
      *
      * @param zipcode
      */
@@ -125,6 +138,8 @@ public class ZipcodeCache {
 
     /**
      * Helper method to update the shared preferences with the current mCache
+     * Chose to do a synchronized commit to prevent issues where the user closes
+     * the app before an apply() can occur, and thus the user loses their change.
      *
      * @param context
      */
@@ -147,7 +162,7 @@ public class ZipcodeCache {
     }
 
     /**
-     * Helper method to sort the cache into a list
+     * Helper method to sort the cache set into a list
      *
      * @param c
      * @param <T>

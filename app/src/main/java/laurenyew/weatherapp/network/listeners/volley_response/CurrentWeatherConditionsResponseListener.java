@@ -16,7 +16,7 @@ import laurenyew.weatherapp.network.responses.status.Result;
 
 /**
  * Created by laurenyew on 4/19/16.
- * <p/>
+ * <p>
  * This class implements:
  * - deserialization of CurrentWeatherCondition JSON
  * - caching of current weather conditions,

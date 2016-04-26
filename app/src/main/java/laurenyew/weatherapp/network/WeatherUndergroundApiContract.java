@@ -4,8 +4,12 @@ import laurenyew.weatherapp.network.responses.models.WeatherSummaryCodes;
 
 /**
  * Created by laurenyew on 4/22/16.
- * <p/>
- * This is a class to keep track of Weather Api Constantt
+ * <p>
+ * All constant values associated with the WeatherUnderground API.
+ * <p>
+ * Created this class with the vision that in some practical case, one
+ * might decide to change which Weather Service to use, and it would be helpful
+ * to be able to easily switch out services.
  */
 public class WeatherUndergroundApiContract {
     //WeatherUnderground values

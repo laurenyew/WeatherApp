@@ -9,7 +9,7 @@ import laurenyew.weatherapp.R;
 
 /**
  * Created by laurenyew on 4/24/16.
- * <p/>
+ * <p>
  * Sanity Unit test for WeatherDetailPagerActivity
  * Tests navigation / default values
  */
@@ -37,6 +37,11 @@ public class WeatherDetailActivitySanityTest extends WeatherDetailActivityTestBa
         checkOnCurrentConditionsDetailPage();
     }
 
+    /**
+     * Test that should be able to go to Forecast and back to Current Conditions
+     * Weather detail using swipe.
+     * Also should check that those views were populated
+     */
     public void testWeatherDetailTabNavigation() {
         swipeRightToLeft();
         checkOnForecastDetailPage();

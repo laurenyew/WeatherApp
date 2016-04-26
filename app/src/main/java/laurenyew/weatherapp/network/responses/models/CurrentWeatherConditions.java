@@ -2,8 +2,8 @@ package laurenyew.weatherapp.network.responses.models;
 
 /**
  * Created by laurenyew on 4/19/16.
- * <p/>
- * Made a simplified more generic CurrentWeatherConditions.
+ * <p>
+ * Made a simplified more generic CurrentWeatherConditions model.
  * There were way too many unneeded values in the original response from underground weather.
  * Gson should ignore the unmentioned values when deserializing.
  */

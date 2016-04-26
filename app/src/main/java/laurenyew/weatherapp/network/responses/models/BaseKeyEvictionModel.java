@@ -4,8 +4,9 @@ import java.util.Date;
 
 /**
  * Created by laurenyew on 4/23/16.
- * <p/>
+ * <p>
  * Base Eviction Model (used for eviction strategy)
+ * Holds a key (used in child models to be mapped with values).
  */
 public class BaseKeyEvictionModel {
 
@@ -27,6 +28,13 @@ public class BaseKeyEvictionModel {
         this.key = key;
     }
 
+    /**
+     * For this Base Key Eviction model, we only care that
+     * the keys match and that the eviction dates match
+     *
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         BaseKeyEvictionModel c = (BaseKeyEvictionModel) o;

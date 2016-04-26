@@ -8,14 +8,15 @@ import laurenyew.weatherapp.network.responses.models.BaseKeyEvictionModel;
 
 /**
  * Created by laurenyew on 4/20/16.
- * <p/>
+ * <p>
  * Base class
- * Basic Lru cache to hold the responses
+ * Basic Lru cache to hold the BaseKeyEvictionModel responses
  * Key: zipcode
- * Value: CurrentWeatherConsitionsResponse
+ * Value: BaseKeyEvictionModel
  */
 public class WeatherDetailsEvictionBaseCache<T extends BaseKeyEvictionModel> {
 
+    //For demo purposes, leave the max cache items at 20
     private static final int MAX_CACHE_ITEMS = 20;
     private LruCache<String, T> mCache;
 

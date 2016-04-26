@@ -13,7 +13,7 @@ import laurenyew.weatherapp.cache.ForecastProjectionCache;
 
 /**
  * Created by laurenyew on 4/24/16.
- * <p/>
+ * <p>
  * Test base with helper methods / setup used across tests
  */
 public class WeatherDetailActivityTestBase extends ActivityInstrumentationTestCase2<WeatherDetailPagerActivity> {
@@ -30,6 +30,11 @@ public class WeatherDetailActivityTestBase extends ActivityInstrumentationTestCa
         super("laurenyew.weatherapp", WeatherDetailPagerActivity.class);
     }
 
+    /**
+     * Setup the Weather Detail Activity with a given zipcode
+     *
+     * @throws Exception
+     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();

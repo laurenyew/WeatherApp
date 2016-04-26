@@ -22,7 +22,6 @@ public class ForecastListAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
     public ForecastListAdapter(LayoutInflater inflater) {
         this.inflater = inflater;
-        this.forecasts = forecasts;
     }
 
     public void setForecasts(ForecastProjection newForecasts) {

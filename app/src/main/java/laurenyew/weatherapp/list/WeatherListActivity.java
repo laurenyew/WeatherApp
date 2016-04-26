@@ -13,6 +13,9 @@ import laurenyew.weatherapp.R;
 import laurenyew.weatherapp.cache.ZipcodeCache;
 import laurenyew.weatherapp.util.AlertDialogUtil;
 
+/**
+ * WeatherListActivity (Zipcode list)
+ */
 public class WeatherListActivity extends AppCompatActivity {
 
     @Override

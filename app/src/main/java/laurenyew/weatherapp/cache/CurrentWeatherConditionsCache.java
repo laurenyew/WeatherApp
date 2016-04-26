@@ -4,10 +4,10 @@ import laurenyew.weatherapp.network.responses.models.CurrentWeatherConditions;
 
 /**
  * Created by laurenyew on 4/20/16.
- * <p/>
- * Basic Lru cache to hold the CurrentWeatherConditionsResponses
+ * <p>
+ * Basic Lru cache to hold the CurrentWeatherConditions
  * Key: zipcode
- * Value: CurrentWeatherConsitionsResponse
+ * Value: CurrentWeatherConditions
  */
 public class CurrentWeatherConditionsCache extends WeatherDetailsEvictionBaseCache<CurrentWeatherConditions> {
     private static CurrentWeatherConditionsCache mInstance = null;

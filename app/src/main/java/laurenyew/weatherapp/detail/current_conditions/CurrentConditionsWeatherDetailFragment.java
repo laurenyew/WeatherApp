@@ -30,6 +30,12 @@ import laurenyew.weatherapp.util.AlertDialogUtil;
 
 /**
  * Created by laurenyew on 4/18/16.
+ * CurrentConditionsWeatherDetailFragment
+ * <p>
+ * When being viewed: Fetches Current Weather Conditions for given zipcode and displays.
+ * First looks in the cache for the Current Conditions.
+ * If cannot find, makes a WeatherServiceApi call to get the information and
+ * will be updated (if still subscribed) when the data is populated.
  */
 public class CurrentConditionsWeatherDetailFragment extends Fragment implements FetchRequestStatusUpdateListener, RequestErrorListener {
     //Views
@@ -119,7 +125,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
 
     /**
      * Helper method: get the current weather conditions for the given zipcode
-     * <p/>
+     * <p>
      * 1) Attempt to get the conditions from the cache.
      * 2) If cache detail not available, start an API call
      * 3) Listen for the result, updating the UI accordingly
@@ -175,7 +181,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
 
     /**
      * FetchRequestStatusUpdateListener implementation
-     * <p/>
+     * <p>
      * Let the UI know that the fetch has been completed. Get the data.
      */
     @Override
@@ -234,7 +240,7 @@ public class CurrentConditionsWeatherDetailFragment extends Fragment implements 
 
     /**
      * RequestErrorListener implementaiton
-     * <p/>
+     * <p>
      * update the UI that the fetch failed with the error associated
      *
      * @param error
