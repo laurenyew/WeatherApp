@@ -11,7 +11,8 @@ import laurenyew.weatherapp.network.requests.BaseObjectRequest;
  * Created by laurenyew on 4/19/16.
  * <p/>
  * WeatherServiceApi implementation
- * (See: WeatherServiceApi.java for more info)
+ *
+ * @see WeatherServiceApi for more info
  * <p/>
  * Uses Volley's Request Queue to send out network requests as per the WeatherServiceApi
  */
